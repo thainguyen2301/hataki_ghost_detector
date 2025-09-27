@@ -4,14 +4,12 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
-import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.hataki.ghostdetector.R
 import com.hataki.ghostdetector.databinding.ActivitySplashBinding
-import com.hataki.ghostdetector.ui.main.MainActivity
 import com.hataki.ghostdetector.ui.onboard.OnboardingActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -35,7 +33,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun simulateLoading() {
-        val messages =  this.resources.getStringArray(R.array.loading_messages).toList()
+        val messages = this.resources.getStringArray(R.array.loading_messages).toList()
         val handler = Handler(Looper.getMainLooper())
         var currentStep = 0
         val totalSteps = messages.size
@@ -67,7 +65,7 @@ class SplashActivity : AppCompatActivity() {
                             .setDuration(800)
                             .setListener(object : AnimatorListenerAdapter() {
                                 override fun onAnimationEnd(animation: Animator) {
-                                    startActivity(Intent(this@SplashActivity, OnboardingActivity::class.java))
+                                    OnboardingActivity.open(context = this@SplashActivity)
                                     finish()
                                 }
                             })

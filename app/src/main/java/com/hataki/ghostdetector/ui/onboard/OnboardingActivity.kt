@@ -1,5 +1,6 @@
 package com.hataki.ghostdetector.ui.onboard
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,11 +11,16 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.hataki.ghostdetector.R
 import com.hataki.ghostdetector.data.model.OnboardingItem
 import com.hataki.ghostdetector.databinding.ActivityOnboardingBinding
-import com.hataki.ghostdetector.ui.main.MainActivity
+import com.hataki.ghostdetector.ui.start.StartActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class OnboardingActivity : AppCompatActivity() {
+    companion object {
+        fun open(context: Context) {
+            context.startActivity(Intent(context, OnboardingActivity::class.java))
+        }
+    }
 
     private lateinit var binding: ActivityOnboardingBinding
     private lateinit var adapter: OnboardingAdapter
@@ -63,7 +69,7 @@ class OnboardingActivity : AppCompatActivity() {
             if (currentItem < items.size - 1) {
                 binding.viewPager.currentItem = currentItem + 1
             } else {
-                startActivity(Intent(this, MainActivity::class.java))
+                StartActivity.open(this)
                 finish()
             }
         }
@@ -71,7 +77,9 @@ class OnboardingActivity : AppCompatActivity() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 binding.btnNext.text =
-                    if (position == items.size - 1) resources.getString(R.string.get_started) else resources.getString(R.string.next)
+                    if (position == items.size - 1) resources.getString(R.string.get_started) else resources.getString(
+                        R.string.next
+                    )
             }
         })
     }

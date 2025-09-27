@@ -8,7 +8,7 @@
         android:background="#0A0F0A">
 
         <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/viewPager"
+            android:id="@+id/view_pager"
             android:layout_width="0dp"
             android:layout_height="517dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -20,11 +20,11 @@
             android:layout_height="44dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewPager">
+            app:layout_constraintTop_toBottomOf="@+id/view_pager">
 
 
             <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabIndicator"
+                android:id="@+id/tab_indicator"
                 android:layout_width="128dp"
                 android:layout_height="8dp"
                 android:background="?selectableItemBackground"
@@ -38,7 +38,7 @@
                 app:tabRippleColor="@android:color/transparent" />
 
             <TextView
-                android:id="@+id/btnNext"
+                android:id="@+id/btn_next"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/next"
