@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Ghost Detector</string>
+    <string name="next">Next</string>
+    <string name="get_started">Get Started</string>
+    <string-array name="loading_messages">
+        <item>This action may contain advertising…</item>
+        <item>Loading system libraries…</item>
+        <item>Loading application configuration…</item>
+        <item>Loading UI resources…</item>
+        <item>Connecting to server…</item>
+        <item>Checking for updates…</item>
+        <item>Loading executable file…</item>
+    </string-array>
+
+
+    <string name="onboarding_title_1">Transform Your Age</string>
+    <string name="onboarding_desc_1">See yourself younger or older with AI-powered effects!</string>
+
+    <string name="onboarding_title_2">All-in-One AI Tools</string>
+    <string name="onboarding_desc_2">AI Art, Background Remove &amp; more in one app!</string>
+
+    <string name="onboarding_title_3">Fun &amp; Shareable</string>
+    <string name="onboarding_desc_3">Create and share your age-altered selfies with friends!</string>
+
+    <string name="onboarding_title_4">Get Started</string>
+    <string name="onboarding_desc_4">Try it now and explore different versions of yourself!</string>
+</resources>
