@@ -4,6 +4,7 @@ import android.content.Context
 import com.hataki.ghostdetector.data.framework.compass.CompassManager
 import com.hataki.ghostdetector.data.framework.evp.EVPRecorderManager
 import com.hataki.ghostdetector.data.framework.sensor.SensorDetectManager
+import com.hataki.ghostdetector.data.local.DataStoreManager
 import com.hataki.ghostdetector.data.remote.ApiService
 import dagger.Module
 import dagger.Provides
@@ -46,4 +47,9 @@ object AppModule {
     @Singleton
     fun provideCompassManager(@ApplicationContext context: Context): CompassManager =
         CompassManager(context)
+
+    @Provides
+    @Singleton
+    fun provideDataStoreManager(@ApplicationContext context: Context): DataStoreManager =
+        DataStoreManager(context)
 }

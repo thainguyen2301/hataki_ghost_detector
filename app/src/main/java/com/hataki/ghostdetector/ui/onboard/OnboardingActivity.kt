@@ -2,36 +2,59 @@ package com.hataki.ghostdetector.ui.onboard
 
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import android.view.LayoutInflater
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.hataki.ghostdetector.R
 import com.hataki.ghostdetector.data.model.OnboardingItem
+import com.hataki.ghostdetector.data.model.common.UIState
+import com.hataki.ghostdetector.data.model.common.getOrNull
 import com.hataki.ghostdetector.databinding.ActivityOnboardingBinding
+import com.hataki.ghostdetector.ui.base.BaseActivity
 import com.hataki.ghostdetector.ui.common.PermissionHelper
 import com.hataki.ghostdetector.ui.permission.RequestPermissionActivity
 import com.hataki.ghostdetector.ui.start.StartActivity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class OnboardingActivity : AppCompatActivity() {
+class OnboardingActivity : BaseActivity<OnboardingViewModel, ActivityOnboardingBinding>() {
     companion object {
         fun open(context: Context) {
             context.startActivity(Intent(context, OnboardingActivity::class.java))
         }
     }
 
-    private lateinit var binding: ActivityOnboardingBinding
     private lateinit var adapter: OnboardingAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityOnboardingBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun getLayoutResource(): Int = R.layout.activity_onboarding
+
+    override fun viewModelClass(): Class<OnboardingViewModel> = OnboardingViewModel::class.java
+
+    override fun onCreateImpl() {
+        observerValue()
         initViewPager()
+    }
+
+    override fun onResumeImpl() {
+    }
+
+
+    private fun observerValue() {
+        lifecycleScope.launch {
+            viewModel.saveIsOnBoardingState.collect { isSuccess ->
+                if (isSuccess is UIState.Success && isSuccess.getOrNull() == true) {
+                    if (PermissionHelper.isAllPermissionGranted(this@OnboardingActivity)) {
+                        StartActivity.open(this@OnboardingActivity)
+                    } else {
+                        RequestPermissionActivity.open(this@OnboardingActivity)
+                    }
+                    finish()
+                }
+            }
+        }
     }
 
     private fun initViewPager() {
@@ -71,12 +94,7 @@ class OnboardingActivity : AppCompatActivity() {
             if (currentItem < items.size - 1) {
                 binding.viewPager.currentItem = currentItem + 1
             } else {
-                if (PermissionHelper.isAllPermissionGranted(this)) {
-                    StartActivity.open(this)
-                } else {
-                    RequestPermissionActivity.open(this)
-                }
-                finish()
+                viewModel.saveIsOnBoarding()
             }
         }
         binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {

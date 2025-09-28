@@ -4,32 +4,50 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
-import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import androidx.appcompat.app.AppCompatActivity
 import com.hataki.ghostdetector.R
 import com.hataki.ghostdetector.databinding.ActivitySplashBinding
+import com.hataki.ghostdetector.ui.base.BaseActivity
+import com.hataki.ghostdetector.ui.common.PermissionHelper
 import com.hataki.ghostdetector.ui.onboard.OnboardingActivity
+import com.hataki.ghostdetector.ui.permission.RequestPermissionActivity
+import com.hataki.ghostdetector.ui.start.StartActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseActivity<SplashViewModel, ActivitySplashBinding>() {
 
-    private lateinit var binding: ActivitySplashBinding
+    override fun getLayoutResource(): Int = R.layout.activity_splash
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivitySplashBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun viewModelClass(): Class<SplashViewModel> = SplashViewModel::class.java
 
+    override fun onCreateImpl() {
         binding.logoImage.alpha = 0f
         binding.logoImage.animate()
             .alpha(1f)
             .setDuration(1000)
             .setListener(null)
-
+        initState()
         simulateLoading()
+    }
+
+    override fun onResumeImpl() {
+    }
+
+    private fun initState() {
+        viewModel.getISOnboardingState()
+    }
+
+    private fun checkNextScreen() {
+        if (!viewModel.isOnBoardingState) {
+            OnboardingActivity.open(this@SplashActivity)
+        } else if (PermissionHelper.isAllPermissionGranted(this@SplashActivity)) {
+            StartActivity.open(this@SplashActivity)
+        } else {
+            RequestPermissionActivity.open(this@SplashActivity)
+        }
+        finish()
     }
 
     private fun simulateLoading() {
@@ -65,8 +83,8 @@ class SplashActivity : AppCompatActivity() {
                             .setDuration(800)
                             .setListener(object : AnimatorListenerAdapter() {
                                 override fun onAnimationEnd(animation: Animator) {
-                                    OnboardingActivity.open(context = this@SplashActivity)
-                                    finish()
+                                    checkNextScreen()
+
                                 }
                             })
                     }

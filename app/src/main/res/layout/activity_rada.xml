@@ -15,6 +15,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <io.github.sceneview.ar.ARSceneView
+            android:id="@+id/camera_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#BF225922"
+            app:layout_constraintBottom_toBottomOf="@+id/camera_view"
+            app:layout_constraintEnd_toEndOf="@+id/camera_view"
+            app:layout_constraintStart_toStartOf="@+id/camera_view"
+            app:layout_constraintTop_toTopOf="@+id/camera_view" />
+
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/btn_setting"
             android:layout_width="46dp"
@@ -26,25 +45,44 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:gravity="center"
+            android:text="@string/walk_around_slowly"
+            android:textAllCaps="true"
+            android:textColor="#80FFFFFF"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btn_setting" />
+
         <com.hataki.ghostdetector.ui.common.CornerOverlayView
+            android:id="@+id/camera_border"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center"
             android:clickable="false"
             android:focusable="false"
             android:padding="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/bg_top"
-            app:layout_constraintEnd_toEndOf="@+id/bg_top"
-            app:layout_constraintStart_toStartOf="@+id/bg_top"
-            app:layout_constraintTop_toTopOf="@+id/bg_top" />
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/camera_view"
+            app:layout_constraintEnd_toEndOf="@+id/camera_view"
+            app:layout_constraintStart_toStartOf="@+id/camera_view"
+            app:layout_constraintTop_toTopOf="@+id/camera_view" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/camera_accessories"
             android:layout_width="0dp"
             android:layout_height="100dp"
-            app:layout_constraintBottom_toBottomOf="@+id/bg_top"
-            app:layout_constraintEnd_toEndOf="@+id/bg_top"
-            app:layout_constraintStart_toStartOf="@+id/bg_top">
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/camera_view"
+            app:layout_constraintEnd_toEndOf="@+id/camera_view"
+            app:layout_constraintStart_toStartOf="@+id/camera_view">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/camera_rec_text"
@@ -52,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="23dp"
                 android:layout_marginBottom="20dp"
-                android:text="REC"
+                android:text="@string/rec"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -103,23 +141,16 @@
             app:layout_constraintEnd_toEndOf="@+id/img_bg_bottom"
             app:layout_constraintStart_toStartOf="@+id/img_bg_bottom"
             app:layout_constraintTop_toTopOf="@+id/img_bg_bottom" />
+
         <com.hataki.ghostdetector.ui.common.RadarView
             android:id="@+id/radarView"
             android:layout_width="168dp"
             android:layout_height="168dp"
+            android:layout_gravity="center"
             app:layout_constraintBottom_toTopOf="@+id/img_bg_bottom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bg_top"
-            android:layout_gravity="center"/>
-<!--        <androidx.appcompat.widget.AppCompatImageView-->
-<!--            android:layout_width="168dp"-->
-<!--            android:layout_height="168dp"-->
-<!--            android:src="@drawable/ic_rada"-->
-<!--            app:layout_constraintBottom_toTopOf="@+id/img_bg_bottom"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/bg_top" />-->
+            app:layout_constraintTop_toBottomOf="@+id/divider" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/emp_title"
@@ -127,7 +158,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="46dp"
-            android:text="EMF\nSensors"
+            android:text="@string/emf_sensors"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -140,8 +171,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="46dp"
             android:layout_marginEnd="16dp"
-            android:gravity="right"
-            android:text="EVP\nSensors"
+            android:gravity="end"
+            android:text="@string/evp_sensors"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
