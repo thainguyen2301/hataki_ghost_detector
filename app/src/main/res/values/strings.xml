@@ -26,4 +26,7 @@
     <string name="onboarding_desc_4">Try it now and explore different versions of yourself!</string>
     <string name="accept">ACCEPT</string>
     <string name="start_warning_message">Careful! \n\n If you are a very sensitive\n or scapy person \n considerate not using this \n app and close it.\n\n We care about your privacy \n and data security We keep \n this app free by showing \n ads. If you continue you \n accept to use youp data to \n tailor ads for you.</string>
+    <string name="permission">Permission</string>
+    <string name="continue_without_permission">Continue without permission</string>
+    <string name="permission_continue">Continue</string>
 </resources>

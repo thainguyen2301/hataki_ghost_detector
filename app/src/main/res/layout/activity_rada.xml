@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.hataki.ghostdetector.ui.common.BackgroundCloseView
+            android:id="@+id/bg_top"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/btn_setting"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_setting"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.hataki.ghostdetector.ui.common.CornerOverlayView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:focusable="false"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/bg_top"
+            app:layout_constraintEnd_toEndOf="@+id/bg_top"
+            app:layout_constraintStart_toStartOf="@+id/bg_top"
+            app:layout_constraintTop_toTopOf="@+id/bg_top" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/camera_accessories"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            app:layout_constraintBottom_toBottomOf="@+id/bg_top"
+            app:layout_constraintEnd_toEndOf="@+id/bg_top"
+            app:layout_constraintStart_toStartOf="@+id/bg_top">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/camera_rec_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="23dp"
+                android:layout_marginBottom="20dp"
+                android:text="REC"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="@drawable/bg_red_circle"
+                app:layout_constraintBottom_toTopOf="@+id/camera_rec_text"
+                app:layout_constraintStart_toStartOf="@+id/camera_rec_text" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="28dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="24dp"
+                android:src="@drawable/waves"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:background="#01FF01"
+            app:layout_constraintBottom_toTopOf="@+id/img_bg_bottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_bg_bottom"
+            android:layout_width="0dp"
+            android:layout_height="236dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/start_bg_bottom"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.hataki.ghostdetector.ui.common.SplitToggleView
+            android:id="@+id/btn_on_off"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            app:layout_constraintBottom_toBottomOf="@+id/img_bg_bottom"
+            app:layout_constraintEnd_toEndOf="@+id/img_bg_bottom"
+            app:layout_constraintStart_toStartOf="@+id/img_bg_bottom"
+            app:layout_constraintTop_toTopOf="@+id/img_bg_bottom" />
+        <com.hataki.ghostdetector.ui.common.RadarView
+            android:id="@+id/radarView"
+            android:layout_width="168dp"
+            android:layout_height="168dp"
+            app:layout_constraintBottom_toTopOf="@+id/img_bg_bottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bg_top"
+            android:layout_gravity="center"/>
+<!--        <androidx.appcompat.widget.AppCompatImageView-->
+<!--            android:layout_width="168dp"-->
+<!--            android:layout_height="168dp"-->
+<!--            android:src="@drawable/ic_rada"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/img_bg_bottom"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/bg_top" />-->
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/emp_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="46dp"
+            android:text="EMF\nSensors"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/img_bg_bottom"
+            app:layout_constraintTop_toTopOf="@+id/img_bg_bottom" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/evp_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="46dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="right"
+            android:text="EVP\nSensors"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/img_bg_bottom"
+            app:layout_constraintTop_toTopOf="@+id/img_bg_bottom" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/emp_1"
+            android:layout_width="72dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/sensor_item_gradient"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/img_bg_bottom"
+            app:layout_constraintTop_toBottomOf="@+id/emp_title"
+            tools:text="0.098f" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/emp_2"
+            android:layout_width="72dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/sensor_item_gradient"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/img_bg_bottom"
+            app:layout_constraintTop_toBottomOf="@+id/emp_1"
+            tools:text="0.098f" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/evp_1"
+            android:layout_width="72dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/sensor_item_gradient"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/img_bg_bottom"
+            app:layout_constraintTop_toBottomOf="@+id/evp_title"
+            tools:text="0.098f" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/evp_2"
+            android:layout_width="72dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/sensor_item_gradient"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/img_bg_bottom"
+            app:layout_constraintTop_toBottomOf="@+id/evp_1"
+            tools:text="0.098f" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

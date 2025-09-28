@@ -1,11 +1,14 @@
 package com.hataki.ghostdetector.di
 
+import android.content.Context
+import com.hataki.ghostdetector.data.framework.compass.CompassManager
+import com.hataki.ghostdetector.data.framework.evp.EVPRecorderManager
+import com.hataki.ghostdetector.data.framework.sensor.SensorDetectManager
 import com.hataki.ghostdetector.data.remote.ApiService
-import com.hataki.ghostdetector.data.repository.UserRepository
-import com.hataki.ghostdetector.data.repository.UserRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -28,8 +31,19 @@ object AppModule {
     fun provideApi(retrofit: Retrofit): ApiService =
         retrofit.create(ApiService::class.java)
 
+
     @Provides
     @Singleton
-    fun provideUserRepository(api: ApiService): UserRepository =
-        UserRepositoryImpl(api)
+    fun provideSensorDetectManager(@ApplicationContext context: Context): SensorDetectManager =
+        SensorDetectManager(context)
+
+    @Provides
+    @Singleton
+    fun provideEVPRecorderManager(): EVPRecorderManager =
+        EVPRecorderManager()
+
+    @Provides
+    @Singleton
+    fun provideCompassManager(@ApplicationContext context: Context): CompassManager =
+        CompassManager(context)
 }

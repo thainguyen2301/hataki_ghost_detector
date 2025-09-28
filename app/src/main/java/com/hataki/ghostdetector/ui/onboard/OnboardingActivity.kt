@@ -11,6 +11,8 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.hataki.ghostdetector.R
 import com.hataki.ghostdetector.data.model.OnboardingItem
 import com.hataki.ghostdetector.databinding.ActivityOnboardingBinding
+import com.hataki.ghostdetector.ui.common.PermissionHelper
+import com.hataki.ghostdetector.ui.permission.RequestPermissionActivity
 import com.hataki.ghostdetector.ui.start.StartActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -69,7 +71,11 @@ class OnboardingActivity : AppCompatActivity() {
             if (currentItem < items.size - 1) {
                 binding.viewPager.currentItem = currentItem + 1
             } else {
-                StartActivity.open(this)
+                if (PermissionHelper.isAllPermissionGranted(this)) {
+                    StartActivity.open(this)
+                } else {
+                    RequestPermissionActivity.open(this)
+                }
                 finish()
             }
         }

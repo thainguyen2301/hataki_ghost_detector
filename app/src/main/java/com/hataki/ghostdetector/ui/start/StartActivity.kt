@@ -5,6 +5,7 @@ import android.content.Intent
 import com.hataki.ghostdetector.R
 import com.hataki.ghostdetector.databinding.ActivityStartBinding
 import com.hataki.ghostdetector.ui.base.BaseActivity
+import com.hataki.ghostdetector.ui.rada.RadaActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,7 +22,7 @@ class StartActivity : BaseActivity<StartViewModel, ActivityStartBinding>() {
 
     override fun onCreateImpl() {
         binding.btnAccept.setOnClickListener {
-
+            RadaActivity.open(this@StartActivity)
         }
     }
 
