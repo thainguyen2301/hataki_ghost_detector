@@ -53,7 +53,6 @@ class SplitToggleView @JvmOverloads constructor(
         edgeButtonLeft = findViewById(R.id.edge_button_off)
         edgeButtonRight = findViewById(R.id.edge_button_on)
 
-        // prepare backgrounds (we'll tint them dynamically)
         leftBg = makeBackground(darkColor)
         rightBg = makeBackground(darkColor)
 

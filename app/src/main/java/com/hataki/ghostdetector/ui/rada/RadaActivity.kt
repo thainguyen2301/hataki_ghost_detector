@@ -13,6 +13,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.hataki.ghostdetector.R
 import com.hataki.ghostdetector.databinding.ActivityRadaBinding
 import com.hataki.ghostdetector.ui.base.BaseActivity
+import com.hataki.ghostdetector.ui.setting.SettingActivity
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.sceneview.math.Position
 import io.github.sceneview.math.Size
@@ -94,6 +95,9 @@ class RadaActivity() : BaseActivity<RadaViewModel, ActivityRadaBinding>() {
                 viewModel.stopDetectCompass()
             }
             updateUIWhenCameraOnOff()
+        }
+        binding.btnSetting.setOnClickListener {
+            SettingActivity.open(this@RadaActivity)
         }
     }
 

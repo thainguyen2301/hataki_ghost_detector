@@ -27,7 +27,6 @@ class CornerOverlayView @JvmOverloads constructor(
         val w = width.toFloat()
         val h = height.toFloat()
 
-        // top-left
         canvas.drawArc(
             inset, inset,
             inset + 2 * radius, inset + 2 * radius,
@@ -36,7 +35,6 @@ class CornerOverlayView @JvmOverloads constructor(
         canvas.drawLine(inset + radius, inset, inset + cornerLength, inset, paint)
         canvas.drawLine(inset, inset + radius, inset, inset + cornerLength, paint)
 
-        // top-right
         canvas.drawArc(
             w - inset - 2 * radius, inset,
             w - inset, inset + 2 * radius,

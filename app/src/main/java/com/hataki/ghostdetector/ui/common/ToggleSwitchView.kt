@@ -19,14 +19,12 @@ class ToggleSwitchView @JvmOverloads constructor(
     private var isOn = false
 
     init {
-        // Nền
         bgView = View(context).apply {
             background = ContextCompat.getDrawable(context, R.drawable.ic_switch_off)
             layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
         }
         addView(bgView)
 
-        // Nút tròn
         circle = View(context).apply {
             setBackgroundResource(R.drawable.circle_shape)
             val size = 18
@@ -47,7 +45,6 @@ class ToggleSwitchView @JvmOverloads constructor(
             if (isOn) R.drawable.ic_switch_on else R.drawable.ic_switch_off
         )
 
-        // Animate tròn chạy sang trái/phải
         val targetX = if (isOn) width - circle.width - 8 else 8
         circle.animate().x(targetX.toFloat()).setDuration(200).start()
     }
