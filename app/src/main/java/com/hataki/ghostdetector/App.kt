@@ -2,7 +2,7 @@ package com.hataki.ghostdetector
 
 import android.app.Application
 import com.hataki.ghostdetector.data.repository.language.LanguageRepository
-import com.hataki.ghostdetector.data.repository.network.NetworkRepository
+import com.hataki.ghostdetector.data.system.network.NetworkManager
 import com.hataki.ghostdetector.utils.LocaleHelper
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
@@ -13,9 +13,6 @@ import javax.inject.Inject
 
 @HiltAndroidApp
 class App : Application() {
-    @Inject
-    lateinit var networkRepository: NetworkRepository
-
     private val appJob = SupervisorJob()
     val appScope = CoroutineScope(Dispatchers.Default + appJob)
 
@@ -24,7 +21,7 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        networkRepository.registerNetworkChange()
+        NetworkManager.instance(this).register()
         appScope.launch {
             languageRepository.getCurrentLanguage().collect { language ->
                 LocaleHelper.setLocale(this@App, language)
@@ -35,7 +32,7 @@ class App : Application() {
 
     override fun onTerminate() {
         super.onTerminate()
-        networkRepository.unRegisterNetworkChange()
+        NetworkManager.instance(this).unregister()
         appJob.cancel()
     }
 }

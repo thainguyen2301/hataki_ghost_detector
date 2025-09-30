@@ -6,13 +6,20 @@ import android.net.Network
 import android.net.NetworkRequest
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class NetworkManager @Inject constructor(
-    private val context: Context
-) {
+
+class NetworkManager(context: Context) {
+    companion object {
+        private var instance: NetworkManager? = null
+
+        fun instance(context: Context): NetworkManager {
+            if (instance == null) {
+                instance = NetworkManager(context)
+            }
+            return requireNotNull(instance)
+        }
+    }
+
     private val connectivityManager =
         context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 

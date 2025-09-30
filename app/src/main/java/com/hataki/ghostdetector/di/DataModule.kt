@@ -13,13 +13,10 @@ import com.hataki.ghostdetector.data.repository.evp.EvpRepository
 import com.hataki.ghostdetector.data.repository.evp.EvpRepositoryImpl
 import com.hataki.ghostdetector.data.repository.language.LanguageRepository
 import com.hataki.ghostdetector.data.repository.language.LanguageRepositoryImpl
-import com.hataki.ghostdetector.data.repository.network.NetworkRepository
-import com.hataki.ghostdetector.data.repository.network.NetworkRepositoryImpl
 import com.hataki.ghostdetector.data.repository.onboard.OnboardRepository
 import com.hataki.ghostdetector.data.repository.onboard.OnboardRepositoryImpl
 import com.hataki.ghostdetector.data.repository.sensor.SensorRepository
 import com.hataki.ghostdetector.data.repository.sensor.SensorRepositoryImpl
-import com.hataki.ghostdetector.data.system.network.NetworkManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -52,11 +49,6 @@ object DataModule {
     @Singleton
     fun provideOnboardRepository(dataStoreManager: DataStoreManager): OnboardRepository =
         OnboardRepositoryImpl(dataStoreManager)
-
-    @Provides
-    @Singleton
-    fun provideNetworkRepository(networkManager: NetworkManager): NetworkRepository =
-        NetworkRepositoryImpl(networkManager = networkManager)
 
     @Provides
     @Singleton

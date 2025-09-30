@@ -6,7 +6,6 @@ import com.hataki.ghostdetector.data.framework.evp.EVPRecorderManager
 import com.hataki.ghostdetector.data.framework.sensor.SensorDetectManager
 import com.hataki.ghostdetector.data.local.DataStoreManager
 import com.hataki.ghostdetector.data.remote.ApiService
-import com.hataki.ghostdetector.data.system.network.NetworkManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -53,9 +52,4 @@ object AppModule {
     @Singleton
     fun provideDataStoreManager(@ApplicationContext context: Context): DataStoreManager =
         DataStoreManager(context)
-
-    @Provides
-    @Singleton
-    fun provideNetworkManager(@ApplicationContext context: Context): NetworkManager =
-        NetworkManager(context)
 }
