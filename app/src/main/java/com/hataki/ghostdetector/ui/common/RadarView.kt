@@ -40,11 +40,6 @@ class RadarView @JvmOverloads constructor(
     private var sweepAngle = 0f
     private var azimuth = 0f
 
-    private val targetPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        color = Color.RED
-        style = Paint.Style.FILL
-    }
-
     private val targets = mutableListOf<Target>()
 
     private var blinkPhase = 0f

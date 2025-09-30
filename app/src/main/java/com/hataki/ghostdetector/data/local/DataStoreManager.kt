@@ -14,16 +14,18 @@ class DataStoreManager(private val context: Context) {
 
     companion object {
         const val IS_ONBOARDING = "IS_ONBOARDING"
+        const val KEY_LANGUAGE = "selected_language"
+        const val DEFAULT_LANGUAGE = "en"
     }
 
-    suspend fun saveStringData(value: String, key: String) {
+    suspend fun saveStringData(key: String, value: String) {
         val prfKey = stringPreferencesKey(key)
         context.dataStore.edit { prefs ->
             prefs[prfKey] = value
         }
     }
 
-    fun getStringData(key: String): Flow<String?> = context.dataStore.data.map {  prefs ->
+    fun getStringData(key: String): Flow<String?> = context.dataStore.data.map { prefs ->
         prefs[stringPreferencesKey(key)]
     }
 

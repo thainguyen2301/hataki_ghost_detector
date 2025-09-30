@@ -16,6 +16,7 @@ class LanguageItemView @JvmOverloads constructor(
 
     private val imgFlag: AppCompatImageView
     private val tvLanguage: AppCompatTextView
+    var flag: String? = null
 
     init {
         LayoutInflater.from(context).inflate(R.layout.view_language_item, this, true)
@@ -26,9 +27,10 @@ class LanguageItemView @JvmOverloads constructor(
         isFocusable = true
     }
 
-    fun setLanguage(name: String, flagRes: Int, selected: Boolean = false) {
+    fun setLanguage(name: String, flagRes: Int, selected: Boolean = false, flag: String) {
         tvLanguage.text = name
         imgFlag.setImageResource(flagRes)
         isSelected = selected
+        this.flag = flag
     }
 }

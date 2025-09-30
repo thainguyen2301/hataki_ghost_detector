@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ghost Detector</string>
+    <string name="next">Next</string>
+    <string name="get_started">Get Started</string>
+    <string-array name="loading_messages">
+        <item>This action may contain advertising…</item>
+        <item>Loading system libraries…</item>
+        <item>Loading application configuration…</item>
+        <item>Loading UI resources…</item>
+        <item>Connecting to server…</item>
+        <item>Checking for updates…</item>
+        <item>Loading executable file…</item>
+    </string-array>
+
+
+    <string name="onboarding_title_1">Transform Your Age</string>
+    <string name="onboarding_desc_1">See yourself younger or older with AI-powered effects!</string>
+
+    <string name="onboarding_title_2">All-in-One AI Tools</string>
+    <string name="onboarding_desc_2">AI Art, Background Remove &amp; more in one app!</string>
+
+    <string name="onboarding_title_3">Fun &amp; Shareable</string>
+    <string name="onboarding_desc_3">Create and share your age-altered selfies with friends!</string>
+
+    <string name="onboarding_title_4">Get Started</string>
+    <string name="onboarding_desc_4">Try it now and explore different versions of yourself!</string>
+    <string name="accept">ACCEPT</string>
+    <string name="start_warning_message">Careful! \n\n If you are a very sensitive\n or scapy person \n considerate not using this \n app and close it.\n\n We care about your privacy \n and data security We keep \n this app free by showing \n ads. If you continue you \n accept to use youp data to \n tailor ads for you.</string>
+    <string name="permission">Permission</string>
+    <string name="continue_without_permission">Continue without permission</string>
+    <string name="permission_continue">Continue</string>
+    <string name="rec">REC</string>
+    <string name="emf_sensors">EMF\nSensors</string>
+    <string name="evp_sensors">EVP\nSensors</string>
+    <string name="walk_around_slowly">Walk around\nslowly...</string>
+    <string name="send">Send</string>
+    <string name="enter_your_feedback">Enter your feedback</string>
+    <string name="your_subject">Your subject</string>
+    <string name="feedback">Feedback</string>
+    <string name="setting">Setting</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="no_internet">No Internet</string>
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="no_internet_description">No internet connection available due\nto network or service issue</string>
+    <string name="try_again">Try Again</string>
+</resources>

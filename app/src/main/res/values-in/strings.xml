@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ghost Detector</string>
+    <string name="next">Berikutnya</string>
+    <string name="get_started">Mulai</string>
+    <string-array name="loading_messages">
+        <item>Tindakan ini mungkin berisi iklan…</item>
+        <item>Memuat pustaka sistem…</item>
+        <item>Memuat konfigurasi aplikasi…</item>
+        <item>Memuat sumber daya UI…</item>
+        <item>Menghubungkan ke server…</item>
+        <item>Memeriksa pembaruan…</item>
+        <item>Memuat file yang dapat dieksekusi…</item>
+    </string-array>
+
+    <string name="onboarding_title_1">Ubah Usia Anda</string>
+    <string name="onboarding_desc_1">Lihat diri Anda lebih muda atau lebih tua dengan efek bertenaga AI!</string>
+
+    <string name="onboarding_title_2">Alat AI Serba Ada</string>
+    <string name="onboarding_desc_2">AI Art, Hapus Latar Belakang &amp; banyak lagi dalam satu aplikasi!</string>
+
+    <string name="onboarding_title_3">Seru &amp; Bisa Dibagikan</string>
+    <string name="onboarding_desc_3">Buat dan bagikan selfie dengan perubahan usia bersama teman-teman!</string>
+
+    <string name="onboarding_title_4">Mulai</string>
+    <string name="onboarding_desc_4">Cobalah sekarang dan jelajahi berbagai versi diri Anda!</string>
+
+    <string name="accept">TERIMA</string>
+    <string name="start_warning_message">Hati-hati! \n\n Jika Anda orang yang sangat sensitif\n atau penakut \n sebaiknya jangan gunakan aplikasi ini \n dan tutup.\n\n Kami peduli dengan privasi \n dan keamanan data Anda. Kami menjaga \n aplikasi ini tetap gratis dengan menampilkan \n iklan. Jika Anda melanjutkan, berarti Anda \n menerima penggunaan data Anda untuk \n menyesuaikan iklan untuk Anda.</string>
+
+    <string name="permission">Izin</string>
+    <string name="continue_without_permission">Lanjut tanpa izin</string>
+    <string name="permission_continue">Lanjutkan</string>
+
+    <string name="rec">REC</string>
+    <string name="emf_sensors">Sensor\nEMF</string>
+    <string name="evp_sensors">Sensor\nEVP</string>
+    <string name="walk_around_slowly">Berjalanlah\nperlahan...</string>
+
+    <string name="send">Kirim</string>
+    <string name="enter_your_feedback">Masukkan masukan Anda</string>
+    <string name="your_subject">Subjek Anda</string>
+    <string name="feedback">Masukan</string>
+    <string name="setting">Pengaturan</string>
+    <string name="privacy_policy">Kebijakan Privasi</string>
+
+    <string name="no_internet">Tidak Ada Internet</string>
+    <string name="no_internet_connection">Tidak ada koneksi internet</string>
+    <string name="no_internet_description">Tidak ada koneksi internet tersedia\nkarena masalah jaringan atau layanan</string>
+    <string name="try_again">Coba Lagi</string>
+
+</resources>

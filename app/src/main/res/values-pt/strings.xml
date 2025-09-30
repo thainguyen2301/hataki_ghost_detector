@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ghost Detector</string>
+    <string name="next">Próximo</string>
+    <string name="get_started">Começar</string>
+
+    <string-array name="loading_messages">
+        <item>Esta ação pode conter publicidade…</item>
+        <item>Carregando bibliotecas do sistema…</item>
+        <item>Carregando configuração do aplicativo…</item>
+        <item>Carregando recursos da interface…</item>
+        <item>Conectando ao servidor…</item>
+        <item>Verificando atualizações…</item>
+        <item>Carregando arquivo executável…</item>
+    </string-array>
+
+    <string name="onboarding_title_1">Transforme Sua Idade</string>
+    <string name="onboarding_desc_1">Veja-se mais jovem ou mais velho com efeitos de IA!</string>
+
+    <string name="onboarding_title_2">Ferramentas de IA Tudo-em-Um</string>
+    <string name="onboarding_desc_2">IA Art, Remoção de Fundo e muito mais em um só aplicativo!</string>
+
+    <string name="onboarding_title_3">Divertido &amp; Compartilhável</string>
+    <string name="onboarding_desc_3">Crie e compartilhe selfies com alteração de idade com seus amigos!</string>
+
+    <string name="onboarding_title_4">Começar</string>
+    <string name="onboarding_desc_4">Experimente agora e explore diferentes versões de você mesmo!</string>
+
+    <string name="accept">ACEITAR</string>
+    <string name="start_warning_message">Cuidado! \n\n Se você for uma pessoa muito sensível\n ou medrosa, \n considere não usar este \n aplicativo e feche-o.\n\n Nós nos preocupamos com sua privacidade \n e segurança de dados. Mantemos \n este aplicativo gratuito exibindo \n anúncios. Se continuar, você \n aceita o uso dos seus dados para \n personalizar anúncios para você.</string>
+
+    <string name="permission">Permissão</string>
+    <string name="continue_without_permission">Continuar sem permissão</string>
+    <string name="permission_continue">Continuar</string>
+
+    <string name="rec">REC</string>
+    <string name="emf_sensors">Sensores\nEMF</string>
+    <string name="evp_sensors">Sensores\nEVP</string>
+    <string name="walk_around_slowly">Ande\nlentamente...</string>
+
+    <string name="send">Enviar</string>
+    <string name="enter_your_feedback">Digite seu feedback</string>
+    <string name="your_subject">Seu assunto</string>
+    <string name="feedback">Feedback</string>
+    <string name="setting">Configurações</string>
+    <string name="privacy_policy">Política de Privacidade</string>
+
+    <string name="no_internet">Sem Internet</string>
+    <string name="no_internet_connection">Sem conexão com a internet</string>
+    <string name="no_internet_description">Nenhuma conexão com a internet disponível\ndevido a problema de rede ou serviço</string>
+    <string name="try_again">Tentar Novamente</string>
+</resources>

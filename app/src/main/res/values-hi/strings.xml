@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ghost Detector</string>
+    <string name="next">आगे</string>
+    <string name="get_started">शुरू करें</string>
+
+    <string-array name="loading_messages">
+        <item>यह क्रिया विज्ञापन शामिल कर सकती है…</item>
+        <item>सिस्टम लाइब्रेरी लोड हो रही है…</item>
+        <item>ऐप कॉन्फ़िगरेशन लोड हो रहा है…</item>
+        <item>यूआई संसाधन लोड हो रहे हैं…</item>
+        <item>सर्वर से कनेक्ट हो रहा है…</item>
+        <item>अपडेट की जाँच हो रही है…</item>
+        <item>निष्पादन योग्य फ़ाइल लोड हो रही है…</item>
+    </string-array>
+
+    <string name="onboarding_title_1">अपनी उम्र बदलें</string>
+    <string name="onboarding_desc_1">एआई संचालित प्रभावों के साथ खुद को छोटा या बड़ा देखें!</string>
+
+    <string name="onboarding_title_2">ऑल-इन-वन एआई टूल्स</string>
+    <string name="onboarding_desc_2">एआई आर्ट, बैकग्राउंड हटाएँ और एक ही ऐप में बहुत कुछ!</string>
+
+    <string name="onboarding_title_3">मज़ेदार और साझा करने योग्य</string>
+    <string name="onboarding_desc_3">दोस्तों के साथ अपनी उम्र बदली हुई सेल्फ़ी बनाएं और साझा करें!</string>
+
+    <string name="onboarding_title_4">शुरू करें</string>
+    <string name="onboarding_desc_4">अभी आज़माएँ और अपने विभिन्न संस्करण देखें!</string>
+
+    <string name="accept">स्वीकार करें</string>
+    <string name="start_warning_message">सावधान! \n\n यदि आप बहुत संवेदनशील\n या डरपोक हैं \n तो इस ऐप का उपयोग न करें \n और इसे बंद करें।\n\n हम आपकी गोपनीयता \n और डेटा सुरक्षा का ध्यान रखते हैं। हम इस ऐप को मुफ़्त रखने के लिए \n विज्ञापन दिखाते हैं। यदि आप जारी रखते हैं, तो आप \n सहमत हैं कि आपके डेटा का उपयोग \n आपके लिए विज्ञापन को व्यक्तिगत बनाने के लिए किया जा सकता है।</string>
+
+    <string name="permission">अनुमति</string>
+    <string name="continue_without_permission">बिना अनुमति जारी रखें</string>
+    <string name="permission_continue">जारी रखें</string>
+
+    <string name="rec">REC</string>
+    <string name="emf_sensors">ईएमएफ\nसेंसर</string>
+    <string name="evp_sensors">ईवीपी\nसेंसर</string>
+    <string name="walk_around_slowly">धीरे-धीरे\nघूमें...</string>
+
+    <string name="send">भेजें</string>
+    <string name="enter_your_feedback">अपनी प्रतिक्रिया दर्ज करें</string>
+    <string name="your_subject">आपका विषय</string>
+    <string name="feedback">प्रतिक्रिया</string>
+    <string name="setting">सेटिंग</string>
+    <string name="privacy_policy">गोपनीयता नीति</string>
+
+    <string name="no_internet">इंटरनेट नहीं</string>
+    <string name="no_internet_connection">कोई इंटरनेट कनेक्शन नहीं</string>
+    <string name="no_internet_description">नेटवर्क या सेवा की समस्या के कारण\nकोई इंटरनेट कनेक्शन उपलब्ध नहीं है</string>
+    <string name="try_again">पुनः प्रयास करें</string>
+</resources>

@@ -11,6 +11,8 @@ import com.hataki.ghostdetector.data.repository.compass.CompassRepository
 import com.hataki.ghostdetector.data.repository.compass.CompassRepositoryImpl
 import com.hataki.ghostdetector.data.repository.evp.EvpRepository
 import com.hataki.ghostdetector.data.repository.evp.EvpRepositoryImpl
+import com.hataki.ghostdetector.data.repository.language.LanguageRepository
+import com.hataki.ghostdetector.data.repository.language.LanguageRepositoryImpl
 import com.hataki.ghostdetector.data.repository.network.NetworkRepository
 import com.hataki.ghostdetector.data.repository.network.NetworkRepositoryImpl
 import com.hataki.ghostdetector.data.repository.onboard.OnboardRepository
@@ -55,4 +57,9 @@ object DataModule {
     @Singleton
     fun provideNetworkRepository(networkManager: NetworkManager): NetworkRepository =
         NetworkRepositoryImpl(networkManager = networkManager)
+
+    @Provides
+    @Singleton
+    fun provideLanguageRepository(dataStoreManager: DataStoreManager): LanguageRepository =
+        LanguageRepositoryImpl(dataStoreManager = dataStoreManager)
 }
