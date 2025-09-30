@@ -4,4 +4,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="green">#4CAF50</color>
     <color name="red">#FF0000</color>
+    <color name="rada_green">#02B802</color>
+    <color name="rada_black">#011401</color>
+    <color name="sweet_green_dark">#AA00FF00</color>
+    <color name="sweet_green_light">#FF00FF00</color>
 </resources>

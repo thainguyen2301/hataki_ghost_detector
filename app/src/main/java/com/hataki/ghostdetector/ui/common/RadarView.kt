@@ -10,9 +10,12 @@ import android.graphics.Shader
 import android.graphics.SweepGradient
 import android.util.AttributeSet
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.core.graphics.withRotation
+import com.hataki.ghostdetector.R
 import com.hataki.ghostdetector.data.model.Target
 import kotlin.math.min
+import kotlin.math.sin
 
 class RadarView @JvmOverloads constructor(
     context: Context,
@@ -30,12 +33,6 @@ class RadarView @JvmOverloads constructor(
         style = Paint.Style.STROKE
         strokeWidth = 1f * resources.displayMetrics.density
         alpha = 100
-    }
-
-    private val sweepPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        color = Color.GREEN
-        alpha = 120
-        style = Paint.Style.FILL
     }
 
     private var gradientPaint: Paint? = null
@@ -56,46 +53,19 @@ class RadarView @JvmOverloads constructor(
         targets.add(Target(angle, distance.coerceIn(0f, 1f)))
     }
 
-    private val sweepRunnable = object : Runnable {
-        override fun run() {
-            sweepAngle = (sweepAngle + 3f) % 360f
-            targets.forEach { target ->
-                if (target.alphaIncreasing) {
-                    target.alpha += 15
-                    if (target.alpha >= 255) {
-                        target.alpha = 255
-                        target.alphaIncreasing = false
-                    }
-                } else {
-                    target.alpha -= 15
-                    if (target.alpha <= 50) {
-                        target.alpha = 50
-                        target.alphaIncreasing = true
-                    }
-                }
-            }
-            invalidate()
-            postDelayed(this, 30)
-        }
-    }
-
-    fun startSweep() {
-        removeCallbacks(sweepRunnable)
-        post(sweepRunnable)
-    }
-
-    fun stopSweep() {
-        removeCallbacks(sweepRunnable)
+    fun clearTargets() {
+        targets.clear()
+        invalidate()
     }
 
     private val updateRunnable = object : Runnable {
         override fun run() {
             blinkPhase += 0.1f
-            val blink = (Math.sin(blinkPhase.toDouble()) * 0.5 + 0.5) * 255
+            val blink = (sin(blinkPhase.toDouble()) * 0.5 + 0.5) * 255
             val alphaValue = blink.toInt().coerceIn(50, 255)
 
             targets.forEach {
-                it.distance -= 0.002f
+                it.distance -= 0.0002f
                 if (it.distance < 0f) it.distance = 1f
                 it.alpha = alphaValue
             }
@@ -103,6 +73,15 @@ class RadarView @JvmOverloads constructor(
             invalidate()
             postDelayed(this, 16)
         }
+    }
+
+    fun startUpdate() {
+        removeCallbacks(updateRunnable)
+        post(updateRunnable)
+    }
+
+    fun stopUpdate() {
+        removeCallbacks(updateRunnable)
     }
 
     fun setAzimuth(angle: Float) {
@@ -121,7 +100,10 @@ class RadarView @JvmOverloads constructor(
             gradientPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
                 shader = RadialGradient(
                     cx, cy, radius,
-                    intArrayOf(Color.parseColor("#02B802"), Color.parseColor("#011401")),
+                    intArrayOf(
+                        ContextCompat.getColor(context, R.color.rada_green),
+                        ContextCompat.getColor(context, R.color.rada_black),
+                    ),
                     floatArrayOf(0f, 1f),
                     Shader.TileMode.CLAMP
                 )
@@ -141,7 +123,8 @@ class RadarView @JvmOverloads constructor(
         val targetRadius = 22f * resources.displayMetrics.density / 2f
 
         targets.forEach { target ->
-            val angleRad = Math.toRadians(target.angle.toDouble())
+            val angleRad = Math.toRadians((target.angle - azimuth).toDouble())
+
             val r = radius * target.distance
             val x = (cx + r * Math.cos(angleRad)).toFloat()
             val y = (cy + r * Math.sin(angleRad)).toFloat()
@@ -161,6 +144,7 @@ class RadarView @JvmOverloads constructor(
             canvas.drawCircle(x, y, targetRadius, paint)
         }
     }
+
 
     private fun drawRadarGrid(canvas: Canvas, cx: Float, cy: Float) {
         canvas.drawCircle(cx, cy, radius, outerBorderPaint)
@@ -186,9 +170,9 @@ class RadarView @JvmOverloads constructor(
             cx, cy,
             intArrayOf(
                 Color.TRANSPARENT,
-                Color.parseColor("#AA00FF00"),
-                Color.parseColor("#FF00FF00"),
-                Color.parseColor("#AA00FF00"),
+                ContextCompat.getColor(context, R.color.sweet_green_dark),
+                ContextCompat.getColor(context, R.color.sweet_green_light),
+                ContextCompat.getColor(context, R.color.sweet_green_dark),
                 Color.TRANSPARENT
             ),
             floatArrayOf(
@@ -205,10 +189,9 @@ class RadarView @JvmOverloads constructor(
             shader = gradient
         }
 
-        canvas.save()
-        canvas.rotate(270f + startAngle, cx, cy)
-        canvas.drawArc(rect, 0f, sweep, true, sweepPaint)
-        canvas.restore()
+        canvas.withRotation(270f + startAngle, cx, cy) {
+            drawArc(rect, 0f, sweep, true, sweepPaint)
+        }
     }
 }
 

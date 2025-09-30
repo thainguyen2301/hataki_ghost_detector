@@ -5,14 +5,11 @@ import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
-import android.util.Log
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlin.math.round
@@ -40,10 +37,6 @@ class CompassManager(context: Context) : SensorEventListener {
     private val orientationAngles = FloatArray(3)
 
     fun start() {
-        val accelSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
-        val magnetSensor = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD)
-
-        Log.d("cuongpq", "accel = $accelSensor, magnet = $magnetSensor")
         sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)?.also {
             sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_UI)
         }
