@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#0C140C">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/toolbar"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btn_back"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:padding="18dp"
+                android:src="@drawable/ic_arrow_back_white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no_internet"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.484" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ic_wifi_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/ic_wifi_error"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/no_internet_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/no_internet_connection"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ic_wifi_error" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/no_internet_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="@string/no_internet_description"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/no_internet_title" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_retry"
+            android:layout_width="166dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#00B728"
+            android:text="@string/try_again"
+            android:textColor="@android:color/white"
+            app:cornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/no_internet_description"
+            app:layout_goneMarginTop="52dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

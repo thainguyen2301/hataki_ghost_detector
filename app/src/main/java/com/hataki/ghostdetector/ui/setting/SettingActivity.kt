@@ -12,6 +12,7 @@ import com.hataki.ghostdetector.databinding.ActivitySettingBinding
 import com.hataki.ghostdetector.ui.base.BaseActivity
 import com.hataki.ghostdetector.ui.common.FeedbackBottomSheet
 import com.hataki.ghostdetector.ui.language.LanguageActivity
+import com.hataki.ghostdetector.ui.privacy.PrivacyPolicyActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -66,7 +67,7 @@ class SettingActivity : BaseActivity<SettingViewModel, ActivitySettingBinding>()
             }
 
             R.id.item_privacy -> {
-
+                PrivacyPolicyActivity.open(this@SettingActivity)
             }
         }
     }

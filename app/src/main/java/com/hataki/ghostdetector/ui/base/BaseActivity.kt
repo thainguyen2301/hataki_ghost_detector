@@ -2,16 +2,23 @@ package com.hataki.ghostdetector.ui.base
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
+import com.hataki.ghostdetector.ui.internet.ErrorConnectionActivity
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 abstract class BaseActivity<VM : BaseViewModel, VB : ViewBinding> : AppCompatActivity() {
     protected lateinit var binding: VB
     protected val viewModel: VM by lazy {
         ViewModelProvider(this)[viewModelClass()]
     }
+
+    private val networkViewModel: NetworkViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,10 +35,19 @@ abstract class BaseActivity<VM : BaseViewModel, VB : ViewBinding> : AppCompatAct
         viewModel.errorMessage.observe(this) { msg ->
             msg?.let { Toast.makeText(this, it, Toast.LENGTH_SHORT).show() }
         }
+
     }
 
     override fun onResume() {
         super.onResume()
+        lifecycleScope.launch {
+            networkViewModel.isNetworkConnected.collect { isConnected ->
+                delay(500)
+                if (!isConnected && this@BaseActivity !is ErrorConnectionActivity) {
+                    ErrorConnectionActivity.open(this@BaseActivity)
+                }
+            }
+        }
         onResumeImpl()
     }
 
