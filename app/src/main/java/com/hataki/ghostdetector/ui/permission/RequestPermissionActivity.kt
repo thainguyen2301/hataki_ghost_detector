@@ -51,8 +51,7 @@ class RequestPermissionActivity :
         val allGranted = PermissionHelper.requestPermissions(
             this,
             arrayOf(
-                android.Manifest.permission.CAMERA,
-                android.Manifest.permission.RECORD_AUDIO
+                android.Manifest.permission.CAMERA
             ),
             PermissionHelper.REQ_CODE
         )

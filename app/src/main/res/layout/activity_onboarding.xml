@@ -22,20 +22,28 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view_pager">
 
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tab_indicator"
-                android:layout_width="128dp"
-                android:layout_height="8dp"
-                android:background="?selectableItemBackground"
-                app:layout_constraintBottom_toBottomOf="parent"
+            <LinearLayout
+                android:id="@+id/indicatorContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tabGravity="center"
-                app:tabIndicatorColor="@android:color/transparent"
-                app:tabIndicatorFullWidth="false"
-                app:tabMode="fixed"
-                app:tabRippleColor="@android:color/transparent" />
+                app:layout_constraintTop_toTopOf="parent" />
+            <!--            <com.google.android.material.tabs.TabLayout-->
+            <!--                android:id="@+id/tab_indicator"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:paddingTop="8dp"-->
+            <!--                android:paddingBottom="8dp"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toTopOf="parent"-->
+            <!--                app:tabGravity="center"-->
+            <!--                app:tabIndicatorColor="@android:color/transparent"-->
+            <!--                app:tabIndicatorFullWidth="false"-->
+            <!--                app:tabMode="fixed"-->
+            <!--                app:tabRippleColor="@android:color/transparent"/>-->
 
             <TextView
                 android:id="@+id/btn_next"

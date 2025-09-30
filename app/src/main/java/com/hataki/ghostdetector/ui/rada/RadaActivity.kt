@@ -57,21 +57,27 @@ class RadaActivity() : BaseActivity<RadaViewModel, ActivityRadaBinding>() {
 
                 launch {
                     viewModel.accelerometer.collect { accelerometer ->
-                        updateRadaNumber(
-                            emp1 = accelerometer.first,
-                            emp2 = accelerometer.second,
-                            evp1 = null,
-                            evp2 = null
-                        )
-
+                        if (binding.btnOnOff.isOn) {
+                            updateRadaNumber(
+                                emp1 = accelerometer.first,
+                                emp2 = accelerometer.second,
+                                evp1 = null,
+                                evp2 = null
+                            )
+                        }
                     }
                 }
 
                 launch {
                     viewModel.magnetic.collect { magnetic ->
-                        updateRadaNumber(emp1 = null, emp2 = null, magnetic.first, magnetic.second)
-                        binding.evp1.text = RADA_NUMBER_FORMAT.format(magnetic.first)
-                        binding.evp2.text = RADA_NUMBER_FORMAT.format(magnetic.second)
+                        if (binding.btnOnOff.isOn) {
+                            updateRadaNumber(
+                                emp1 = null,
+                                emp2 = null,
+                                magnetic.first,
+                                magnetic.second
+                            )
+                        }
                     }
                 }
             }
@@ -124,9 +130,8 @@ class RadaActivity() : BaseActivity<RadaViewModel, ActivityRadaBinding>() {
     private fun setOnClickListener() {
         binding.btnOnOff.setOnToggleListener {
             if (binding.btnOnOff.isOn) {
-                viewModel.startDetectCompass()
+
             } else {
-                viewModel.stopDetectCompass()
                 binding.radarView.clearTargets()
             }
             updateUIWhenCameraOnOff()
@@ -223,5 +228,11 @@ class RadaActivity() : BaseActivity<RadaViewModel, ActivityRadaBinding>() {
     }
 
     override fun onResumeImpl() {
+        viewModel.startDetectCompass()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        viewModel.stopDetectCompass()
     }
 }

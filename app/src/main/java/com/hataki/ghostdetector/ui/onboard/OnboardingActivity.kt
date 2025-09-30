@@ -2,11 +2,12 @@ package com.hataki.ghostdetector.ui.onboard
 
 import android.content.Context
 import android.content.Intent
-import android.view.LayoutInflater
+import android.view.View
+import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
+import androidx.core.view.isNotEmpty
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayoutMediator
 import com.hataki.ghostdetector.R
 import com.hataki.ghostdetector.data.model.OnboardingItem
 import com.hataki.ghostdetector.data.model.common.UIState
@@ -14,6 +15,7 @@ import com.hataki.ghostdetector.data.model.common.getOrNull
 import com.hataki.ghostdetector.databinding.ActivityOnboardingBinding
 import com.hataki.ghostdetector.ui.base.BaseActivity
 import com.hataki.ghostdetector.ui.common.PermissionHelper
+import com.hataki.ghostdetector.ui.common.dp
 import com.hataki.ghostdetector.ui.permission.RequestPermissionActivity
 import com.hataki.ghostdetector.ui.start.StartActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -57,6 +59,38 @@ class OnboardingActivity : BaseActivity<OnboardingViewModel, ActivityOnboardingB
         }
     }
 
+    private fun setupIndicators(count: Int) {
+        val container = binding.indicatorContainer
+        container.removeAllViews()
+
+        repeat(count) {
+            val dot = View(this).apply {
+                layoutParams = LinearLayout.LayoutParams(
+                    8.dp,
+                    8.dp
+                ).apply {
+                    marginStart = 4.dp
+                    marginEnd = 4.dp
+                }
+                background = ContextCompat.getDrawable(context, R.drawable.bg_tab_selector)
+                isSelected = false
+            }
+            container.addView(dot)
+        }
+        if (container.isNotEmpty()) {
+            container.getChildAt(0).apply {
+                layoutParams = LinearLayout.LayoutParams(
+                    20.dp,
+                    8.dp
+                ).apply {
+                    marginStart = 4.dp
+                    marginEnd = 4.dp
+                }
+                isSelected = true
+            }
+        }
+    }
+
     private fun initViewPager() {
         val items = listOf(
             OnboardingItem(
@@ -78,17 +112,36 @@ class OnboardingActivity : BaseActivity<OnboardingViewModel, ActivityOnboardingB
         )
         adapter = OnboardingAdapter(items)
         binding.viewPager.adapter = adapter
-        TabLayoutMediator(binding.tabIndicator, binding.viewPager) { tab, _ ->
-            val view = LayoutInflater.from(this).inflate(R.layout.tab_item, null)
-            tab.customView = view
-        }.attach()
-        binding.tabIndicator.setSelectedTabIndicator(
-            ContextCompat.getDrawable(
-                this,
-                R.drawable.bg_tab_selected
-            )
-        )
-        binding.tabIndicator.getTabAt(0)?.select()
+        binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                val container = binding.indicatorContainer
+                for (i in 0 until container.childCount) {
+                    if (i == position) {
+                        container.getChildAt(i).apply {
+                            layoutParams = LinearLayout.LayoutParams(
+                                20.dp,
+                                8.dp
+                            ).apply {
+                                marginStart = 4.dp
+                                marginEnd = 4.dp
+                            }
+                        }
+                    } else {
+                        container.getChildAt(i).apply {
+                            layoutParams = LinearLayout.LayoutParams(
+                                8.dp,
+                                8.dp
+                            ).apply {
+                                marginStart = 4.dp
+                                marginEnd = 4.dp
+                            }
+                        }
+                    }
+                    container.getChildAt(i).isSelected = (i == position)
+                }
+            }
+        })
+        setupIndicators(items.size)
         binding.btnNext.setOnClickListener {
             val currentItem = binding.viewPager.currentItem
             if (currentItem < items.size - 1) {

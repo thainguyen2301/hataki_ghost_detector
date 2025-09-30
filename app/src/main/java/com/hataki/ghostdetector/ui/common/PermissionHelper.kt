@@ -7,11 +7,10 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 
 object PermissionHelper {
-    val REQ_CODE = 1001
+    const val REQ_CODE = 1001
     fun isAllPermissionGranted(context: Context): Boolean {
         val permissions = arrayOf(
-            android.Manifest.permission.CAMERA,
-            android.Manifest.permission.RECORD_AUDIO
+            android.Manifest.permission.CAMERA
         )
         return permissions.all { perm ->
             ContextCompat.checkSelfPermission(context, perm) == PackageManager.PERMISSION_GRANTED

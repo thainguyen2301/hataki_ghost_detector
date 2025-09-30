@@ -19,7 +19,6 @@ class CompassManager(context: Context) : SensorEventListener {
     private val sensorManager =
         context.getSystemService(Context.SENSOR_SERVICE) as SensorManager
 
-    // giữ giá trị azimuth hiện tại (mặc định 0°)
     private val _azimuthFlow = MutableStateFlow(0f)
     val azimuthFlow: StateFlow<Float> = _azimuthFlow.asStateFlow()
 

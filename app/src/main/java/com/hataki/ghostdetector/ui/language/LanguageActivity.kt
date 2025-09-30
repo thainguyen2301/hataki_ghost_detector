@@ -2,6 +2,7 @@ package com.hataki.ghostdetector.ui.language
 
 import android.content.Context
 import android.content.Intent
+import android.widget.LinearLayout
 import com.hataki.ghostdetector.R
 import com.hataki.ghostdetector.databinding.ActivityLanguageBinding
 import com.hataki.ghostdetector.ui.base.BaseActivity
@@ -52,6 +53,12 @@ class LanguageActivity : BaseActivity<LanguageViewModel, ActivityLanguageBinding
             item.setOnClickListener {
                 setSelectedLanguage(item)
             }
+            val params = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+            params.bottomMargin = 8
+            item.layoutParams = params
             binding.languageContainer.addView(item)
         }
     }
