@@ -3,6 +3,7 @@ package com.hataki.ghostdetector.ui.permission
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.view.View
 import com.hataki.ghostdetector.R
 import com.hataki.ghostdetector.databinding.ActivityRequestPermissionBinding
 import com.hataki.ghostdetector.ui.base.BaseActivity
@@ -35,14 +36,20 @@ class RequestPermissionActivity :
         binding.btnGo.setOnClickListener {
             StartActivity.open(this)
         }
+
+        binding.btnSave.setOnClickListener {
+            StartActivity.open(this)
+        }
     }
 
     private fun updateUIPermissionStatus(isAllGranted: Boolean) {
         if (isAllGranted) {
             binding.customSwitch.isChecked = true
+            binding.btnSave.visibility = View.VISIBLE
             binding.btnGo.text = resources.getString(R.string.permission_continue)
         } else {
             binding.customSwitch.isChecked = false
+            binding.btnSave.visibility = View.GONE
             binding.btnGo.text = resources.getString(R.string.continue_without_permission)
         }
     }

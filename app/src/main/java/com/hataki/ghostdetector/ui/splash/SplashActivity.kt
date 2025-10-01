@@ -10,6 +10,7 @@ import com.hataki.ghostdetector.R
 import com.hataki.ghostdetector.databinding.ActivitySplashBinding
 import com.hataki.ghostdetector.ui.base.BaseActivity
 import com.hataki.ghostdetector.ui.common.PermissionHelper
+import com.hataki.ghostdetector.ui.language.LanguageActivity
 import com.hataki.ghostdetector.ui.onboard.OnboardingActivity
 import com.hataki.ghostdetector.ui.permission.RequestPermissionActivity
 import com.hataki.ghostdetector.ui.start.StartActivity
@@ -37,10 +38,13 @@ class SplashActivity : BaseActivity<SplashViewModel, ActivitySplashBinding>() {
 
     private fun initState() {
         viewModel.getISOnboardingState()
+        viewModel.getCurrentLanguage()
     }
 
     private fun checkNextScreen() {
-        if (!viewModel.isOnBoardingState) {
+        if (!viewModel.isSettingLanguage) {
+            LanguageActivity.open(this@SplashActivity)
+        } else if (!viewModel.isOnBoardingState) {
             OnboardingActivity.open(this@SplashActivity)
         } else if (PermissionHelper.isAllPermissionGranted(this@SplashActivity)) {
             StartActivity.open(this@SplashActivity)
@@ -84,7 +88,6 @@ class SplashActivity : BaseActivity<SplashViewModel, ActivitySplashBinding>() {
                             .setListener(object : AnimatorListenerAdapter() {
                                 override fun onAnimationEnd(animation: Animator) {
                                     checkNextScreen()
-
                                 }
                             })
                     }

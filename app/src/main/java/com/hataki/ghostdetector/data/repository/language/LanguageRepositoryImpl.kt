@@ -3,9 +3,7 @@ package com.hataki.ghostdetector.data.repository.language
 import com.hataki.ghostdetector.data.local.DataStoreManager
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.firstOrNull
 
 class LanguageRepositoryImpl(
     private val dataStoreManager: DataStoreManager
@@ -24,13 +22,14 @@ class LanguageRepositoryImpl(
         return Result.success(Unit)
     }
 
-    override suspend fun getCurrentLanguage(): Flow<String> = coroutineScope {
+    override suspend fun getCurrentLanguage(): Result<String?> = coroutineScope {
         val currentLanguageDeferred =
             async { dataStoreManager.getStringData(DataStoreManager.Companion.KEY_LANGUAGE) }
         try {
-            currentLanguageDeferred.await().map { it ?: DEFAULT_LANGUAGE }
+            val result = currentLanguageDeferred.await().firstOrNull()
+            Result.success(result)
         } catch (e: Exception) {
-            flowOf(DEFAULT_LANGUAGE)
+            Result.failure(e)
         }
     }
 }

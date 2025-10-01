@@ -5,14 +5,17 @@ import android.content.Intent
 import android.os.Handler
 import android.os.Looper
 import android.widget.LinearLayout
+import androidx.lifecycle.lifecycleScope
 import com.hataki.ghostdetector.R
 import com.hataki.ghostdetector.data.model.Quadruple
+import com.hataki.ghostdetector.data.model.common.UIState
 import com.hataki.ghostdetector.databinding.ActivityLanguageBinding
 import com.hataki.ghostdetector.ui.base.BaseActivity
 import com.hataki.ghostdetector.ui.common.LanguageItemView
 import com.hataki.ghostdetector.utils.DialogHelper
 import com.hataki.ghostdetector.utils.LocaleHelper
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class LanguageActivity : BaseActivity<LanguageViewModel, ActivityLanguageBinding>() {
@@ -28,7 +31,14 @@ class LanguageActivity : BaseActivity<LanguageViewModel, ActivityLanguageBinding
 
     override fun onCreateImpl() {
         setOnClickListener()
-        initListLanguage()
+        viewModel.getCurrentLanguage()
+        lifecycleScope.launch {
+            viewModel.currentLanguageState.collect { state ->
+                if (state is UIState.Success) {
+                    initListLanguage(state.data)
+                }
+            }
+        }
     }
 
     private fun setOnClickListener() {
@@ -55,7 +65,7 @@ class LanguageActivity : BaseActivity<LanguageViewModel, ActivityLanguageBinding
         super.attachBaseContext(localeUpdatedContext)
     }
 
-    private fun initListLanguage() {
+    private fun initListLanguage(currentLanguage: String?) {
         val languages = listOf(
             Quadruple("Hindi", R.drawable.ic_india, false, "hi"),
             Quadruple("French", R.drawable.ic_france, false, "fr"),
@@ -68,7 +78,8 @@ class LanguageActivity : BaseActivity<LanguageViewModel, ActivityLanguageBinding
 
         languages.forEach { (name, iconRes, selected, flag) ->
             val item = LanguageItemView(this)
-            item.setLanguage(name, iconRes, selected, flag)
+            val isSelected = currentLanguage?.let { it == flag } ?: selected
+            item.setLanguage(name, iconRes, isSelected, flag)
             item.setOnClickListener {
                 setSelectedLanguage(item)
             }

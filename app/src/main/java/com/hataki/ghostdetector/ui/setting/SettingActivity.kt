@@ -2,10 +2,9 @@ package com.hataki.ghostdetector.ui.setting
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
+import android.net.Uri
 import android.view.View
-import com.google.android.gms.tasks.Task
-import com.google.android.play.core.review.ReviewInfo
+import androidx.appcompat.widget.AppCompatButton
 import com.google.android.play.core.review.ReviewManagerFactory
 import com.hataki.ghostdetector.R
 import com.hataki.ghostdetector.databinding.ActivitySettingBinding
@@ -13,6 +12,7 @@ import com.hataki.ghostdetector.ui.base.BaseActivity
 import com.hataki.ghostdetector.ui.common.FeedbackBottomSheet
 import com.hataki.ghostdetector.ui.language.LanguageActivity
 import com.hataki.ghostdetector.ui.privacy.PrivacyPolicyActivity
+import com.hataki.ghostdetector.utils.DialogHelper
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -55,7 +55,18 @@ class SettingActivity : BaseActivity<SettingViewModel, ActivitySettingBinding>()
             }
 
             R.id.item_rate -> {
-                showInAppReview()
+                val dialog = DialogHelper.showRatingDialog(this@SettingActivity)
+                val cancelButton = dialog.findViewById<AppCompatButton>(R.id.btnCancel)
+                val okButton = dialog.findViewById<AppCompatButton>(R.id.btnSubmit)
+                cancelButton.setOnClickListener { dialog.dismiss() }
+                okButton.setOnClickListener {
+                    showInAppReview()
+                    dialog.dismiss()
+                    val thankYouDialog = DialogHelper.showThankYouDialog(this@SettingActivity)
+                    val gotItButton = thankYouDialog.findViewById<AppCompatButton>(R.id.btnSubmit)
+
+                    gotItButton.setOnClickListener { thankYouDialog.dismiss() }
+                }
             }
 
             R.id.item_share -> {
@@ -88,16 +99,25 @@ class SettingActivity : BaseActivity<SettingViewModel, ActivitySettingBinding>()
     private fun showInAppReview() {
         val manager = ReviewManagerFactory.create(this)
         val request = manager.requestReviewFlow()
-        request.addOnCompleteListener { task: Task<ReviewInfo> ->
+        request.addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val reviewInfo = task.result
                 val flow = manager.launchReviewFlow(this, reviewInfo)
                 flow.addOnCompleteListener {
-                    Log.d("InAppReview", "Review flow finished")
+                    // Người dùng đã đánh giá hoặc thoát popup
+                    // Không cần xử lý thêm
                 }
             } else {
-                Log.e("InAppReview", "Error:")
+                // Nếu lỗi thì fallback mở Play Store
+                openPlayStore()
             }
         }
+    }
+
+    fun openPlayStore() {
+        val packageName = packageName
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName"))
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
     }
 }

@@ -13,6 +13,10 @@ import javax.inject.Inject
 
 @HiltAndroidApp
 class App : Application() {
+    companion object {
+        const val DEFAULT_LANGUAGE = "en"
+    }
+
     private val appJob = SupervisorJob()
     val appScope = CoroutineScope(Dispatchers.Default + appJob)
 
@@ -23,8 +27,10 @@ class App : Application() {
         super.onCreate()
         NetworkManager.instance(this).register()
         appScope.launch {
-            languageRepository.getCurrentLanguage().collect { language ->
-                LocaleHelper.setLocale(this@App, language)
+            languageRepository.getCurrentLanguage().onSuccess { language ->
+                language?.let {
+                    LocaleHelper.setLocale(this@App, it)
+                }
             }
         }
     }

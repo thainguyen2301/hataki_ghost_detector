@@ -15,4 +15,22 @@ object DialogHelper {
         dialog.show()
         return dialog
     }
+
+    fun showRatingDialog(context: Context): Dialog {
+        val dialog = Dialog(context)
+        dialog.setContentView(R.layout.dialog_rate)
+        dialog.setCancelable(false)
+        dialog.window?.setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
+        dialog.show()
+        return dialog
+    }
+
+    fun showThankYouDialog(context: Context): Dialog {
+        val dialog = Dialog(context)
+        dialog.setContentView(R.layout.dialog_thankyou)
+        dialog.setCancelable(false)
+        dialog.window?.setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
+        dialog.show()
+        return dialog
+    }
 }

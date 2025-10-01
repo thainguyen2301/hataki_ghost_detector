@@ -49,4 +49,9 @@
     <string name="no_internet_connection">कोई इंटरनेट कनेक्शन नहीं</string>
     <string name="no_internet_description">नेटवर्क या सेवा की समस्या के कारण\nकोई इंटरनेट कनेक्शन उपलब्ध नहीं है</string>
     <string name="try_again">पुनः प्रयास करें</string>
+    <string name="permissions_required_description">ऐप नाम को सही ढंग से काम करने के लिए इन\nअनुमतियों की आवश्यकता है</string>
+    <string name="language">भाषा</string>
+    <string name="choose_your_subject">अपना विषय चुनें</string>
+    <string name="translating">अनुवाद हो रहा है…</string>
+    <string name="please_wait">कृपया प्रतीक्षा करें</string>
 </resources>

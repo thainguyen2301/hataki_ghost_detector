@@ -49,4 +49,9 @@
     <string name="no_internet_connection">Sin conexión a internet</string>
     <string name="no_internet_description">No hay conexión a internet disponible\ndebido a un problema de red o servicio</string>
     <string name="try_again">Intentar de nuevo</string>
+    <string name="permissions_required_description">Appname requiere estos\npermisos para funcionar correctamente</string>
+    <string name="language">Idioma</string>
+    <string name="choose_your_subject">Elige tu asignatura</string>
+    <string name="translating">Traduciendo…</string>
+    <string name="please_wait">Por favor, espera</string>
 </resources>

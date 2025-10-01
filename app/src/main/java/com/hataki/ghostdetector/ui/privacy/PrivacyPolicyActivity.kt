@@ -2,6 +2,7 @@ package com.hataki.ghostdetector.ui.privacy
 
 import android.content.Context
 import android.content.Intent
+import android.webkit.WebViewClient
 import com.hataki.ghostdetector.R
 import com.hataki.ghostdetector.databinding.ActivityPrivacyPolicyBinding
 import com.hataki.ghostdetector.ui.base.BaseActivity
@@ -23,6 +24,10 @@ class PrivacyPolicyActivity : BaseActivity<PrivacyPolicyViewModel, ActivityPriva
     override fun onCreateImpl() {
         binding.btnBack.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
+        }
+        binding.webview.apply {
+            webViewClient = WebViewClient()
+            loadUrl(viewModel.policyUrl)
         }
     }
 

@@ -48,5 +48,10 @@
     <string name="no_internet_connection">Tidak ada koneksi internet</string>
     <string name="no_internet_description">Tidak ada koneksi internet tersedia\nkarena masalah jaringan atau layanan</string>
     <string name="try_again">Coba Lagi</string>
+    <string name="permissions_required_description">Appname memerlukan\nizin ini untuk berfungsi dengan baik</string>
+    <string name="language">Bahasa</string>
+    <string name="choose_your_subject">Pilih mata pelajaran Anda</string>
+    <string name="translating">Menerjemahkan…</string>
+    <string name="please_wait">Harap tunggu</string>
 
 </resources>
