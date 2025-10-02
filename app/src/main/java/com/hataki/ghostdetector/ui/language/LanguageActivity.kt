@@ -6,18 +6,15 @@ import android.os.Handler
 import android.os.Looper
 import android.widget.LinearLayout
 import androidx.core.content.edit
-import androidx.lifecycle.lifecycleScope
 import androidx.preference.PreferenceManager
 import com.hataki.ghostdetector.R
 import com.hataki.ghostdetector.data.model.Quadruple
-import com.hataki.ghostdetector.data.model.common.UIState
 import com.hataki.ghostdetector.databinding.ActivityLanguageBinding
 import com.hataki.ghostdetector.ui.base.BaseActivity
 import com.hataki.ghostdetector.ui.common.LanguageItemView
 import com.hataki.ghostdetector.utils.DialogHelper
 import com.hataki.ghostdetector.utils.LocaleHelper
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class LanguageActivity : BaseActivity<LanguageViewModel, ActivityLanguageBinding>() {
@@ -34,14 +31,9 @@ class LanguageActivity : BaseActivity<LanguageViewModel, ActivityLanguageBinding
 
     override fun onCreateImpl() {
         setOnClickListener()
-        viewModel.getCurrentLanguage()
-        lifecycleScope.launch {
-            viewModel.currentLanguageState.collect { state ->
-                if (state is UIState.Success) {
-                    initListLanguage(state.data)
-                }
-            }
-        }
+        val lang = PreferenceManager.getDefaultSharedPreferences(this)
+            .getString(APP_LANG, "en") ?: "en"
+        initListLanguage(lang)
     }
 
     private fun setOnClickListener() {

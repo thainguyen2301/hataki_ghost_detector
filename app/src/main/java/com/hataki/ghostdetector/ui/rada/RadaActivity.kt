@@ -15,10 +15,13 @@ import com.google.ar.core.TrackingState
 import com.hataki.ghostdetector.R
 import com.hataki.ghostdetector.databinding.ActivityRadaBinding
 import com.hataki.ghostdetector.ui.base.BaseActivity
+import com.hataki.ghostdetector.ui.rada.system.MediaPlayerManager
+import com.hataki.ghostdetector.ui.rada.system.SoundPoolManager
 import com.hataki.ghostdetector.ui.setting.SettingActivity
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.sceneview.ar.node.AnchorNode
 import io.github.sceneview.math.Position
+import io.github.sceneview.math.Rotation
 import io.github.sceneview.math.Size
 import io.github.sceneview.node.ImageNode
 import kotlinx.coroutines.delay
@@ -29,6 +32,10 @@ import kotlin.math.sqrt
 
 @AndroidEntryPoint
 class RadaActivity() : BaseActivity<RadaViewModel, ActivityRadaBinding>() {
+    private lateinit var mediaPlayerManager: MediaPlayerManager
+    private lateinit var soundPoolManager: SoundPoolManager
+    private var handler = Handler(Looper.getMainLooper())
+
     companion object {
         fun open(context: Context) {
             context.startActivity(Intent(context, RadaActivity::class.java))
@@ -42,6 +49,8 @@ class RadaActivity() : BaseActivity<RadaViewModel, ActivityRadaBinding>() {
     override fun viewModelClass(): Class<RadaViewModel> = RadaViewModel::class.java
 
     override fun onCreateImpl() {
+        mediaPlayerManager = MediaPlayerManager()
+        soundPoolManager = SoundPoolManager(this)
         setOnClickListener()
         observerData()
     }
@@ -105,6 +114,11 @@ class RadaActivity() : BaseActivity<RadaViewModel, ActivityRadaBinding>() {
         }
     }
 
+    private val startGhostRunnable = Runnable {
+        binding.tvStart.visibility = View.GONE
+        initialRadaValue()
+    }
+
     private fun updateUIWhenCameraOnOff() {
         if (binding.btnOnOff.isOn) {
             binding.cameraView.visibility = View.VISIBLE
@@ -112,12 +126,12 @@ class RadaActivity() : BaseActivity<RadaViewModel, ActivityRadaBinding>() {
             binding.cameraBorder.visibility = View.VISIBLE
             binding.tvStart.visibility = View.VISIBLE
             binding.bgTop.visibility = View.GONE
-            Handler(Looper.getMainLooper()).postDelayed({
-                binding.tvStart.visibility = View.GONE
-                initialRadaValue()
-            }, 5000)
+            mediaPlayerManager.playBackgroundMusic(this)
+            handler.postDelayed(startGhostRunnable, 5000)
 
         } else {
+            handler.removeCallbacks(startGhostRunnable)
+            mediaPlayerManager.stopBackgroundMusic()
             binding.cameraView.visibility = View.GONE
             binding.cameraAccessories.visibility = View.GONE
             binding.cameraBorder.visibility = View.GONE
@@ -154,6 +168,7 @@ class RadaActivity() : BaseActivity<RadaViewModel, ActivityRadaBinding>() {
         ghostPoints.forEach { i ->
             val distance = (50..99).random().toFloat()
             binding.radarView.addTarget(i.toFloat(), distance / 100)
+            soundPoolManager.playBeep()
             spawnNewGhost(i.toFloat(), distance = distance / 10)
         }
     }
@@ -162,8 +177,8 @@ class RadaActivity() : BaseActivity<RadaViewModel, ActivityRadaBinding>() {
         val session = binding.cameraView.session ?: return
         val frame = binding.cameraView.frame ?: return
         if (frame.camera.trackingState != TrackingState.TRACKING) {
-            Handler(Looper.getMainLooper()).postDelayed(Runnable {
-                spawnNewGhost((0..359).random().toFloat())
+            handler.postDelayed({
+                spawnNewGhost(targetAzimuth, distance)
             }, 2000)
             return
         }
@@ -178,13 +193,17 @@ class RadaActivity() : BaseActivity<RadaViewModel, ActivityRadaBinding>() {
 
         val anchorNode = AnchorNode(binding.cameraView.engine, anchor)
 
-        val bitmap = BitmapFactory.decodeResource(resources, R.drawable.ghost)
+        val bitmap = BitmapFactory.decodeResource(resources, R.drawable.ghost4)
         val ghostNode = ImageNode(
             materialLoader = binding.cameraView.materialLoader,
             bitmap = bitmap,
             size = Size(1.5f, 3.0f)
         )
-
+        ghostNode.rotation = Rotation(
+            x = 0f,
+            y = 0f,
+            z = 90f
+        )
         anchorNode.addChildNode(ghostNode)
         binding.cameraView.addChildNode(anchorNode)
         moveGhost(anchorNode)
@@ -192,8 +211,9 @@ class RadaActivity() : BaseActivity<RadaViewModel, ActivityRadaBinding>() {
     }
 
     private fun moveGhost(anchorNode: AnchorNode) {
+        var isMoving = true
         lifecycleScope.launch {
-            while (true) {
+            while (isMoving) {
                 delay(50)
                 val cameraPos = binding.cameraView.cameraNode.worldPosition
                 val ghostPos = anchorNode.worldPosition
@@ -211,6 +231,7 @@ class RadaActivity() : BaseActivity<RadaViewModel, ActivityRadaBinding>() {
                     ghostPos.z + nz * step
                 )
                 if (length < 0.5f) {
+                    isMoving = false
                     delay(2000)
                     binding.radarView.stopUpdate()
                     binding.radarView.clearTargets()
@@ -224,6 +245,8 @@ class RadaActivity() : BaseActivity<RadaViewModel, ActivityRadaBinding>() {
 
     override fun onDestroy() {
         super.onDestroy()
+        mediaPlayerManager.onDestroy()
+        soundPoolManager.onDestroy()
         binding.radarView.stopUpdate()
     }
 
@@ -232,6 +255,10 @@ class RadaActivity() : BaseActivity<RadaViewModel, ActivityRadaBinding>() {
     }
 
     override fun onStop() {
+        binding.btnOnOff.setOn(false)
+        handler.removeCallbacks(startGhostRunnable)
+        mediaPlayerManager.stopBackgroundMusic()
+        binding.radarView.clearTargets()
         super.onStop()
         viewModel.stopDetectCompass()
     }

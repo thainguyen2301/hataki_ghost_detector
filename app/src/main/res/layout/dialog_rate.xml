@@ -3,7 +3,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="328dp"
-        android:layout_height="238dp"
+        android:layout_height="258dp"
         android:background="@drawable/bg_dialog_rounded"
         android:gravity="center"
         android:orientation="vertical"
@@ -14,11 +14,11 @@
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginVertical="6dp"
             android:text="@string/rate"
             android:textColor="@android:color/white"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:layout_marginVertical="6dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -28,58 +28,57 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:gravity="center"
             android:text="@string/rate_description"
             android:textColor="@android:color/white"
             android:textSize="14sp"
-            android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
         <RatingBar
             android:id="@+id/ratingBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:numStars="5"
-            android:stepSize="1"
-            android:rating="3"
             android:layout_marginTop="16dp"
             android:isIndicator="false"
-            android:progressTint="@color/yellow"
-            android:secondaryProgressTint="@color/yellow"
+            android:numStars="5"
             android:progressBackgroundTint="@color/darker_gray"
+            android:progressTint="@color/yellow"
+            android:rating="3"
+            android:secondaryProgressTint="@color/yellow"
+            android:stepSize="1"
+            android:theme="@style/Widget.AppCompat.RatingBar.Small"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvMessage"
-            android:theme="@style/Widget.AppCompat.RatingBar.Small"/>
+            app:layout_constraintTop_toBottomOf="@+id/tvMessage" />
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
             android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ratingBar"
-            >
+            app:layout_constraintStart_toStartOf="parent">
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnCancel"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_weight="1"
-                android:text="@string/cancel"
                 android:background="@android:color/transparent"
+                android:text="@string/cancel"
                 android:textColor="@android:color/white" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnSubmit"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_weight="1"
-                android:text="@string/submit"
                 android:background="@drawable/border_radius"
-                android:backgroundTint="@color/green"
+                android:text="@string/submit"
                 android:textColor="@android:color/white" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

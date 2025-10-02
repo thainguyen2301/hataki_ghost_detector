@@ -40,7 +40,6 @@ class SplashActivity : BaseActivity<SplashViewModel, ActivitySplashBinding>() {
 
     private fun initState() {
         viewModel.getISOnboardingState()
-        viewModel.getCurrentLanguage()
     }
 
     private fun checkNextScreen() {

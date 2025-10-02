@@ -9,21 +9,20 @@
         android:padding="16dp">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvTitle"
-            android:layout_width="0dp"
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="12dp"
             android:text="@string/feedback"
             android:textColor="@android:color/white"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/edtSubject"
-            app:layout_constraintEnd_toStartOf="@id/btnClose"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/btnClose"
+            android:id="@+id/btn_close"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:background="?attr/selectableItemBackgroundBorderless"
@@ -36,14 +35,15 @@
             android:id="@+id/tv_subject_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="@string/choose_your_subject"
             android:textColor="@color/white"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edtSubject"
+            android:id="@+id/edt_subject"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -54,18 +54,18 @@
             android:textColorHint="#80FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_title" />
+            app:layout_constraintTop_toBottomOf="@id/tv_subject_title" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@string/choose_your_subject"
+            android:text="@string/what_tip_you_like_to_give_us"
             android:textColor="@color/white"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtSubject" />
+            app:layout_constraintTop_toBottomOf="@+id/edt_subject" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/edtFeedback"
