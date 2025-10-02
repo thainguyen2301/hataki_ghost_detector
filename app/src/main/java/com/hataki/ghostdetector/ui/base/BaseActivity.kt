@@ -1,5 +1,6 @@
 package com.hataki.ghostdetector.ui.base
 
+import android.content.Context
 import android.os.Bundle
 import android.view.WindowManager
 import android.widget.Toast
@@ -7,7 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.preference.PreferenceManager
 import androidx.viewbinding.ViewBinding
+import com.hataki.ghostdetector.data.system.locale.LocaleManager
 import com.hataki.ghostdetector.data.system.network.NetworkManager
 import com.hataki.ghostdetector.ui.internet.ErrorConnectionActivity
 import kotlinx.coroutines.delay
@@ -29,6 +32,14 @@ abstract class BaseActivity<VM : BaseViewModel, VB : ViewBinding> : AppCompatAct
         setupObservers()
     }
 
+    override fun attachBaseContext(newBase: Context?) {
+        val context = newBase?.let {
+            val lang = PreferenceManager.getDefaultSharedPreferences(newBase)
+                .getString("app_lang", "en") ?: "en"
+            LocaleManager(newBase).setLocale(lang)
+        }
+        super.attachBaseContext(context)
+    }
     open fun setupObservers() {
         viewModel.isLoading.observe(this) { isLoading ->
 

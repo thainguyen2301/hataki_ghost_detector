@@ -1,7 +1,9 @@
 package com.hataki.ghostdetector
 
 import android.app.Application
+import android.content.Context
 import com.hataki.ghostdetector.data.repository.language.LanguageRepository
+import com.hataki.ghostdetector.data.system.locale.LocaleManager
 import com.hataki.ghostdetector.data.system.network.NetworkManager
 import com.hataki.ghostdetector.utils.LocaleHelper
 import dagger.hilt.android.HiltAndroidApp
@@ -33,6 +35,13 @@ class App : Application() {
                 }
             }
         }
+    }
+
+    override fun attachBaseContext(base: Context?) {
+        val contextBase = base?.let {
+            LocaleManager(it).setLocale("fr")
+        }
+        super.attachBaseContext(contextBase)
     }
 
 

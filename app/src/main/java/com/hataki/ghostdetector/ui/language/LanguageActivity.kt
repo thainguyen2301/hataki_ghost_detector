@@ -5,7 +5,9 @@ import android.content.Intent
 import android.os.Handler
 import android.os.Looper
 import android.widget.LinearLayout
+import androidx.core.content.edit
 import androidx.lifecycle.lifecycleScope
+import androidx.preference.PreferenceManager
 import com.hataki.ghostdetector.R
 import com.hataki.ghostdetector.data.model.Quadruple
 import com.hataki.ghostdetector.data.model.common.UIState
@@ -20,6 +22,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class LanguageActivity : BaseActivity<LanguageViewModel, ActivityLanguageBinding>() {
     companion object {
+        const val APP_LANG = "app_lang"
         fun open(context: Context) {
             context.startActivity(Intent(context, LanguageActivity::class.java))
         }
@@ -47,22 +50,15 @@ class LanguageActivity : BaseActivity<LanguageViewModel, ActivityLanguageBinding
         }
         binding.btnSave.setOnClickListener {
             DialogHelper.showTranslatingDialog(this@LanguageActivity)
-            viewModel.selectedLanguage?.let {
-                // FIXME: Need change in the future
-                viewModel.saveLanguage()
-                // FIXME: Need change in the future
-                LocaleHelper.setLocale(this@LanguageActivity, "hi")
+            viewModel.selectedLanguage?.let { lang ->
+                PreferenceManager.getDefaultSharedPreferences(this)
+                    .edit { putString(APP_LANG, lang) }
+                LocaleHelper.setLocale(this@LanguageActivity, lang)
                 Handler(Looper.getMainLooper()).postDelayed({
                     restartApp()
-                }, 5000)
+                }, 3000)
             }
         }
-    }
-
-    override fun attachBaseContext(newBase: Context?) {
-        // FIXME: Need change in the future
-        val localeUpdatedContext = newBase?.let { LocaleHelper.setLocale(newBase, "hi") } ?: newBase
-        super.attachBaseContext(localeUpdatedContext)
     }
 
     private fun initListLanguage(currentLanguage: String?) {

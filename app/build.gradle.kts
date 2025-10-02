@@ -85,4 +85,5 @@ dependencies {
     implementation(libs.arsceneview)
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.review.ktx)
+    implementation("androidx.preference:preference-ktx:1.2.1")
 }

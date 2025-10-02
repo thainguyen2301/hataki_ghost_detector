@@ -14,7 +14,7 @@
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rate"
+            android:text="@string/rate"
             android:textColor="@android:color/white"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Let us know your experience 5 stars is the best\non Google Play!"
+            android:text="@string/rate_description"
             android:textColor="@android:color/white"
             android:textSize="14sp"
             android:gravity="center"
@@ -68,7 +68,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Cancel"
+                android:text="@string/cancel"
                 android:background="@android:color/transparent"
                 android:textColor="@android:color/white" />
 
@@ -77,7 +77,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Submit"
+                android:text="@string/submit"
                 android:background="@drawable/border_radius"
                 android:backgroundTint="@color/green"
                 android:textColor="@android:color/white" />

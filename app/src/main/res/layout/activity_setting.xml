@@ -57,7 +57,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:titleText="Language" />
+                app:titleText="@string/language" />
 
 
             <com.hataki.ghostdetector.ui.common.ItemSettingView
@@ -68,7 +68,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/item_language"
-                app:titleText="Rate" />
+                app:titleText="@string/rate" />
 
             <com.hataki.ghostdetector.ui.common.ItemSettingView
                 android:id="@+id/item_share"
@@ -78,7 +78,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/item_rate"
-                app:titleText="Share" />
+                app:titleText="@string/share" />
 
 
             <com.hataki.ghostdetector.ui.common.ItemSettingView
@@ -89,7 +89,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/item_share"
-                app:titleText="Feedback" />
+                app:titleText="@string/feedback" />
 
             <com.hataki.ghostdetector.ui.common.ItemSettingView
                 android:id="@+id/item_privacy"
@@ -99,7 +99,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/item_feedback"
-                app:titleText="Privacy policy" />
+                app:titleText="@string/privacy_policy" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
