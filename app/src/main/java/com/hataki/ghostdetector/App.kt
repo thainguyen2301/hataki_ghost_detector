@@ -2,9 +2,11 @@ package com.hataki.ghostdetector
 
 import android.app.Application
 import android.content.Context
+import androidx.preference.PreferenceManager
 import com.hataki.ghostdetector.data.repository.language.LanguageRepository
 import com.hataki.ghostdetector.data.system.locale.LocaleManager
 import com.hataki.ghostdetector.data.system.network.NetworkManager
+import com.hataki.ghostdetector.ui.language.LanguageActivity.Companion.APP_LANG
 import com.hataki.ghostdetector.utils.LocaleHelper
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
@@ -28,18 +30,13 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         NetworkManager.instance(this).register()
-        appScope.launch {
-            languageRepository.getCurrentLanguage().onSuccess { language ->
-                language?.let {
-                    LocaleHelper.setLocale(this@App, it)
-                }
-            }
-        }
     }
 
     override fun attachBaseContext(base: Context?) {
         val contextBase = base?.let {
-            LocaleManager(it).setLocale("fr")
+            val lang = PreferenceManager.getDefaultSharedPreferences(base)
+                .getString(APP_LANG, "en") ?: "en"
+            LocaleManager(it).setLocale(lang)
         }
         super.attachBaseContext(contextBase)
     }

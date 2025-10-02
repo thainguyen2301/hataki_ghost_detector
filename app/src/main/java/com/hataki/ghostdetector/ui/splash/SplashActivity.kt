@@ -6,11 +6,13 @@ import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.os.Handler
 import android.os.Looper
+import androidx.preference.PreferenceManager
 import com.hataki.ghostdetector.R
 import com.hataki.ghostdetector.databinding.ActivitySplashBinding
 import com.hataki.ghostdetector.ui.base.BaseActivity
 import com.hataki.ghostdetector.ui.common.PermissionHelper
 import com.hataki.ghostdetector.ui.language.LanguageActivity
+import com.hataki.ghostdetector.ui.language.LanguageActivity.Companion.APP_LANG
 import com.hataki.ghostdetector.ui.onboard.OnboardingActivity
 import com.hataki.ghostdetector.ui.permission.RequestPermissionActivity
 import com.hataki.ghostdetector.ui.start.StartActivity
@@ -42,7 +44,9 @@ class SplashActivity : BaseActivity<SplashViewModel, ActivitySplashBinding>() {
     }
 
     private fun checkNextScreen() {
-        if (!viewModel.isSettingLanguage) {
+        val lang = PreferenceManager.getDefaultSharedPreferences(this)
+            .getString(APP_LANG, null)
+        if (lang == null) {
             LanguageActivity.open(this@SplashActivity)
         } else if (!viewModel.isOnBoardingState) {
             OnboardingActivity.open(this@SplashActivity)

@@ -54,4 +54,9 @@
     <string name="choose_your_subject">Elige tu asignatura</string>
     <string name="translating">Traduciendo…</string>
     <string name="please_wait">Por favor, espera</string>
+    <string name="rate_description">Cuéntanos tu experiencia, ¡5 estrellas es lo mejor\nen Google Play!</string>
+    <string name="cancel">Cancelar</string>
+    <string name="submit">Enviar</string>
+    <string name="rate">Calificar</string>
+    <string name="share">Compartir</string>
 </resources>

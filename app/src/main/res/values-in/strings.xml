@@ -53,5 +53,9 @@
     <string name="choose_your_subject">Pilih mata pelajaran Anda</string>
     <string name="translating">Menerjemahkan…</string>
     <string name="please_wait">Harap tunggu</string>
-
+    <string name="rate_description">Ceritakan pengalaman Anda, 5 bintang adalah yang terbaik\ndi Google Play!</string>
+    <string name="cancel">Batal</string>
+    <string name="submit">Kirim</string>
+    <string name="rate">Nilai</string>
+    <string name="share">Bagikan</string>
 </resources>
