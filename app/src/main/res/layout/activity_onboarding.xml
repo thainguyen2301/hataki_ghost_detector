@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#0A0F0A">
+        android:background="@color/onboard_bg">
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/view_pager"
@@ -28,22 +28,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:gravity="center"
+                android:background="@color/onboard_bg"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-            <!--            <com.google.android.material.tabs.TabLayout-->
-            <!--                android:id="@+id/tab_indicator"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:paddingTop="8dp"-->
-            <!--                android:paddingBottom="8dp"-->
-            <!--                app:layout_constraintStart_toStartOf="parent"-->
-            <!--                app:layout_constraintTop_toTopOf="parent"-->
-            <!--                app:tabGravity="center"-->
-            <!--                app:tabIndicatorColor="@android:color/transparent"-->
-            <!--                app:tabIndicatorFullWidth="false"-->
-            <!--                app:tabMode="fixed"-->
-            <!--                app:tabRippleColor="@android:color/transparent"/>-->
 
             <TextView
                 android:id="@+id/btn_next"

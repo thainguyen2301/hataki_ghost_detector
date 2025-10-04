@@ -49,7 +49,7 @@
     <string name="no_internet_connection">Keine Internetverbindung</string>
     <string name="no_internet_description">Keine Internetverbindung verfügbar\naufgrund eines Netzwerk- oder Dienstproblems</string>
     <string name="try_again">Erneut versuchen</string>
-    <string name="permissions_required_description">Appname benötigt diese\nBerechtigungen, um ordnungsgemäß zu funktionieren</string>
+    <string name="permissions_required_description">%1$s benötigt diese\nBerechtigungen, um ordnungsgemäß zu funktionieren</string>
     <string name="language">Sprache</string>
     <string name="choose_your_subject">Wähle dein Fach</string>
     <string name="translating">Übersetze…</string>

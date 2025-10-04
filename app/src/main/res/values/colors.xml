@@ -12,4 +12,5 @@
     <color name="setting_component_color">#12FFFFFF</color>
     <color name="yellow">#FFAA49</color>
     <color name="darker_gray">#47FFFFFF</color>
+    <color name="onboard_bg">#0C140C</color>
 </resources>

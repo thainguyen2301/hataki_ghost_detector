@@ -21,7 +21,7 @@
     <string name="onboarding_desc_2">AI Art, Background Remove &amp; more in one app!</string>
 
     <string name="onboarding_title_3">Fun &amp; Shareable</string>
-    <string name="onboarding_desc_3">Create and share your age-altered selfies with friends!</string>
+    <string name="onboarding_desc_3">Create and share your age-altered selfies with\nfriends!</string>
 
     <string name="onboarding_title_4">Get Started</string>
     <string name="onboarding_desc_4">Try it now and explore different versions of yourself!</string>
@@ -44,7 +44,7 @@
     <string name="no_internet_connection">No internet connection</string>
     <string name="no_internet_description">No internet connection available due\nto network or service issue</string>
     <string name="try_again">Try Again</string>
-    <string name="permissions_required_description">Appname requires these\npermissions to function properly</string>
+    <string name="permissions_required_description">%1$s requires these\npermissions to function properly</string>
     <string name="language">Language</string>
     <string name="choose_your_subject">Choose your subject</string>
     <string name="translating">Translating…</string>

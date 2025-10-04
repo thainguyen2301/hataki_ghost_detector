@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:gravity="center"
-            android:text="@string/permissions_required_description"
+            android:text="@{String.format(@string/permissions_required_description, @string/app_name)}"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"

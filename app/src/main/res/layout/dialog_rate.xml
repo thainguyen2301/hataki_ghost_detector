@@ -45,7 +45,7 @@
             android:numStars="5"
             android:progressBackgroundTint="@color/darker_gray"
             android:progressTint="@color/yellow"
-            android:rating="3"
+            android:rating="5"
             android:secondaryProgressTint="@color/yellow"
             android:stepSize="1"
             android:theme="@style/Widget.AppCompat.RatingBar.Small"

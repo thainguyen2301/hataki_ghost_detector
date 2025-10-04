@@ -49,7 +49,7 @@
     <string name="no_internet_connection">Sem conexão com a internet</string>
     <string name="no_internet_description">Nenhuma conexão com a internet disponível\ndevido a problema de rede ou serviço</string>
     <string name="try_again">Tentar Novamente</string>
-    <string name="permissions_required_description">O Appname requer estas\npermissões para funcionar corretamente</string>
+    <string name="permissions_required_description">O %1$s requer estas\npermissões para funcionar corretamente</string>
     <string name="language">Idioma</string>
     <string name="choose_your_subject">Escolha sua disciplina</string>
     <string name="translating">Traduzindo…</string>

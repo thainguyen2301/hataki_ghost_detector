@@ -41,7 +41,8 @@
         <activity android:name=".ui.setting.SettingActivity" />
         <activity android:name=".ui.language.LanguageActivity" />
         <activity android:name=".ui.privacy.PrivacyPolicyActivity" />
-        <activity android:name=".ui.internet.ErrorConnectionActivity" />
+        <activity android:name=".ui.internet.ErrorConnectionActivity"
+            android:launchMode="singleTop"/>
     </application>
 
 </manifest>

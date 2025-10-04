@@ -40,6 +40,7 @@ abstract class BaseActivity<VM : BaseViewModel, VB : ViewBinding> : AppCompatAct
         }
         super.attachBaseContext(context)
     }
+
     open fun setupObservers() {
         viewModel.isLoading.observe(this) { isLoading ->
 
@@ -55,7 +56,7 @@ abstract class BaseActivity<VM : BaseViewModel, VB : ViewBinding> : AppCompatAct
         lifecycleScope.launch {
             NetworkManager.instance(this@BaseActivity).isConnected.collect { isConnected ->
                 delay(500)
-                if (!isConnected && this@BaseActivity !is ErrorConnectionActivity) {
+                if (!isConnected) {
                     ErrorConnectionActivity.open(this@BaseActivity)
                 }
             }
