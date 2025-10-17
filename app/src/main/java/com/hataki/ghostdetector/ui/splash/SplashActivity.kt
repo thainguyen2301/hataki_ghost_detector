@@ -10,12 +10,9 @@ import androidx.preference.PreferenceManager
 import com.hataki.ghostdetector.R
 import com.hataki.ghostdetector.databinding.ActivitySplashBinding
 import com.hataki.ghostdetector.ui.base.BaseActivity
-import com.hataki.ghostdetector.ui.common.PermissionHelper
 import com.hataki.ghostdetector.ui.language.LanguageActivity
 import com.hataki.ghostdetector.ui.language.LanguageActivity.Companion.APP_LANG
 import com.hataki.ghostdetector.ui.onboard.OnboardingActivity
-import com.hataki.ghostdetector.ui.permission.RequestPermissionActivity
-import com.hataki.ghostdetector.ui.start.StartActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,15 +28,10 @@ class SplashActivity : BaseActivity<SplashViewModel, ActivitySplashBinding>() {
             .alpha(1f)
             .setDuration(1000)
             .setListener(null)
-        initState()
         simulateLoading()
     }
 
     override fun onResumeImpl() {
-    }
-
-    private fun initState() {
-        viewModel.getISOnboardingState()
     }
 
     private fun checkNextScreen() {
@@ -47,12 +39,8 @@ class SplashActivity : BaseActivity<SplashViewModel, ActivitySplashBinding>() {
             .getString(APP_LANG, null)
         if (lang == null) {
             LanguageActivity.open(this@SplashActivity)
-        } else if (!viewModel.isOnBoardingState) {
-            OnboardingActivity.open(this@SplashActivity)
-        } else if (PermissionHelper.isAllPermissionGranted(this@SplashActivity)) {
-            StartActivity.open(this@SplashActivity)
         } else {
-            RequestPermissionActivity.open(this@SplashActivity)
+            OnboardingActivity.open(this@SplashActivity)
         }
         finish()
     }

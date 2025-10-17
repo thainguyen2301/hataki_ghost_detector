@@ -6,12 +6,9 @@ import android.view.View
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.isNotEmpty
-import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.hataki.ghostdetector.R
 import com.hataki.ghostdetector.data.model.OnboardingItem
-import com.hataki.ghostdetector.data.model.common.UIState
-import com.hataki.ghostdetector.data.model.common.getOrNull
 import com.hataki.ghostdetector.databinding.ActivityOnboardingBinding
 import com.hataki.ghostdetector.ui.base.BaseActivity
 import com.hataki.ghostdetector.ui.common.PermissionHelper
@@ -19,7 +16,6 @@ import com.hataki.ghostdetector.ui.common.dp
 import com.hataki.ghostdetector.ui.permission.RequestPermissionActivity
 import com.hataki.ghostdetector.ui.start.StartActivity
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class OnboardingActivity : BaseActivity<OnboardingViewModel, ActivityOnboardingBinding>() {
@@ -36,7 +32,6 @@ class OnboardingActivity : BaseActivity<OnboardingViewModel, ActivityOnboardingB
     override fun viewModelClass(): Class<OnboardingViewModel> = OnboardingViewModel::class.java
 
     override fun onCreateImpl() {
-        observerValue()
         initViewPager()
     }
 
@@ -44,19 +39,13 @@ class OnboardingActivity : BaseActivity<OnboardingViewModel, ActivityOnboardingB
     }
 
 
-    private fun observerValue() {
-        lifecycleScope.launch {
-            viewModel.saveIsOnBoardingState.collect { isSuccess ->
-                if (isSuccess is UIState.Success && isSuccess.getOrNull() == true) {
-                    if (PermissionHelper.isAllPermissionGranted(this@OnboardingActivity)) {
-                        StartActivity.open(this@OnboardingActivity)
-                    } else {
-                        RequestPermissionActivity.open(this@OnboardingActivity)
-                    }
-                    finish()
-                }
-            }
+    private fun onCompleteOnboarding() {
+        if (PermissionHelper.isAllPermissionGranted(this@OnboardingActivity)) {
+            StartActivity.open(this@OnboardingActivity)
+        } else {
+            RequestPermissionActivity.open(this@OnboardingActivity)
         }
+        finish()
     }
 
     private fun setupIndicators(count: Int) {
@@ -147,7 +136,7 @@ class OnboardingActivity : BaseActivity<OnboardingViewModel, ActivityOnboardingB
             if (currentItem < items.size - 1) {
                 binding.viewPager.currentItem = currentItem + 1
             } else {
-                viewModel.saveIsOnBoarding()
+                onCompleteOnboarding()
             }
         }
         binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {

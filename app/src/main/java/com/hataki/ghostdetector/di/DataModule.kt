@@ -13,8 +13,6 @@ import com.hataki.ghostdetector.data.repository.evp.EvpRepository
 import com.hataki.ghostdetector.data.repository.evp.EvpRepositoryImpl
 import com.hataki.ghostdetector.data.repository.language.LanguageRepository
 import com.hataki.ghostdetector.data.repository.language.LanguageRepositoryImpl
-import com.hataki.ghostdetector.data.repository.onboard.OnboardRepository
-import com.hataki.ghostdetector.data.repository.onboard.OnboardRepositoryImpl
 import com.hataki.ghostdetector.data.repository.sensor.SensorRepository
 import com.hataki.ghostdetector.data.repository.sensor.SensorRepositoryImpl
 import dagger.Module
@@ -44,11 +42,6 @@ object DataModule {
     @Singleton
     fun provideCompassRepository(compassManager: CompassManager): CompassRepository =
         CompassRepositoryImpl(compassManager)
-
-    @Provides
-    @Singleton
-    fun provideOnboardRepository(dataStoreManager: DataStoreManager): OnboardRepository =
-        OnboardRepositoryImpl(dataStoreManager)
 
     @Provides
     @Singleton
