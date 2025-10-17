@@ -5,7 +5,9 @@ import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
-import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.launch
@@ -19,6 +21,8 @@ class SensorDetectManager(
     private val _emfFlow = MutableSharedFlow<Triple<Float, Float, Float>>()
     val emfFlow: SharedFlow<Triple<Float, Float, Float>> = _emfFlow
 
+    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
+    
     fun start() {
         magneticSensor?.also {
             sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_UI)
@@ -34,7 +38,7 @@ class SensorDetectManager(
             val x = event.values[0]
             val y = event.values[1]
             val z = event.values[2]
-            GlobalScope.launch { _emfFlow.emit(Triple(x, y, z)) }
+            scope.launch { _emfFlow.emit(Triple(x, y, z)) }
         }
     }
 

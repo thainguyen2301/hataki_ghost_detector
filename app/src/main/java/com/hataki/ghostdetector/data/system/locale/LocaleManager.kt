@@ -6,7 +6,7 @@ import java.util.Locale
 class LocaleManager(private val context: Context) {
 
     fun setLocale(language: String): Context {
-        val locale = Locale(language)
+        val locale = Locale.forLanguageTag(language)
         Locale.setDefault(locale)
 
         val config = context.resources.configuration
