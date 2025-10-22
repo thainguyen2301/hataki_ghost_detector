@@ -7,12 +7,12 @@
         android:id="@+id/rootView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#0A0F0A">
+        android:background="@color/color_bg_app">
 
         <ImageView
             android:id="@+id/logo_image"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/bg_logo_placeholder"
             android:contentDescription="@string/app_name"
@@ -23,12 +23,10 @@
 
         <TextView
             android:id="@+id/app_name"
+            style="@style/CustomText_24_white_bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/app_name"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/progress_container"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -55,11 +53,10 @@
 
         <TextView
             android:id="@+id/status_text"
+            style="@style/CustomText_12_white_regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:textColor="#AAAAAA"
-            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

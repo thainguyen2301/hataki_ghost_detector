@@ -5,30 +5,28 @@
         android:layout_width="296dp"
         android:layout_height="152dp"
         android:background="@drawable/bg_dialog_rounded"
+        android:backgroundTint="@color/color_25211d"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="16dp">
 
         <TextView
             android:id="@+id/tvTitle"
+            style="@style/CustomText_16_white_semi_bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/translating"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvMessage"
+            style="@style/CustomText_14_white_regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/please_wait"
-            android:textColor="@android:color/white"
-            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
@@ -39,7 +37,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginTop="12dp"
-            android:indeterminateTint="@color/green"
+            android:indeterminateTint="@color/primary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvMessage" />

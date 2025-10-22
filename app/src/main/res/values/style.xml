@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Figtree Regular - White -->
+    <style name="CustomText_10_white_regular">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_regular</item>
+    </style>
+
+    <style name="CustomText_11_white_regular">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_regular</item>
+    </style>
+
+    <style name="CustomText_12_white_regular">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_regular</item>
+    </style>
+
+    <style name="CustomText_13_white_regular">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_regular</item>
+    </style>
+
+    <style name="CustomText_14_white_regular">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_regular</item>
+    </style>
+
+    <style name="CustomText_15_white_regular">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_regular</item>
+    </style>
+
+    <style name="CustomText_16_white_regular">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_regular</item>
+    </style>
+
+    <style name="CustomText_17_white_regular">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_regular</item>
+    </style>
+
+    <style name="CustomText_18_white_regular">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_regular</item>
+    </style>
+
+    <style name="CustomText_19_white_regular">
+        <item name="android:textSize">19sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_regular</item>
+    </style>
+
+    <style name="CustomText_20_white_regular">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_regular</item>
+    </style>
+
+    <!-- Figtree Medium - White -->
+    <style name="CustomText_10_white_medium">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_medium</item>
+    </style>
+
+    <style name="CustomText_11_white_medium">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_medium</item>
+    </style>
+
+    <style name="CustomText_12_white_medium">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_medium</item>
+    </style>
+
+    <style name="CustomText_13_white_medium">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_medium</item>
+    </style>
+
+    <style name="CustomText_14_white_medium">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_medium</item>
+    </style>
+
+    <style name="CustomText_15_white_medium">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_medium</item>
+    </style>
+
+    <style name="CustomText_16_white_medium">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_medium</item>
+    </style>
+
+    <style name="CustomText_17_white_medium">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_medium</item>
+    </style>
+
+    <style name="CustomText_18_white_medium">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_medium</item>
+    </style>
+
+    <style name="CustomText_19_white_medium">
+        <item name="android:textSize">19sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_medium</item>
+    </style>
+
+    <style name="CustomText_20_white_medium">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_medium</item>
+    </style>
+
+    <!-- Figtree Semi Bold - White -->
+    <style name="CustomText_10_white_semi_bold">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_semi_bold</item>
+    </style>
+
+    <style name="CustomText_11_white_semi_bold">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_semi_bold</item>
+    </style>
+
+    <style name="CustomText_12_white_semi_bold">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_semi_bold</item>
+    </style>
+
+    <style name="CustomText_13_white_semi_bold">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_semi_bold</item>
+    </style>
+
+    <style name="CustomText_14_white_semi_bold">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_semi_bold</item>
+    </style>
+
+    <style name="CustomText_15_white_semi_bold">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_semi_bold</item>
+    </style>
+
+    <style name="CustomText_16_white_semi_bold">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_semi_bold</item>
+    </style>
+
+    <style name="CustomText_17_white_semi_bold">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_semi_bold</item>
+    </style>
+
+    <style name="CustomText_18_white_semi_bold">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_semi_bold</item>
+    </style>
+
+    <style name="CustomText_19_white_semi_bold">
+        <item name="android:textSize">19sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_semi_bold</item>
+    </style>
+
+    <style name="CustomText_20_white_semi_bold">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_semi_bold</item>
+    </style>
+
+    <!-- Figtree Bold - White -->
+    <style name="CustomText_10_white_bold">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_bold</item>
+    </style>
+
+    <style name="CustomText_11_white_bold">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_bold</item>
+    </style>
+
+    <style name="CustomText_12_white_bold">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_bold</item>
+    </style>
+
+    <style name="CustomText_13_white_bold">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_bold</item>
+    </style>
+
+    <style name="CustomText_14_white_bold">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_bold</item>
+    </style>
+
+    <style name="CustomText_15_white_bold">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_bold</item>
+    </style>
+
+    <style name="CustomText_16_white_bold">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_bold</item>
+    </style>
+
+    <style name="CustomText_17_white_bold">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_bold</item>
+    </style>
+
+    <style name="CustomText_18_white_bold">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_bold</item>
+    </style>
+
+    <style name="CustomText_19_white_bold">
+        <item name="android:textSize">19sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_bold</item>
+    </style>
+
+    <style name="CustomText_20_white_bold">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_bold</item>
+    </style>
+
+    <style name="CustomText_24_white_bold">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_bold</item>
+    </style>
+
+    <!-- Figtree Extra Bold - White -->
+    <style name="CustomText_10_white_extra_bold">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_extra_bold</item>
+    </style>
+
+    <style name="CustomText_11_white_extra_bold">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_extra_bold</item>
+    </style>
+
+    <style name="CustomText_12_white_extra_bold">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_extra_bold</item>
+    </style>
+
+    <style name="CustomText_13_white_extra_bold">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_extra_bold</item>
+    </style>
+
+    <style name="CustomText_14_white_extra_bold">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_extra_bold</item>
+    </style>
+
+    <style name="CustomText_15_white_extra_bold">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_extra_bold</item>
+    </style>
+
+    <style name="CustomText_16_white_extra_bold">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_extra_bold</item>
+    </style>
+
+    <style name="CustomText_17_white_extra_bold">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_extra_bold</item>
+    </style>
+
+    <style name="CustomText_18_white_extra_bold">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_extra_bold</item>
+    </style>
+
+    <style name="CustomText_19_white_extra_bold">
+        <item name="android:textSize">19sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_extra_bold</item>
+    </style>
+
+    <style name="CustomText_20_white_extra_bold">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/figtree_extra_bold</item>
+    </style>
+</resources>

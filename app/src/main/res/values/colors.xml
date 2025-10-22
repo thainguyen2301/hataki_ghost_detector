@@ -13,4 +13,10 @@
     <color name="yellow">#FFAA49</color>
     <color name="darker_gray">#47FFFFFF</color>
     <color name="onboard_bg">#0C140C</color>
+    <color name="primary">#CA6D02</color>
+    <color name="color_bg_app">#14100C</color>
+    <color name="color_error">#DD3C3C</color>
+    <color name="color_25211d">#25211D</color>
+    <color name="color_white_28">#47FFFFFF</color>
+    <color name="color_white_50">#80FFFFFF</color>
 </resources>
