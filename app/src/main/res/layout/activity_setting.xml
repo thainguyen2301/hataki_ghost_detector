@@ -5,7 +5,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#0C140C">
+        android:background="@color/color_bg_app">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/toolbar"
@@ -26,12 +26,10 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                style="@style/CustomText_20_white_semi_bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/setting"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -53,6 +51,7 @@
                 android:id="@+id/item_language"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
+                android:tint="@color/primary"
                 app:iconSrc="@drawable/ic_language"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -64,6 +63,7 @@
                 android:id="@+id/item_rate"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
+                android:tint="@color/primary"
                 app:iconSrc="@drawable/ic_star"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -74,6 +74,7 @@
                 android:id="@+id/item_share"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
+                android:tint="@color/primary"
                 app:iconSrc="@drawable/ic_share"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -85,6 +86,7 @@
                 android:id="@+id/item_feedback"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
+                android:tint="@color/primary"
                 app:iconSrc="@drawable/ic_mail"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -95,6 +97,7 @@
                 android:id="@+id/item_privacy"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
+                android:tint="@color/primary"
                 app:iconSrc="@drawable/ic_mail"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
