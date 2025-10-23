@@ -4,19 +4,16 @@ import android.content.Context
 import android.content.Intent
 import android.webkit.WebViewClient
 import com.hataki.ghostdetector.R
-import com.hataki.ghostdetector.databinding.ActivityPrivacyPolicyBinding
+import com.hataki.ghostdetector.databinding.ActivityPrivacyPolicyHataki1Binding
 import com.hataki.ghostdetector.ui.base.BaseActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class PrivacyPolicyActivity : BaseActivity<PrivacyPolicyViewModel, ActivityPrivacyPolicyBinding>() {
-    companion object {
-        fun open(context: Context) {
-            context.startActivity(Intent(context, PrivacyPolicyActivity::class.java))
-        }
-    }
+class PrivacyPolicyHataki1Activity :
+    BaseActivity<PrivacyPolicyViewModel, ActivityPrivacyPolicyHataki1Binding>() {
 
-    override fun getLayoutResource(): Int = R.layout.activity_privacy_policy
+    override fun onResumeImpl() {
+    }
 
     override fun viewModelClass(): Class<PrivacyPolicyViewModel> =
         PrivacyPolicyViewModel::class.java
@@ -31,6 +28,11 @@ class PrivacyPolicyActivity : BaseActivity<PrivacyPolicyViewModel, ActivityPriva
         }
     }
 
-    override fun onResumeImpl() {
+    override fun getLayoutResource(): Int = R.layout.activity_privacy_policy_hataki_1
+
+    companion object {
+        fun open(context: Context) {
+            context.startActivity(Intent(context, PrivacyPolicyHataki1Activity::class.java))
+        }
     }
 }

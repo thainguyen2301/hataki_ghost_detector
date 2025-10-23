@@ -19,7 +19,7 @@ class LanguageItemView @JvmOverloads constructor(
     var flag: String? = null
 
     init {
-        LayoutInflater.from(context).inflate(R.layout.view_language_item, this, true)
+        LayoutInflater.from(context).inflate(R.layout.view_language_item_hataki_1, this, true)
         imgFlag = findViewById(R.id.imgFlag)
         tvLanguage = findViewById(R.id.tvLanguage)
 

@@ -2,13 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="green">#4CAF50</color>
     <color name="red">#FF0000</color>
-    <color name="rada_green">#02B802</color>
     <color name="rada_black">#000000</color>
-    <color name="sweet_green_dark">#AA00FF00</color>
-    <color name="sweet_green_light">#FF00FF00</color>
-    <color name="language_active">#00B728</color>
+    <color name="language_active">#CA6D02</color>
     <color name="setting_component_color">#12FFFFFF</color>
     <color name="yellow">#FFAA49</color>
     <color name="darker_gray">#47FFFFFF</color>

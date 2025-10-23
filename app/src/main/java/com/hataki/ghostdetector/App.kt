@@ -6,13 +6,11 @@ import androidx.preference.PreferenceManager
 import com.hataki.ghostdetector.data.repository.language.LanguageRepository
 import com.hataki.ghostdetector.data.system.locale.LocaleManager
 import com.hataki.ghostdetector.data.system.network.NetworkManager
-import com.hataki.ghostdetector.ui.language.LanguageActivity.Companion.APP_LANG
-import com.hataki.ghostdetector.utils.LocaleHelper
+import com.hataki.ghostdetector.ui.language.LanguageHataki1Activity.Companion.APP_LANG
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltAndroidApp
@@ -32,6 +30,12 @@ class App : Application() {
         NetworkManager.instance(this).register()
     }
 
+    override fun onTerminate() {
+        super.onTerminate()
+        NetworkManager.instance(this).unregister()
+        appJob.cancel()
+    }
+
     override fun attachBaseContext(base: Context?) {
         val contextBase = base?.let {
             val lang = PreferenceManager.getDefaultSharedPreferences(base)
@@ -41,10 +45,4 @@ class App : Application() {
         super.attachBaseContext(contextBase)
     }
 
-
-    override fun onTerminate() {
-        super.onTerminate()
-        NetworkManager.instance(this).unregister()
-        appJob.cancel()
-    }
 }

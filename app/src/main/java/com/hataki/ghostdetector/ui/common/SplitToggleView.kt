@@ -23,7 +23,7 @@ class SplitToggleView @JvmOverloads constructor(
 
     init {
         val inflater = LayoutInflater.from(context)
-        val view = inflater.inflate(R.layout.view_split_toggle, this, true)
+        val view = inflater.inflate(R.layout.view_split_toggle_hataki_1, this, true)
         toggleImage = view.findViewById(R.id.ivStatus)
         toggleTextView = view.findViewById(R.id.tvStatus)
         updateStatus(_isOn)

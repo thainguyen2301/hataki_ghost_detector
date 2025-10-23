@@ -4,12 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.hataki.ghostdetector.data.model.OnboardingItem
-import com.hataki.ghostdetector.databinding.ItemOnboardingBinding
+import com.hataki.ghostdetector.databinding.ItemOnboardingHataki1Binding
 
 class OnboardingAdapter(private val items: List<OnboardingItem>) :
     RecyclerView.Adapter<OnboardingAdapter.OnboardingViewHolder>() {
 
-    inner class OnboardingViewHolder(val binding: ItemOnboardingBinding) :
+    inner class OnboardingViewHolder(val binding: ItemOnboardingHataki1Binding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: OnboardingItem) {
             binding.titleText.text = item.title
@@ -18,7 +18,7 @@ class OnboardingAdapter(private val items: List<OnboardingItem>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OnboardingViewHolder {
-        val binding = ItemOnboardingBinding.inflate(
+        val binding = ItemOnboardingHataki1Binding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
         return OnboardingViewHolder(binding)

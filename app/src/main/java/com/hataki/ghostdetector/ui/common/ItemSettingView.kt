@@ -20,7 +20,7 @@ class ItemSettingView @JvmOverloads constructor(
     private val tvTitle: TextView
 
     init {
-        LayoutInflater.from(context).inflate(R.layout.item_setting, this, true)
+        LayoutInflater.from(context).inflate(R.layout.item_setting_hataki_1, this, true)
         ivIcon = findViewById(R.id.iv_icon)
         tvTitle = findViewById(R.id.tv_title)
 

@@ -9,7 +9,7 @@ import com.hataki.ghostdetector.R
 object DialogHelper {
     fun showTranslatingDialog(context: Context): Dialog {
         val dialog = Dialog(context)
-        dialog.setContentView(R.layout.dialog_translating)
+        dialog.setContentView(R.layout.dialog_translating_hataki_1)
         dialog.setCancelable(false)
         dialog.window?.setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
         dialog.show()
@@ -18,7 +18,7 @@ object DialogHelper {
 
     fun showRatingDialog(context: Context): Dialog {
         val dialog = Dialog(context)
-        dialog.setContentView(R.layout.dialog_rate)
+        dialog.setContentView(R.layout.dialog_rate_hataki_1)
         dialog.setCancelable(false)
         dialog.window?.setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
         dialog.show()
@@ -27,7 +27,7 @@ object DialogHelper {
 
     fun showThankYouDialog(context: Context): Dialog {
         val dialog = Dialog(context)
-        dialog.setContentView(R.layout.dialog_thankyou)
+        dialog.setContentView(R.layout.dialog_thank_you_hataki_1)
         dialog.setCancelable(false)
         dialog.window?.setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
         dialog.show()

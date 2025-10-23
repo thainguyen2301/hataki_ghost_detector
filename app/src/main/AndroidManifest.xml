@@ -25,7 +25,7 @@
             android:value="en,de,en-rUS,es,fr,hi,in,pt" />
 
         <activity
-            android:name=".ui.splash.SplashActivity"
+            android:name=".ui.splash.SplashHataki1Activity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,15 +33,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.main.MainActivity" />
-        <activity android:name=".ui.onboard.OnboardingActivity" />
-        <activity android:name=".ui.start.StartActivity" />
-        <activity android:name=".ui.rada.RadaActivity" />
-        <activity android:name=".ui.permission.RequestPermissionActivity" />
-        <activity android:name=".ui.setting.SettingActivity" />
-        <activity android:name=".ui.language.LanguageActivity" />
-        <activity android:name=".ui.privacy.PrivacyPolicyActivity" />
-        <activity android:name=".ui.internet.ErrorConnectionActivity"
+        <activity android:name=".ui.onboard.OnboardingHataki1Activity" />
+        <activity android:name=".ui.start.StartHataki1Activity" />
+        <activity android:name=".ui.rada.RadaHataki1Activity" />
+        <activity android:name=".ui.permission.RequestPermissionHataki1Activity" />
+        <activity android:name=".ui.setting.SettingHataki1Activity" />
+        <activity android:name=".ui.language.LanguageHataki1Activity" />
+        <activity android:name=".ui.privacy.PrivacyPolicyHataki1Activity" />
+        <activity android:name=".ui.internet.ErrorConnectionHataki1Activity"
             android:launchMode="singleTop"/>
     </application>
 

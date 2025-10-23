@@ -10,6 +10,6 @@ class BackgroundCloseView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : FrameLayout(context, attrs) {
     init {
-        LayoutInflater.from(context).inflate(R.layout.background_close_view, this, true)
+        LayoutInflater.from(context).inflate(R.layout.background_close_view_hataki_1, this, true)
     }
 }

@@ -69,7 +69,7 @@
                 android:id="@+id/custom_switch"
                 android:layout_width="50dp"
                 android:layout_height="19dp"
-                android:checked="true"
+                android:checked="false"
                 android:showText="false"
                 android:switchMinWidth="36dp"
                 android:thumb="@drawable/custom_switch_thumb"

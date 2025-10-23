@@ -16,7 +16,7 @@ import androidx.preference.PreferenceManager
 import androidx.viewbinding.ViewBinding
 import com.hataki.ghostdetector.data.system.locale.LocaleManager
 import com.hataki.ghostdetector.data.system.network.NetworkManager
-import com.hataki.ghostdetector.ui.internet.ErrorConnectionActivity
+import com.hataki.ghostdetector.ui.internet.ErrorConnectionHataki1Activity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -91,7 +91,7 @@ abstract class BaseActivity<VM : BaseViewModel, VB : ViewBinding> : AppCompatAct
             NetworkManager.instance(this@BaseActivity).isConnected.collect { isConnected ->
                 delay(500)
                 if (!isConnected) {
-                    ErrorConnectionActivity.open(this@BaseActivity)
+                    ErrorConnectionHataki1Activity.open(this@BaseActivity)
                 }
             }
         }

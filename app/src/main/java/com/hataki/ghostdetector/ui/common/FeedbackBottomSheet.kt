@@ -6,16 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.hataki.ghostdetector.databinding.LayoutBottomSheetFeedbackBinding
+import com.hataki.ghostdetector.databinding.LayoutBottomSheetFeedbackHataki1Binding
 
 class FeedbackBottomSheet : BottomSheetDialogFragment() {
-    private lateinit var binding: LayoutBottomSheetFeedbackBinding
+    private lateinit var binding: LayoutBottomSheetFeedbackHataki1Binding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = LayoutBottomSheetFeedbackBinding.inflate(
+        binding = LayoutBottomSheetFeedbackHataki1Binding.inflate(
             inflater,
             container,
             false
