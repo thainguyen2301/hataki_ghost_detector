@@ -57,4 +57,8 @@
     <string name="thank_you">Thank You!</string>
     <string name="thank_you_for_taking_the_time_to_rate_us_i_m_really_appreciate_that">Thank you for taking the time to rate us. I’m really appreciate that.</string>
     <string name="got_it">Got It.</string>
+    <string name="emf">EMF</string>
+    <string name="evp">EVP</string>
+    <string name="off">OFF</string>
+    <string name="on">ON</string>
 </resources>

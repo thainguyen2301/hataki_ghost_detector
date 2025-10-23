@@ -340,4 +340,10 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:fontFamily">@font/figtree_extra_bold</item>
     </style>
+
+    <style name="CustomText_28_white_50_Finger">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@color/color_white_50</item>
+        <item name="android:fontFamily">@font/fingerpaint_regular</item>
+    </style>
 </resources>

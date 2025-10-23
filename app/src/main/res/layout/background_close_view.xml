@@ -9,9 +9,8 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha="0.12"
         android:importantForAccessibility="no"
         android:scaleType="centerCrop"
-        android:src="@drawable/start_bg_top" />
+        android:src="@drawable/bg_start_rada" />
 
 </merge>

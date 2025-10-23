@@ -14,6 +14,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.withRotation
 import com.hataki.ghostdetector.R
 import com.hataki.ghostdetector.data.model.Target
+import kotlin.math.cos
 import kotlin.math.min
 import kotlin.math.sin
 
@@ -23,13 +24,13 @@ class RadarView @JvmOverloads constructor(
 ) : View(context, attrs) {
 
     private val outerBorderPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        color = Color.GREEN
+        color = ContextCompat.getColor(context, R.color.primary)
         style = Paint.Style.STROKE
         strokeWidth = 2f * resources.displayMetrics.density
     }
 
     private val innerLinePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        color = Color.GREEN
+        color = ContextCompat.getColor(context, R.color.primary)
         style = Paint.Style.STROKE
         strokeWidth = 1f * resources.displayMetrics.density
         alpha = 100
@@ -96,8 +97,8 @@ class RadarView @JvmOverloads constructor(
                 shader = RadialGradient(
                     cx, cy, radius,
                     intArrayOf(
-                        ContextCompat.getColor(context, R.color.rada_green),
-                        ContextCompat.getColor(context, R.color.rada_black),
+                        ContextCompat.getColor(context, R.color.primary),
+                        Color.BLACK,
                     ),
                     floatArrayOf(0f, 1f),
                     Shader.TileMode.CLAMP
@@ -121,8 +122,8 @@ class RadarView @JvmOverloads constructor(
             val angleRad = Math.toRadians((target.angle - azimuth).toDouble())
 
             val r = radius * target.distance
-            val x = (cx + r * Math.cos(angleRad)).toFloat()
-            val y = (cy + r * Math.sin(angleRad)).toFloat()
+            val x = (cx + r * cos(angleRad)).toFloat()
+            val y = (cy + r * sin(angleRad)).toFloat()
 
             val gradient = RadialGradient(
                 x, y, targetRadius,
@@ -150,8 +151,8 @@ class RadarView @JvmOverloads constructor(
 
         for (i in 0 until 360 step 30) {
             val rad = Math.toRadians(i.toDouble())
-            val x = (cx + radius * Math.cos(rad)).toFloat()
-            val y = (cy + radius * Math.sin(rad)).toFloat()
+            val x = (cx + radius * cos(rad)).toFloat()
+            val y = (cy + radius * sin(rad)).toFloat()
             canvas.drawLine(cx, cy, x, y, innerLinePaint)
         }
     }
@@ -165,10 +166,10 @@ class RadarView @JvmOverloads constructor(
             cx, cy,
             intArrayOf(
                 Color.TRANSPARENT,
-                ContextCompat.getColor(context, R.color.sweet_green_dark),
-                ContextCompat.getColor(context, R.color.sweet_green_light),
-                ContextCompat.getColor(context, R.color.sweet_green_dark),
-                Color.TRANSPARENT
+                ContextCompat.getColor(context, R.color.primary),
+                ContextCompat.getColor(context, R.color.primary),
+                ContextCompat.getColor(context, R.color.primary),
+                Color.TRANSPARENT,
             ),
             floatArrayOf(
                 0f,

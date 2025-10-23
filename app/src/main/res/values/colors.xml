@@ -5,7 +5,7 @@
     <color name="green">#4CAF50</color>
     <color name="red">#FF0000</color>
     <color name="rada_green">#02B802</color>
-    <color name="rada_black">#011401</color>
+    <color name="rada_black">#000000</color>
     <color name="sweet_green_dark">#AA00FF00</color>
     <color name="sweet_green_light">#FF00FF00</color>
     <color name="language_active">#00B728</color>
@@ -19,4 +19,6 @@
     <color name="color_25211d">#25211D</color>
     <color name="color_white_28">#47FFFFFF</color>
     <color name="color_white_50">#80FFFFFF</color>
+    <color name="color_0f9b0f">#0F9B0F</color>
+    <color name="color_808080">#808080</color>
 </resources>

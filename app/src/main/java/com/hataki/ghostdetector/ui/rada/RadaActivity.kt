@@ -122,8 +122,6 @@ class RadaActivity() : BaseActivity<RadaViewModel, ActivityRadaBinding>() {
     private fun updateUIWhenCameraOnOff() {
         if (binding.btnOnOff.isOn) {
             binding.cameraView.visibility = View.VISIBLE
-            binding.cameraAccessories.visibility = View.VISIBLE
-            binding.cameraBorder.visibility = View.VISIBLE
             binding.tvStart.visibility = View.VISIBLE
             binding.bgTop.visibility = View.GONE
             mediaPlayerManager.playBackgroundMusic(this)
@@ -133,8 +131,6 @@ class RadaActivity() : BaseActivity<RadaViewModel, ActivityRadaBinding>() {
             handler.removeCallbacks(startGhostRunnable)
             mediaPlayerManager.stopBackgroundMusic()
             binding.cameraView.visibility = View.GONE
-            binding.cameraAccessories.visibility = View.GONE
-            binding.cameraBorder.visibility = View.GONE
             binding.tvStart.visibility = View.GONE
             binding.bgTop.visibility = View.VISIBLE
             updateRadaNumber(0f, 0f, 0f, 0f)
