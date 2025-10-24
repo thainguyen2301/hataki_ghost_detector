@@ -60,4 +60,12 @@
     <string name="rate">रेट करें</string>
     <string name="share">साझा करें</string>
     <string name="what_tip_you_like_to_give_us">आप हमें क्या सुझाव देना चाहेंगे?</string>
+    <string name="thank_you">धन्यवाद!</string>
+    <string name="thank_you_for_taking_the_time_to_rate_us_i_m_really_appreciate_that">हमें रेट करने के लिए समय निकालने के लिए धन्यवाद। मैं इसकी वास्तव में सराहना करता हूँ</string>
+    <string name="got_it">समझ गया।</string>
+    <string name="emf">ईएमएफ़</string>
+    <string name="evp">ईवीपी</string>
+    <string name="off">बंद</string>
+    <string name="on">चालू</string>
+
 </resources>

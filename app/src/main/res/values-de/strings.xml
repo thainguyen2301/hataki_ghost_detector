@@ -60,4 +60,11 @@
     <string name="rate">Bewerten</string>
     <string name="share">Teilen</string>
     <string name="what_tip_you_like_to_give_us">Welchen Tipp möchten Sie uns geben?</string>
+    <string name="thank_you">Danke!</string>
+    <string name="thank_you_for_taking_the_time_to_rate_us_i_m_really_appreciate_that">Vielen Dank, dass Sie sich die Zeit genommen haben, uns zu bewerten. Ich schätze das wirklich sehr.</string>
+    <string name="got_it">Verstanden.</string>
+    <string name="emf">EMF</string>
+    <string name="evp">EVP</string>
+    <string name="off">AUS</string>
+    <string name="on">EIN</string>
 </resources>

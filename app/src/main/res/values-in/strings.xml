@@ -59,4 +59,12 @@
     <string name="rate">Nilai</string>
     <string name="share">Bagikan</string>
     <string name="what_tip_you_like_to_give_us">Saran apa yang ingin Anda berikan kepada kami?</string>
+    <string name="thank_you">Terima kasih!</string>
+    <string name="thank_you_for_taking_the_time_to_rate_us_i_m_really_appreciate_that">Terima kasih telah meluangkan waktu untuk menilai kami. Saya sangat menghargainya.</string>
+    <string name="got_it">Mengerti.</string>
+    <string name="emf">EMF</string>
+    <string name="evp">EVP</string>
+    <string name="off">MATI</string>
+    <string name="on">NYALA</string>
+
 </resources>

@@ -60,4 +60,12 @@
     <string name="rate">Calificar</string>
     <string name="share">Compartir</string>
     <string name="what_tip_you_like_to_give_us">¿Qué consejo le gustaría darnos?</string>
+    <string name="thank_you">¡Gracias!</string>
+    <string name="thank_you_for_taking_the_time_to_rate_us_i_m_really_appreciate_that">Gracias por tomarte el tiempo para calificarnos. Realmente lo aprecio.</string>
+    <string name="got_it">Entendido.</string>
+    <string name="emf">EMF</string>
+    <string name="evp">EVP</string>
+    <string name="off">APAGADO</string>
+    <string name="on">ENCENDIDO</string>
+
 </resources>
