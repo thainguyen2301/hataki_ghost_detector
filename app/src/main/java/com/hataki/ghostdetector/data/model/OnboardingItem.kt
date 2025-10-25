@@ -1,6 +1,9 @@
 package com.hataki.ghostdetector.data.model
 
+import androidx.annotation.DrawableRes
+
 data class OnboardingItem(
     val title: String,
-    val description: String
+    @get:DrawableRes
+    val image: Int,
 )

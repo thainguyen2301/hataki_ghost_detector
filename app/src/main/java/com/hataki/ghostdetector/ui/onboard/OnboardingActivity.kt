@@ -83,20 +83,20 @@ class OnboardingActivity : BaseActivity<OnboardingViewModel, ActivityOnboardingB
     private fun initViewPager() {
         val items = listOf(
             OnboardingItem(
-                resources.getString(R.string.onboarding_title_1),
-                resources.getString(R.string.onboarding_desc_1)
+                title = resources.getString(R.string.onboarding_title_1),
+                image = R.drawable.onboarding1,
             ),
             OnboardingItem(
-                resources.getString(R.string.onboarding_title_2),
-                resources.getString(R.string.onboarding_desc_2)
+                title = resources.getString(R.string.onboarding_title_2),
+                image = R.drawable.onboarding2,
             ),
             OnboardingItem(
-                resources.getString(R.string.onboarding_title_3),
-                resources.getString(R.string.onboarding_desc_3)
+                title = resources.getString(R.string.onboarding_title_3),
+                image = R.drawable.onboarding3,
             ),
             OnboardingItem(
-                resources.getString(R.string.onboarding_title_4),
-                resources.getString(R.string.onboarding_desc_4)
+                title = resources.getString(R.string.onboarding_title_4),
+                image = R.drawable.onboarding4,
             )
         )
         adapter = OnboardingAdapter(items)

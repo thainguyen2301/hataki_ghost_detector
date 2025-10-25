@@ -13,17 +13,10 @@
         <item>Memuat file yang dapat dieksekusi…</item>
     </string-array>
 
-    <string name="onboarding_title_1">Ubah Usia Anda</string>
-    <string name="onboarding_desc_1">Lihat diri Anda lebih muda atau lebih tua dengan efek bertenaga AI!</string>
-
-    <string name="onboarding_title_2">Alat AI Serba Ada</string>
-    <string name="onboarding_desc_2">AI Art, Hapus Latar Belakang &amp; banyak lagi dalam satu aplikasi!</string>
-
-    <string name="onboarding_title_3">Seru &amp; Bisa Dibagikan</string>
-    <string name="onboarding_desc_3">Buat dan bagikan selfie dengan perubahan usia bersama teman-teman!</string>
-
-    <string name="onboarding_title_4">Mulai</string>
-    <string name="onboarding_desc_4">Cobalah sekarang dan jelajahi berbagai versi diri Anda!</string>
+    <string name="onboarding_title_1">Radar Hantu Realistis</string>
+    <string name="onboarding_title_2">Pencari Hantu Pintar</string>
+    <string name="onboarding_title_3">Lelucon Hantu yang Lucu</string>
+    <string name="onboarding_title_4">Efek Cahaya Dinamis</string>
 
     <string name="accept">TERIMA</string>
     <string name="start_warning_message">Hati-hati! \n\n Jika Anda orang yang sangat sensitif\n atau penakut \n sebaiknya jangan gunakan aplikasi ini \n dan tutup.\n\n Kami peduli dengan privasi \n dan keamanan data Anda. Kami menjaga \n aplikasi ini tetap gratis dengan menampilkan \n iklan. Jika Anda melanjutkan, berarti Anda \n menerima penggunaan data Anda untuk \n menyesuaikan iklan untuk Anda.</string>

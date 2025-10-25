@@ -14,17 +14,10 @@
         <item>Carregando arquivo executável…</item>
     </string-array>
 
-    <string name="onboarding_title_1">Transforme Sua Idade</string>
-    <string name="onboarding_desc_1">Veja-se mais jovem ou mais velho com efeitos de IA!</string>
-
-    <string name="onboarding_title_2">Ferramentas de IA Tudo-em-Um</string>
-    <string name="onboarding_desc_2">IA Art, Remoção de Fundo e muito mais em um só aplicativo!</string>
-
-    <string name="onboarding_title_3">Divertido &amp; Compartilhável</string>
-    <string name="onboarding_desc_3">Crie e compartilhe selfies com alteração de idade com seus amigos!</string>
-
-    <string name="onboarding_title_4">Começar</string>
-    <string name="onboarding_desc_4">Experimente agora e explore diferentes versões de você mesmo!</string>
+    <string name="onboarding_title_1">Radar de fantasmas realista</string>
+    <string name="onboarding_title_2">Localizador de fantasmas inteligente</string>
+    <string name="onboarding_title_3">Pegadinhas de fantasmas divertidas</string>
+    <string name="onboarding_title_4">Efeito de luz dinâmico</string>
 
     <string name="accept">ACEITAR</string>
     <string name="start_warning_message">Cuidado! \n\n Se você for uma pessoa muito sensível\n ou medrosa, \n considere não usar este \n aplicativo e feche-o.\n\n Nós nos preocupamos com sua privacidade \n e segurança de dados. Mantemos \n este aplicativo gratuito exibindo \n anúncios. Se continuar, você \n aceita o uso dos seus dados para \n personalizar anúncios para você.</string>

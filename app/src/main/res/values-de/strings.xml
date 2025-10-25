@@ -14,17 +14,10 @@
         <item>Lade ausführbare Datei…</item>
     </string-array>
 
-    <string name="onboarding_title_1">Verwandle dein Alter</string>
-    <string name="onboarding_desc_1">Sieh dich jünger oder älter mit KI-Effekten!</string>
-
-    <string name="onboarding_title_2">Alles-in-einem KI-Tools</string>
-    <string name="onboarding_desc_2">KI-Kunst, Hintergrund entfernen &amp; mehr in einer App!</string>
-
-    <string name="onboarding_title_3">Spaß &amp; teilbar</string>
-    <string name="onboarding_desc_3">Erstelle und teile deine gealterten Selfies mit Freunden!</string>
-
-    <string name="onboarding_title_4">Loslegen</string>
-    <string name="onboarding_desc_4">Probier es jetzt aus und entdecke verschiedene Versionen von dir!</string>
+    <string name="onboarding_title_1">Realistisches Geisterradar</string>
+    <string name="onboarding_title_2">Intelligenter Geisterfinder</string>
+    <string name="onboarding_title_3">Lustige Geisterstreiche</string>
+    <string name="onboarding_title_4">Dynamischer Lichteffekt</string>
 
     <string name="accept">AKZEPTIEREN</string>
     <string name="start_warning_message">Vorsicht! \n\n Wenn du sehr empfindlich\n oder ängstlich bist,\n überlege dir, diese App nicht zu verwenden\n und sie zu schließen.\n\n Wir kümmern uns um deine Privatsphäre\n und Datensicherheit. Wir halten\n diese App kostenlos, indem wir Werbung anzeigen.\n Wenn du fortfährst, stimmst du zu,\n dass deine Daten verwendet werden,\n um Werbung für dich anzupassen.</string>

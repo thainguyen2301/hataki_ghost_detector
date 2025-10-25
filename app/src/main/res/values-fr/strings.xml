@@ -14,17 +14,10 @@
         <item>Chargement du fichier exécutable…</item>
     </string-array>
 
-    <string name="onboarding_title_1">Transformez Votre Âge</string>
-    <string name="onboarding_desc_1">Voyez-vous plus jeune ou plus âgé avec des effets propulsés par l’IA !</string>
-
-    <string name="onboarding_title_2">Outils IA Tout-en-Un</string>
-    <string name="onboarding_desc_2">IA Art, Suppression d’arrière-plan et bien plus dans une seule application !</string>
-
-    <string name="onboarding_title_3">Amusant &amp; Partageable</string>
-    <string name="onboarding_desc_3">Créez et partagez vos selfies modifiés par l’âge avec vos amis !</string>
-
-    <string name="onboarding_title_4">Commencer</string>
-    <string name="onboarding_desc_4">Essayez maintenant et explorez différentes versions de vous-même !</string>
+    <string name="onboarding_title_1">Radar de fantômes réaliste</string>
+    <string name="onboarding_title_2">Détecteur de fantômes intelligent</string>
+    <string name="onboarding_title_3">Farces de fantômes amusantes</string>
+    <string name="onboarding_title_4">Effet de lumière dynamique</string>
 
     <string name="accept">ACCEPTER</string>
     <string name="start_warning_message">Attention ! \n\n Si vous êtes une personne très sensible\n ou peureuse, \n envisagez de ne pas utiliser cette \n application et de la fermer.\n\n Nous nous soucions de votre vie privée \n et de la sécurité de vos données. Nous gardons \n cette application gratuite en affichant \n des publicités. En continuant, vous \n acceptez l’utilisation de vos données pour \n personnaliser les annonces pour vous.</string>
