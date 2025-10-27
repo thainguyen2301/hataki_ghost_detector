@@ -1,4 +1,6 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import java.text.SimpleDateFormat
+import java.util.Date
 
 plugins {
     alias(libs.plugins.android.application)
@@ -16,9 +18,11 @@ android {
         minSdk = 24
         targetSdk = 36
         versionCode = 1
-        versionName = "1.0"
+        versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        val formattedDate = SimpleDateFormat("MM.dd.yyyy").format(Date())
+        base.archivesName = "H008_ghost_detector${versionName}_$formattedDate"
     }
 
     lint {
@@ -54,6 +58,12 @@ android {
     }
     hilt {
         enableAggregatingTask = true
+    }
+
+    bundle {
+        language {
+            enableSplit = false
+        }
     }
 }
 
