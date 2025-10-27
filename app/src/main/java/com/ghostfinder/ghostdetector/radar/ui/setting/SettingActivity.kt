@@ -51,7 +51,7 @@ class SettingActivity : BaseActivity<SettingViewModel, ActivitySettingBinding>()
             }
 
             R.id.item_language -> {
-                LanguageActivity.Companion.open(this@SettingActivity)
+                LanguageActivity.Companion.open(this@SettingActivity, true)
             }
 
             R.id.item_rate -> {

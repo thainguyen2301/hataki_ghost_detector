@@ -12,7 +12,9 @@ import com.ghostfinder.ghostdetector.radar.data.model.Quadruple
 import com.ghostfinder.ghostdetector.radar.databinding.ActivityLanguageBinding
 import com.ghostfinder.ghostdetector.radar.ui.base.BaseActivity
 import com.ghostfinder.ghostdetector.radar.ui.common.LanguageItemView
+import com.ghostfinder.ghostdetector.radar.ui.main.MainActivity
 import com.ghostfinder.ghostdetector.radar.ui.onboard.OnboardingActivity
+import com.ghostfinder.ghostdetector.radar.ui.rada.RadaActivity
 import com.ghostfinder.ghostdetector.radar.utils.LocaleHelper
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,8 +22,10 @@ import dagger.hilt.android.AndroidEntryPoint
 class LanguageActivity : BaseActivity<LanguageViewModel, ActivityLanguageBinding>() {
     companion object {
         const val APP_LANG = "app_lang"
-        fun open(context: Context) {
-            context.startActivity(Intent(context, LanguageActivity::class.java))
+        fun open(context: Context, isFromSetting: Boolean = false) {
+            context.startActivity(Intent(context, LanguageActivity::class.java).apply {
+                putExtra("isFromSetting", isFromSetting)
+            })
         }
     }
 
@@ -49,7 +53,17 @@ class LanguageActivity : BaseActivity<LanguageViewModel, ActivityLanguageBinding
                 PreferenceManager.getDefaultSharedPreferences(this)
                     .edit { putString(APP_LANG, lang) }
                 LocaleHelper.setLocale(this@LanguageActivity, lang)
-                OnboardingActivity.Companion.open(this@LanguageActivity)
+                val isFromSetting = intent.getBooleanExtra("isFromSetting", false)
+                if (isFromSetting) {
+                    val intent = Intent(this, RadaActivity::class.java).apply {
+                        flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    }
+                    startActivity(intent)
+                    finish()
+                } else {
+                    OnboardingActivity.Companion.open(this@LanguageActivity)
+                }
+
 //                Handler(Looper.getMainLooper()).postDelayed({
 //                    restartApp()
 //                }, 3000)

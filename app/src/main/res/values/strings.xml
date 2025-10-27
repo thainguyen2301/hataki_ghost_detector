@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Ghost Detector</string>
+    <string name="app_name" translatable="false">Ghost Detector</string>
     <string name="next">Next</string>
     <string name="get_started">Get Started</string>
     <string-array name="loading_messages">
