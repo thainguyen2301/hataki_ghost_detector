@@ -3,7 +3,6 @@ package com.hataki.ghostdetector.ui.internet
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.hataki.ghostdetector.R
@@ -16,7 +15,6 @@ class ErrorConnectionActivity : AppCompatActivity() {
 
     companion object {
         fun open(context: Context) {
-            Log.d("cuongpq", "startActivity ErrorConnectionActivity")
             val intent = Intent(context, ErrorConnectionActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
