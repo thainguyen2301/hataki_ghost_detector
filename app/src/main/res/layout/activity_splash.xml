@@ -19,6 +19,7 @@
             app:layout_constraintBottom_toTopOf="@+id/app_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/app_logo"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView

@@ -37,11 +37,11 @@ class SplashActivity : BaseActivity<SplashViewModel, ActivitySplashBinding>() {
     private fun checkNextScreen() {
         val lang = PreferenceManager.getDefaultSharedPreferences(this)
             .getString(APP_LANG, null)
-        if (lang == null) {
+//        if (lang == null) {
             LanguageActivity.open(this@SplashActivity)
-        } else {
-            OnboardingActivity.open(this@SplashActivity)
-        }
+//        } else {
+//            OnboardingActivity.open(this@SplashActivity)
+//        }
         finish()
     }
 

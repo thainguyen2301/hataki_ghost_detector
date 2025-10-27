@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Handler
 import android.os.Looper
+import android.view.View
 import android.widget.LinearLayout
 import androidx.core.content.edit
 import androidx.preference.PreferenceManager
@@ -12,6 +13,7 @@ import com.hataki.ghostdetector.data.model.Quadruple
 import com.hataki.ghostdetector.databinding.ActivityLanguageBinding
 import com.hataki.ghostdetector.ui.base.BaseActivity
 import com.hataki.ghostdetector.ui.common.LanguageItemView
+import com.hataki.ghostdetector.ui.onboard.OnboardingActivity
 import com.hataki.ghostdetector.utils.DialogHelper
 import com.hataki.ghostdetector.utils.LocaleHelper
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,14 +43,15 @@ class LanguageActivity : BaseActivity<LanguageViewModel, ActivityLanguageBinding
             this.onBackPressedDispatcher.onBackPressed()
         }
         binding.btnSave.setOnClickListener {
-            DialogHelper.showTranslatingDialog(this@LanguageActivity)
+        //    DialogHelper.showTranslatingDialog(this@LanguageActivity)
             viewModel.selectedLanguage?.let { lang ->
                 PreferenceManager.getDefaultSharedPreferences(this)
                     .edit { putString(APP_LANG, lang) }
                 LocaleHelper.setLocale(this@LanguageActivity, lang)
-                Handler(Looper.getMainLooper()).postDelayed({
-                    restartApp()
-                }, 3000)
+                OnboardingActivity.open(this@LanguageActivity)
+//                Handler(Looper.getMainLooper()).postDelayed({
+//                    restartApp()
+//                }, 3000)
             }
         }
     }
@@ -66,10 +69,11 @@ class LanguageActivity : BaseActivity<LanguageViewModel, ActivityLanguageBinding
 
         languages.forEach { (name, iconRes, selected, flag) ->
             val item = LanguageItemView(this)
-            val isSelected = currentLanguage?.let { it == flag } ?: selected
-            item.setLanguage(name, iconRes, isSelected, flag)
+//            val isSelected = currentLanguage?.let { it == flag } ?: selected
+            item.setLanguage(name, iconRes, false, flag)
             item.setOnClickListener {
                 setSelectedLanguage(item)
+                binding.btnSave.visibility = View.VISIBLE
             }
             val params = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
