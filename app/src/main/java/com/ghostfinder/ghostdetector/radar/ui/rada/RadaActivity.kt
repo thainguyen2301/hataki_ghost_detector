@@ -14,8 +14,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.google.ar.core.Pose
 import com.google.ar.core.TrackingState
-import com.ghostfinder.ghostdetector.R
-import com.ghostfinder.ghostdetector.databinding.ActivityRadaBinding
+import com.ghostfinder.ghostdetector.radar.R
+import com.ghostfinder.ghostdetector.radar.databinding.ActivityRadaBinding
 import com.ghostfinder.ghostdetector.radar.ui.base.BaseActivity
 import com.ghostfinder.ghostdetector.radar.ui.rada.system.MediaPlayerManager
 import com.ghostfinder.ghostdetector.radar.ui.rada.system.SoundPoolManager

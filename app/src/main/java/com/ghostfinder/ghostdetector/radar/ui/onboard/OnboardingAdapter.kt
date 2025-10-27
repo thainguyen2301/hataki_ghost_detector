@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.ghostfinder.ghostdetector.radar.data.model.OnboardingItem
-import com.ghostfinder.ghostdetector.databinding.ItemOnboardingBinding
+import com.ghostfinder.ghostdetector.radar.databinding.ItemOnboardingBinding
 
 class OnboardingAdapter(private val items: List<OnboardingItem>) :
     RecyclerView.Adapter<OnboardingAdapter.OnboardingViewHolder>() {

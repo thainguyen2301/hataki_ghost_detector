@@ -2,7 +2,7 @@ package com.ghostfinder.ghostdetector.radar.ui.rada.system
 
 import android.content.Context
 import android.media.MediaPlayer
-import com.ghostfinder.ghostdetector.R
+import com.ghostfinder.ghostdetector.radar.R
 
 class MediaPlayerManager {
     private var bgMusic: MediaPlayer? = null

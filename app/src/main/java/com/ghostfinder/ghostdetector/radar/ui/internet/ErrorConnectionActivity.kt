@@ -5,8 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.ghostfinder.ghostdetector.R
-import com.ghostfinder.ghostdetector.databinding.ActivityErrorConnectionBinding
+import com.ghostfinder.ghostdetector.radar.R
+import com.ghostfinder.ghostdetector.radar.databinding.ActivityErrorConnectionBinding
+
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

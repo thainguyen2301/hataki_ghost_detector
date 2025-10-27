@@ -6,7 +6,7 @@ import android.view.Gravity
 import android.view.View
 import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
-import com.ghostfinder.ghostdetector.R
+import com.ghostfinder.ghostdetector.radar.R
 
 class ToggleSwitchView @JvmOverloads constructor(
     context: Context,

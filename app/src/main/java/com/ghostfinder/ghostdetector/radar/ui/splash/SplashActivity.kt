@@ -7,8 +7,8 @@ import android.animation.ValueAnimator
 import android.os.Handler
 import android.os.Looper
 import androidx.preference.PreferenceManager
-import com.ghostfinder.ghostdetector.R
-import com.ghostfinder.ghostdetector.databinding.ActivitySplashBinding
+import com.ghostfinder.ghostdetector.radar.R
+import com.ghostfinder.ghostdetector.radar.databinding.ActivitySplashBinding
 import com.ghostfinder.ghostdetector.radar.ui.base.BaseActivity
 import com.ghostfinder.ghostdetector.radar.ui.language.LanguageActivity
 import dagger.hilt.android.AndroidEntryPoint

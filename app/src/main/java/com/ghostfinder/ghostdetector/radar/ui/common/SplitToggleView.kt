@@ -12,7 +12,7 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.ghostfinder.ghostdetector.R
+import com.ghostfinder.ghostdetector.radar.R
 
 class SplitToggleView @JvmOverloads constructor(
     context: Context,

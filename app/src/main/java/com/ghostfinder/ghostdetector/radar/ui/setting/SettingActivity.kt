@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.view.View
 import androidx.appcompat.widget.AppCompatButton
+import com.ghostfinder.ghostdetector.radar.R
 import com.google.android.play.core.review.ReviewManagerFactory
 import com.ghostfinder.ghostdetector.radar.databinding.ActivitySettingBinding
 import com.ghostfinder.ghostdetector.radar.ui.base.BaseActivity
@@ -84,12 +85,12 @@ class SettingActivity : BaseActivity<SettingViewModel, ActivitySettingBinding>()
 
     private fun shareApp() {
         val sendIntent = Intent().apply {
-            Intent.setAction = Intent.ACTION_SEND
+            action = Intent.ACTION_SEND
             putExtra(
                 Intent.EXTRA_TEXT,
                 "Check out this app: https://play.google.com/store/apps/details?id=${packageName}"
             )
-            Intent.setType = "text/plain"
+            type = "text/plain"
         }
         val shareIntent = Intent.createChooser(sendIntent, "Share via")
         startActivity(shareIntent)

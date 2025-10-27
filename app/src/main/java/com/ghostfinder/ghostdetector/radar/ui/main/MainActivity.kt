@@ -3,8 +3,8 @@ package com.ghostfinder.ghostdetector.radar.ui.main
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.ghostfinder.ghostdetector.R
-import com.ghostfinder.ghostdetector.databinding.ActivityMainBinding
+import com.ghostfinder.ghostdetector.radar.R
+import com.ghostfinder.ghostdetector.radar.databinding.ActivityMainBinding
 import com.ghostfinder.ghostdetector.radar.ui.base.BaseActivity
 import dagger.hilt.android.AndroidEntryPoint
 

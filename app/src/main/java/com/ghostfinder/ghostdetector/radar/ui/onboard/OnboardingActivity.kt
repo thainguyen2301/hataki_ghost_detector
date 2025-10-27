@@ -7,9 +7,9 @@ import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.isNotEmpty
 import androidx.viewpager2.widget.ViewPager2
-import com.ghostfinder.ghostdetector.R
+import com.ghostfinder.ghostdetector.radar.R
 import com.ghostfinder.ghostdetector.radar.data.model.OnboardingItem
-import com.ghostfinder.ghostdetector.databinding.ActivityOnboardingBinding
+import com.ghostfinder.ghostdetector.radar.databinding.ActivityOnboardingBinding
 import com.ghostfinder.ghostdetector.radar.ui.base.BaseActivity
 import com.ghostfinder.ghostdetector.radar.ui.common.PermissionHelper
 import com.ghostfinder.ghostdetector.radar.ui.common.dp

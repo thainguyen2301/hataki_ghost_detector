@@ -12,7 +12,7 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.withRotation
-import com.ghostfinder.ghostdetector.R
+import com.ghostfinder.ghostdetector.radar.R
 import com.ghostfinder.ghostdetector.radar.data.model.Target
 import kotlin.math.min
 import kotlin.math.sin
@@ -93,7 +93,7 @@ class RadarView @JvmOverloads constructor(
 
         if (gradientPaint == null) {
             gradientPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-                Paint.setShader = RadialGradient(
+                shader = RadialGradient(
                     cx, cy, radius,
                     intArrayOf(
                         ContextCompat.getColor(context, R.color.rada_green),
@@ -132,7 +132,7 @@ class RadarView @JvmOverloads constructor(
             )
 
             val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-                Paint.setShader = gradient
+                shader = gradient
                 alpha = target.alpha
             }
 
@@ -181,7 +181,7 @@ class RadarView @JvmOverloads constructor(
 
         val sweepPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
             style = Paint.Style.FILL
-            Paint.setShader = gradient
+            shader = gradient
         }
 
         canvas.withRotation(270f + startAngle, cx, cy) {

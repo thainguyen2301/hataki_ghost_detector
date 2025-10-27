@@ -6,8 +6,8 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.view.View
-import com.ghostfinder.ghostdetector.R
-import com.ghostfinder.ghostdetector.databinding.ActivityRequestPermissionBinding
+import com.ghostfinder.ghostdetector.radar.R
+import com.ghostfinder.ghostdetector.radar.databinding.ActivityRequestPermissionBinding
 import com.ghostfinder.ghostdetector.radar.ui.base.BaseActivity
 import com.ghostfinder.ghostdetector.radar.ui.common.PermissionHelper
 import com.ghostfinder.ghostdetector.radar.ui.start.StartActivity

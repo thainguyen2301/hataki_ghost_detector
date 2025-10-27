@@ -4,7 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import androidx.core.graphics.drawable.toDrawable
-import com.ghostfinder.ghostdetector.R
+import com.ghostfinder.ghostdetector.radar.R
 
 object DialogHelper {
     fun showTranslatingDialog(context: Context): Dialog {

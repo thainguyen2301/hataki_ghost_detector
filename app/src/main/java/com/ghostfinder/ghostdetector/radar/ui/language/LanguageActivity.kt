@@ -7,9 +7,9 @@ import android.view.View
 import android.widget.LinearLayout
 import androidx.core.content.edit
 import androidx.preference.PreferenceManager
-import com.ghostfinder.ghostdetector.R
+import com.ghostfinder.ghostdetector.radar.R
 import com.ghostfinder.ghostdetector.radar.data.model.Quadruple
-import com.ghostfinder.ghostdetector.databinding.ActivityLanguageBinding
+import com.ghostfinder.ghostdetector.radar.databinding.ActivityLanguageBinding
 import com.ghostfinder.ghostdetector.radar.ui.base.BaseActivity
 import com.ghostfinder.ghostdetector.radar.ui.common.LanguageItemView
 import com.ghostfinder.ghostdetector.radar.ui.onboard.OnboardingActivity
