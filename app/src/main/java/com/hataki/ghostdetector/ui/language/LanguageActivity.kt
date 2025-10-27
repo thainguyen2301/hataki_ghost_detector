@@ -2,8 +2,7 @@ package com.hataki.ghostdetector.ui.language
 
 import android.content.Context
 import android.content.Intent
-import android.os.Handler
-import android.os.Looper
+import android.os.Build
 import android.view.View
 import android.widget.LinearLayout
 import androidx.core.content.edit
@@ -14,7 +13,6 @@ import com.hataki.ghostdetector.databinding.ActivityLanguageBinding
 import com.hataki.ghostdetector.ui.base.BaseActivity
 import com.hataki.ghostdetector.ui.common.LanguageItemView
 import com.hataki.ghostdetector.ui.onboard.OnboardingActivity
-import com.hataki.ghostdetector.utils.DialogHelper
 import com.hataki.ghostdetector.utils.LocaleHelper
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -36,6 +34,9 @@ class LanguageActivity : BaseActivity<LanguageViewModel, ActivityLanguageBinding
         val lang = PreferenceManager.getDefaultSharedPreferences(this)
             .getString(APP_LANG, "en") ?: "en"
         initListLanguage(lang)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+            binding.toolbar.setPadding(0,80,0,0)
+        }
     }
 
     private fun setOnClickListener() {

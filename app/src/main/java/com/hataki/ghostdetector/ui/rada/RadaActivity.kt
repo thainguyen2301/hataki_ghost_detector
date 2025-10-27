@@ -3,10 +3,12 @@ package com.hataki.ghostdetector.ui.rada
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -53,6 +55,17 @@ class RadaActivity() : BaseActivity<RadaViewModel, ActivityRadaBinding>() {
         soundPoolManager = SoundPoolManager(this)
         setOnClickListener()
         observerData()
+        val btnSettingsParams = binding.btnSetting.layoutParams as ViewGroup.MarginLayoutParams
+        binding.btnSetting.layoutParams = btnSettingsParams
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+            btnSettingsParams.setMargins(0, 106, 48, 0)
+            val cameraBorderParams =
+                binding.cameraBorder.layoutParams as ViewGroup.MarginLayoutParams
+            cameraBorderParams.setMargins(0, 60, 0, 0)
+            binding.cameraBorder.layoutParams = cameraBorderParams
+        } else {
+            btnSettingsParams.setMargins(0, 16, 16, 0)
+        }
     }
 
     private fun observerData() {
@@ -156,7 +169,7 @@ class RadaActivity() : BaseActivity<RadaViewModel, ActivityRadaBinding>() {
     }
 
     private fun initialRadaValue() {
-        val ghostLength = (1..3).random()
+        val ghostLength = (2..3).random()
         var ghostPoints = emptyList<Int>()
         for (i in 1..ghostLength) {
             var ghostAngle: Int

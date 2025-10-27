@@ -3,6 +3,7 @@ package com.hataki.ghostdetector.ui.permission
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Build
 import android.view.View
 import com.hataki.ghostdetector.R
 import com.hataki.ghostdetector.databinding.ActivityRequestPermissionBinding
@@ -25,6 +26,9 @@ class RequestPermissionActivity :
 
     override fun onCreateImpl() {
         eventListener()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+            binding.parent.setPadding(0,80,0,0)
+        }
     }
 
     private fun eventListener() {

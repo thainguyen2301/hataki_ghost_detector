@@ -2,6 +2,8 @@ package com.hataki.ghostdetector.ui.start
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
+import android.view.ViewGroup
 import com.hataki.ghostdetector.R
 import com.hataki.ghostdetector.databinding.ActivityStartBinding
 import com.hataki.ghostdetector.ui.base.BaseActivity
@@ -23,6 +25,11 @@ class StartActivity : BaseActivity<StartViewModel, ActivityStartBinding>() {
     override fun onCreateImpl() {
         binding.btnAccept.setOnClickListener {
             RadaActivity.open(this@StartActivity)
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+            val params = binding.cornerOverlay.layoutParams as ViewGroup.MarginLayoutParams
+            params.setMargins(0, 80, 0, 0)
+            binding.cornerOverlay.layoutParams = params
         }
     }
 
