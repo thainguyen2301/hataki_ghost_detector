@@ -10,14 +10,14 @@ plugins {
 }
 
 android {
-    namespace = "com.hataki.ghostdetector"
+    namespace = "com.ghostfinder.ghostdetector.radar"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.hataki.ghostdetector"
+        applicationId = "com.ghostfinder.ghostdetector.radar"
         minSdk = 24
         targetSdk = 36
-        versionCode = 1
+        versionCode = 3
         versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

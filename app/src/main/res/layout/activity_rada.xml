@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.hataki.ghostdetector.ui.common.BackgroundCloseView
+        <com.ghostfinder.ghostdetector.radar.ui.common.BackgroundCloseView
             android:id="@+id/bg_top"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -59,7 +59,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/btn_setting" />
 
-        <com.hataki.ghostdetector.ui.common.CornerOverlayView
+        <com.ghostfinder.ghostdetector.radar.ui.common.CornerOverlayView
             android:id="@+id/camera_border"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -131,7 +131,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <com.hataki.ghostdetector.ui.common.SplitToggleView
+        <com.ghostfinder.ghostdetector.radar.ui.common.SplitToggleView
             android:id="@+id/btn_on_off"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
@@ -140,7 +140,7 @@
             app:layout_constraintStart_toStartOf="@+id/img_bg_bottom"
             app:layout_constraintTop_toTopOf="@+id/img_bg_bottom" />
 
-        <com.hataki.ghostdetector.ui.common.RadarView
+        <com.ghostfinder.ghostdetector.radar.ui.common.RadarView
             android:id="@+id/radarView"
             android:layout_width="168dp"
             android:layout_height="168dp"

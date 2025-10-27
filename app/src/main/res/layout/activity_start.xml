@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.hataki.ghostdetector.ui.common.BackgroundCloseView
+        <com.ghostfinder.ghostdetector.radar.ui.common.BackgroundCloseView
             android:id="@+id/bg_top"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -15,7 +15,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.hataki.ghostdetector.ui.common.CornerOverlayView
+        <com.ghostfinder.ghostdetector.radar.ui.common.CornerOverlayView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center"
