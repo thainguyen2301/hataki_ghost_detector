@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "GhostDetector"
+rootProject.name = "H008-Ghost-Detector"
 include(":app")
  
