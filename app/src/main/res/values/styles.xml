@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base AppTheme for ad-related styles -->
+    <style name="AppTheme" parent="Theme.BaseMVVM" />
+
+    <style name="AppTheme.AdAttribution">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">left</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:text">@string/ad_attribution</item>
+        <item name="android:background">#FFCC66</item>
+        <item name="android:width">15dp</item>
+        <item name="android:height">15dp</item>
+    </style>
+
+    <style name="AppTheme.AdHeadline">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">left</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="AppTheme.AdBody">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">left</item>
+        <item name="android:textColor">@color/color_666666</item>
+        <item name="android:textSize">12sp</item>
+        <item name="fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="AppTheme.Advertiser">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">left</item>
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:textSize">12sp</item>
+        <item name="fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="AppTheme.AdPrice">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">left</item>
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:textSize">12sp</item>
+        <item name="fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="AppTheme.AdCallToAction">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="fontFamily">sans-serif-medium</item>
+    </style>
+
+    <string name="ad_attribution" translatable="false">Ad Atribution</string>
+</resources>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.facebook.shimmer.ShimmerFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/shimmer_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Icon + (tuỳ) AdChoices vị trí góc -->
+        <View
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#444444" />
+
+        <!-- Media placeholder -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="#555555" />
+
+        <!-- Title -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:layout_marginTop="8dp"
+            android:background="#666666" />
+
+        <!-- Body -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="14dp"
+            android:layout_marginTop="6dp"
+            android:background="#5E5E5E" />
+
+        <!-- CTA -->
+        <View
+            android:layout_width="90dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="12dp"
+            android:background="#6B6B6B" />
+
+        <!-- Hàng thông tin phụ: advertiser / stars / price / store -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <View
+                android:layout_width="80dp"
+                android:layout_height="14dp"
+                android:background="#5E5E5E" />
+
+            <View
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_marginStart="10dp"
+                android:background="#5A5A5A" />
+
+            <View
+                android:layout_width="60dp"
+                android:layout_height="14dp"
+                android:layout_marginStart="10dp"
+                android:background="#565656" />
+
+            <View
+                android:layout_width="60dp"
+                android:layout_height="14dp"
+                android:layout_marginStart="10dp"
+                android:background="#565656" />
+        </LinearLayout>
+    </LinearLayout>
+</com.facebook.shimmer.ShimmerFrameLayout>

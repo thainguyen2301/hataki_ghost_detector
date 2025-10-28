@@ -7,12 +7,14 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.devtools.ksp)
+    id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
 }
 
 android {
     namespace = "com.ghostfinder.ghostdetector.radar"
     compileSdk = 36
-
+    flavorDimensions += "default"
     defaultConfig {
         applicationId = "com.ghostfinder.ghostdetector.radar"
         minSdk = 24
@@ -25,16 +27,42 @@ android {
         base.archivesName = "H008_ghost_detector${versionName}_$formattedDate"
     }
 
+    productFlavors {
+        create("dev") {
+            dimension = "default"
+            applicationIdSuffix = ".dev"
+            buildConfigField("boolean", "IS_TEST_AD", "true")
+        }
+
+        // For product release uncomment out here
+        create("prod") {
+            dimension = "default"
+            buildConfigField("boolean", "IS_TEST_AD", "false")
+
+        }
+    }
+
+    sourceSets {
+        getByName("dev") {
+            res.srcDirs("src/dev/res")
+        }
+
+        // For product release uncomment out here
+        getByName("prod") {
+            res.srcDirs("src/prod/res")
+        }
+    }
+
     lint {
         disable += "CustomSplashScreen"
     }
 
     buildTypes {
         debug {
-            applicationIdSuffix = ".debug"
+
         }
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -54,7 +82,9 @@ android {
     }
 
     buildFeatures {
+        viewBinding = true
         dataBinding = true
+        buildConfig = true
     }
     hilt {
         enableAggregatingTask = true
@@ -92,4 +122,24 @@ dependencies {
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.review.ktx)
     implementation(libs.androidx.preference.ktx)
+
+    implementation("com.hataki.studio:ad-lib:1.0.2")
+
+    implementation("com.facebook.fbjni:fbjni-java-only:0.2.2")
+
+    implementation(platform("com.google.firebase:firebase-bom:34.3.0"))
+    implementation("com.google.firebase:firebase-config")
+    implementation("com.google.firebase:firebase-crashlytics")
+    implementation("com.google.firebase:firebase-analytics")
+    //    //SDK Mediation
+    implementation("com.google.android.gms:play-services-ads:24.7.0")
+    implementation("com.google.ads.mediation:facebook:6.20.0.1")
+    implementation("com.google.ads.mediation:pangle:6.4.0.5.0")
+    implementation("com.google.ads.mediation:applovin:13.0.1.0")
+    implementation("com.airbnb.android:lottie:6.6.9")
+//
+//    //fb sdk
+    implementation("com.facebook.shimmer:shimmer:0.5.0")
+    implementation("com.facebook.android:facebook-android-sdk:latest.release")
+    implementation("com.facebook.android:audience-network-sdk:6.+")
 }

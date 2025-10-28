@@ -127,7 +127,7 @@
             android:layout_height="236dp"
             android:scaleType="centerCrop"
             android:src="@drawable/start_bg_bottom"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/fr_ad_bottom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -236,5 +236,10 @@
             app:layout_constraintEnd_toEndOf="@+id/img_bg_bottom"
             app:layout_constraintTop_toBottomOf="@+id/evp_1"
             tools:text="0.098f" />
+        <FrameLayout
+            android:id="@+id/fr_ad_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

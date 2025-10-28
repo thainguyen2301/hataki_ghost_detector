@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- app id admob-->
+    <string name="app_id_admob" translatable="false">ca-app-pub-3940256099942544~3347511713</string>
+
+    <!--fb-->
+    <string name="facebook_app_id" translatable="false">123456789012345</string>
+    <string name="facebook_client_token" translatable="false">56789</string>
+    <!--adjust-->
+    <string name="adjust_token" translatable="false">dpw0wzwjnu9s</string>
+
+    <!--adjust_token_event-->
+    <string name="adjust_token_event" translatable="false">l4q1dz</string>
+</resources>

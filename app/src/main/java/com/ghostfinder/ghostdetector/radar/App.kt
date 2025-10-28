@@ -14,7 +14,7 @@ import kotlinx.coroutines.SupervisorJob
 import javax.inject.Inject
 
 @HiltAndroidApp
-class App : Application() {
+class App : MyApplication() {
     companion object {
         const val DEFAULT_LANGUAGE = "en"
     }

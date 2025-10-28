@@ -6,11 +6,17 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.view.View
+import androidx.lifecycle.lifecycleScope
 import com.ghostfinder.ghostdetector.radar.R
+import com.ghostfinder.ghostdetector.radar.ads.AppAdvertiseManager
 import com.ghostfinder.ghostdetector.radar.databinding.ActivityRequestPermissionBinding
 import com.ghostfinder.ghostdetector.radar.ui.base.BaseActivity
 import com.ghostfinder.ghostdetector.radar.ui.common.PermissionHelper
 import com.ghostfinder.ghostdetector.radar.ui.start.StartActivity
+import com.mobile.hataki_ad_lib.ad_native.NativeAdListener
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.time.delay
 
 class RequestPermissionActivity :
     BaseActivity<RequestPermissionViewModel, ActivityRequestPermissionBinding>() {
@@ -29,6 +35,33 @@ class RequestPermissionActivity :
         eventListener()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM) {
             binding.parent.setPadding(0,80,0,0)
+        }
+
+        lifecycleScope.launch {
+            delay(500L)
+            showNativeAd()
+            AppAdvertiseManager.loadHomeInterstitialAd(this@RequestPermissionActivity)
+        }
+    }
+
+    private fun showNativeAd() {
+        AppAdvertiseManager.permissionNativeAdProducer?.let { nativeBaseAdProducer ->
+            val show = {
+                nativeBaseAdProducer.show(
+                    this,
+                    R.layout.layout_native_ad_medium_button_top,
+                    binding.frAdBottom
+                )
+
+            }
+            nativeBaseAdProducer.setListener(object : NativeAdListener {
+                override fun onAdLoaded(isAutoLoad: Boolean) {
+                    super.onAdLoaded(isAutoLoad)
+                    show()
+                }
+            })
+
+            show()
         }
     }
 

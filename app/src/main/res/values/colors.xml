@@ -13,4 +13,22 @@
     <color name="yellow">#FFAA49</color>
     <color name="darker_gray">#47FFFFFF</color>
     <color name="onboard_bg">#0C140C</color>
+    <color name="ads_divider">#9A9A9A</color>
+    <color name="shimmer_placeholder">#DDDDDD</color>
+    <color name="native_background_color">#12FFFFFF</color>
+    <color name="color_666666">#666666</color>
+    <color name="lang_select_color">#12FFFFFF</color>
+    <color name="lang_unselect_color">#12FFFFFF</color>
+    <color name="region_select_color">#12FFFFFF</color>
+    <color name="region_unselect_color">#B2B2B2</color>
+    <color name="extra_region_select_color">#12FFFFFF</color>
+    <color name="extra_region_unselect_color">#12FFFFFF</color>
+    <color name="color_e6e6eb">#E6E6EB</color>
+    <color name="primary">#4CAF50</color>
+    <color name="color_111111">#111111</color>
+    <color name="color_111111_50">#80111111</color>
+    <color name="color_111111_7">#12111111</color>
+    <color name="color_111111_28">#47111111</color>
+    <color name="color_111111_75">#BF111111</color>
+    <color name="color_111111_14">#23111111</color>
 </resources>

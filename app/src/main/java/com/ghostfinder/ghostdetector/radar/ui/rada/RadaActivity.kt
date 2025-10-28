@@ -15,6 +15,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.google.ar.core.Pose
 import com.google.ar.core.TrackingState
 import com.ghostfinder.ghostdetector.radar.R
+import com.ghostfinder.ghostdetector.radar.ads.AppAdvertiseManager
 import com.ghostfinder.ghostdetector.radar.databinding.ActivityRadaBinding
 import com.ghostfinder.ghostdetector.radar.ui.base.BaseActivity
 import com.ghostfinder.ghostdetector.radar.ui.rada.system.MediaPlayerManager
@@ -68,6 +69,11 @@ class RadaActivity() : BaseActivity<RadaViewModel, ActivityRadaBinding>() {
             binding.cameraBorder.layoutParams = cameraBorderParams
         } else {
             btnSettingsParams.setMargins(0, 16, 16, 0)
+        }
+
+        lifecycleScope.launch {
+            delay(500L)
+            AppAdvertiseManager.showCollapsibleHomeBanner(this@RadaActivity, binding.frAdBottom)
         }
     }
 

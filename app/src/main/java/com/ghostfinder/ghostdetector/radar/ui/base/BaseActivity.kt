@@ -106,4 +106,8 @@ abstract class BaseActivity<VM : BaseViewModel, VB : ViewBinding> : AppCompatAct
             }
         }
     }
+
+    companion object {
+        val TAG = this::class.java.simpleName
+    }
 }

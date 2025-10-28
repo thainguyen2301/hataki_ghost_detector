@@ -103,7 +103,11 @@
                 app:titleText="@string/privacy_policy" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
+        <FrameLayout
+            android:id="@+id/fr_ad_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

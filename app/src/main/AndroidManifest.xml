@@ -48,8 +48,40 @@
         <activity android:name=".ui.setting.SettingActivity" />
         <activity android:name=".ui.language.LanguageActivity" />
         <activity android:name=".ui.privacy.PrivacyPolicyActivity" />
+        <activity android:name=".ui.language.HatakiLanguageStartActivity" />
+        <activity android:name=".ads.native_full.HatakiNativeFullActivity" />
+        <activity android:name=".ui.welcome.HatakiWelcomeBackActivity"/>
         <activity android:name=".ui.internet.ErrorConnectionActivity"
             android:launchMode="singleTop"/>
+
+        <property
+            android:name="android.adservices.AD_SERVICES_CONFIG"
+            tools:node="remove" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.flag.OPTIMIZE_INITIALIZATION"
+            android:value="true" />
+        <meta-data
+            android:name="com.google.android.gms.ads.flag.OPTIMIZE_AD_LOADING"
+            android:value="true" /> <!-- admob app id -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/app_id_admob" /> <!-- facebook ad -->
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="com.facebook.sdk.ClientToken"
+            android:value="@string/facebook_client_token" />
+        <meta-data
+            android:name="com.facebook.sdk.AutoInitEnabled"
+            android:value="true" />
+        <meta-data
+            android:name="com.facebook.sdk.AutoLogAppEventsEnabled"
+            android:value="true" />
+        <meta-data
+            android:name="com.facebook.sdk.AdvertiserIDCollectionEnabled"
+            android:value="true" />
     </application>
 
 </manifest>

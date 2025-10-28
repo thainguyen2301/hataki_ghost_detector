@@ -9,6 +9,7 @@ pluginManagement {
         }
         mavenCentral()
         gradlePluginPortal()
+        maven { url = uri("https://artifact.bytedance.com/repository/pangle/") }
     }
 }
 dependencyResolutionManagement {
@@ -16,6 +17,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        mavenLocal()
+        maven { url = uri("https://artifact.bytedance.com/repository/pangle/") }
+   // Add this line
     }
 }
 

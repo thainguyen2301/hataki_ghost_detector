@@ -8,6 +8,7 @@ import android.widget.LinearLayout
 import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import com.ghostfinder.ghostdetector.radar.R
+import com.ghostfinder.ghostdetector.radar.ads.AppAdvertiseManager
 import com.ghostfinder.ghostdetector.radar.data.model.Quadruple
 import com.ghostfinder.ghostdetector.radar.databinding.ActivityLanguageBinding
 import com.ghostfinder.ghostdetector.radar.ui.base.BaseActivity
@@ -109,6 +110,7 @@ class LanguageActivity : BaseActivity<LanguageViewModel, ActivityLanguageBinding
     }
 
     override fun onResumeImpl() {
+        AppAdvertiseManager.showAdaptiveBanner(this, binding.frAdBottom)
     }
 
     fun restartApp() {

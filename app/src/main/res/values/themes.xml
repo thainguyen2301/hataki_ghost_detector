@@ -7,4 +7,14 @@
     </style>
 
     <style name="Theme.BaseMVVM" parent="Base.Theme.BaseMVVM" />
+    <style name="FullScreenDialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+    <style name="full_screen_dialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowSoftInputMode">adjustPan</item>
+    </style>
 </resources>

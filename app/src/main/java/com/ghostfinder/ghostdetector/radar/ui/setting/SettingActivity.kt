@@ -6,6 +6,7 @@ import android.net.Uri
 import android.view.View
 import androidx.appcompat.widget.AppCompatButton
 import com.ghostfinder.ghostdetector.radar.R
+import com.ghostfinder.ghostdetector.radar.ads.AppAdvertiseManager
 import com.google.android.play.core.review.ReviewManagerFactory
 import com.ghostfinder.ghostdetector.radar.databinding.ActivitySettingBinding
 import com.ghostfinder.ghostdetector.radar.ui.base.BaseActivity
@@ -42,6 +43,7 @@ class SettingActivity : BaseActivity<SettingViewModel, ActivitySettingBinding>()
     }
 
     override fun onResumeImpl() {
+        AppAdvertiseManager.showAdaptiveBanner(this, binding.frAdBottom)
     }
 
     override fun onClick(v: View?) {

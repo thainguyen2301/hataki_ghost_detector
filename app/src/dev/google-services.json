@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "624090593311",
+    "project_id": "h008-ghost-detector-dev",
+    "storage_bucket": "h008-ghost-detector-dev.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:624090593311:android:36754b7e830a6adf3cfd2a",
+        "android_client_info": {
+          "package_name": "com.ghostfinder.ghostdetector.radar.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZx3mUqCbxp4Ygb9wTJHjHjOEExDY6Pt8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

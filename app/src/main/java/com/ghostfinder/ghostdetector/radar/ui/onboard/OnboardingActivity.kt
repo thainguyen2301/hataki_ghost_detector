@@ -1,13 +1,20 @@
 package com.ghostfinder.ghostdetector.radar.ui.onboard
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.view.View
 import android.widget.LinearLayout
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.view.isNotEmpty
+import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
+import com.ghostfinder.ghostdetector.radar.AdRemoteConfig
 import com.ghostfinder.ghostdetector.radar.R
+import com.ghostfinder.ghostdetector.radar.ads.AppAdvertiseManager
+import com.ghostfinder.ghostdetector.radar.ads.native_full.HatakiNativeFullActivity
 import com.ghostfinder.ghostdetector.radar.data.model.OnboardingItem
 import com.ghostfinder.ghostdetector.radar.databinding.ActivityOnboardingBinding
 import com.ghostfinder.ghostdetector.radar.ui.base.BaseActivity
@@ -15,7 +22,10 @@ import com.ghostfinder.ghostdetector.radar.ui.common.PermissionHelper
 import com.ghostfinder.ghostdetector.radar.ui.common.dp
 import com.ghostfinder.ghostdetector.radar.ui.permission.RequestPermissionActivity
 import com.ghostfinder.ghostdetector.radar.ui.start.StartActivity
+import com.mobile.hataki_ad_lib.ad_interstitial.InterstitialAdListener
+import com.mobile.hataki_ad_lib.ad_native.NativeAdListener
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class OnboardingActivity : BaseActivity<OnboardingViewModel, ActivityOnboardingBinding>() {
@@ -25,27 +35,69 @@ class OnboardingActivity : BaseActivity<OnboardingViewModel, ActivityOnboardingB
         }
     }
 
+    private val secondActivityResultLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == RESULT_OK) {
+            isSecondActivityCompleted = true
+            // Move to slide 3 (index 2)
+            binding.viewPager.setCurrentItem(2, true)
+        }
+    }
     private lateinit var adapter: OnboardingAdapter
-
+    private var isSecondActivityCompleted = false
     override fun getLayoutResource(): Int = R.layout.activity_onboarding
 
     override fun viewModelClass(): Class<OnboardingViewModel> = OnboardingViewModel::class.java
 
     override fun onCreateImpl() {
         initViewPager()
+        lifecycleScope.launch {
+            setupAds()
+        }
     }
 
     override fun onResumeImpl() {
     }
 
 
+
     private fun onCompleteOnboarding() {
-        if (PermissionHelper.isAllPermissionGranted(this@OnboardingActivity)) {
-            StartActivity.Companion.open(this@OnboardingActivity)
-        } else {
-            RequestPermissionActivity.Companion.open(this@OnboardingActivity)
+
+        val showNextActivity = {
+            RequestPermissionActivity.Companion.open(this)
+            finishAffinity()
         }
-        finish()
+
+        val interIntroAdProducer = AppAdvertiseManager.interIntroAdProducer ?: run {
+            showNextActivity()
+            return
+        }
+
+        interIntroAdProducer.setListener(object : InterstitialAdListener {
+            override fun onNextAction() {
+                super.onNextAction()
+                showNextActivity()
+            }
+
+            override fun onAdLoadFailed(isAutoPreload: Boolean) {
+                super.onAdLoadFailed(isAutoPreload)
+                if (isAutoPreload.not()) {
+                    showNextActivity()
+                }
+            }
+
+            override fun onAdFailedToShow() {
+                super.onAdFailedToShow()
+                showNextActivity()
+            }
+
+            override fun requireActivityForLoadAndShowAd(): Activity? {
+                return this@OnboardingActivity
+            }
+        })
+
+        interIntroAdProducer.show(this, lifecycle)
     }
 
     private fun setupIndicators(count: Int) {
@@ -78,6 +130,25 @@ class OnboardingActivity : BaseActivity<OnboardingViewModel, ActivityOnboardingB
                 isSelected = true
             }
         }
+    }
+
+    private fun setupAds() {
+        AppAdvertiseManager.loadFirstIntroNativeAd(this)
+        AppAdvertiseManager.firstIntroNativeAdProducer?.setListener(object : NativeAdListener {
+            override fun onAdLoaded(isAutoLoad: Boolean) {
+                super.onAdLoaded(isAutoLoad)
+                if (binding.viewPager.currentItem != 0) {
+                    AppAdvertiseManager.firstIntroNativeAdProducer?.show(
+                        this@OnboardingActivity,
+                        R.layout.layout_native_ad_small_button_bottom,
+                        binding.frAdBottom
+                    )
+                }
+            }
+        })
+        AppAdvertiseManager.loadIntroFullScreenNativeAds(this)
+        AppAdvertiseManager.loadPermissionNativeAds(this)
+        AppAdvertiseManager.loadInterstitialIntroAd(this)
     }
 
     private fun initViewPager() {
@@ -134,11 +205,26 @@ class OnboardingActivity : BaseActivity<OnboardingViewModel, ActivityOnboardingB
         binding.btnNext.setOnClickListener {
             val currentItem = binding.viewPager.currentItem
             if (currentItem < items.size - 1) {
-                binding.viewPager.currentItem = currentItem + 1
+                val currentPosition = binding.viewPager.currentItem
+                if (currentPosition == 1 && !isSecondActivityCompleted && isValidToShowFullNativeAd()) {
+                    // Launch SecondActivity from slide 2
+                    AppAdvertiseManager.currentNativeFullScreen = AppAdvertiseManager.fullScreenIntroNativeAdProducer
+                    val intent = Intent(this@OnboardingActivity, HatakiNativeFullActivity::class.java)
+                    secondActivityResultLauncher.launch(intent)
+                } else {
+                    // Move to next slide
+                    binding.viewPager.setCurrentItem(currentPosition + 1, true)
+                }
             } else {
                 onCompleteOnboarding()
             }
         }
+
+        binding.largeNextButton.setOnClickListener {
+            binding.viewPager.currentItem = 1
+        }
+
+
         binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
@@ -146,7 +232,29 @@ class OnboardingActivity : BaseActivity<OnboardingViewModel, ActivityOnboardingB
                     if (position == items.size - 1) resources.getString(R.string.get_started) else resources.getString(
                         R.string.next
                     )
+
+                if (position == 0) {
+                    // does not show anything
+                    binding.frAdBottom.isVisible = false
+                    binding.largeNextButton.isVisible = true
+                    binding.btnNext.isVisible = false
+                } else {
+                    binding.frAdBottom.isVisible = true
+                    binding.largeNextButton.isVisible = false
+                    binding.btnNext.isVisible = true
+                    AppAdvertiseManager.firstIntroNativeAdProducer?.show(
+                        this@OnboardingActivity,
+                        R.layout.layout_native_ad_small_button_bottom,
+                        binding.frAdBottom
+                    )
+                }
             }
         })
+        binding.largeNextButton.isVisible = true
+        binding.btnNext.isVisible = false
+    }
+
+    private fun isValidToShowFullNativeAd(): Boolean {
+        return AdRemoteConfig.shouldShowNativeFullAd() && AdRemoteConfig.shouldShowAllAds() && AppAdvertiseManager.fullScreenIntroNativeAdProducer?.isValidToShow == true
     }
 }

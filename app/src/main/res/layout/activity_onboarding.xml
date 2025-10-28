@@ -11,19 +11,21 @@
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/view_pager"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/actionConstraint"
+            />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/actionConstraint"
             android:layout_width="0dp"
             android:layout_height="44dp"
-            android:layout_marginTop="49dp"
             android:paddingHorizontal="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view_pager">
+            app:layout_constraintBottom_toTopOf="@id/largeNextButton">
 
             <LinearLayout
                 android:id="@+id/indicatorContainer"
@@ -48,6 +50,29 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+        <FrameLayout
+            android:id="@+id/fr_ad_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/largeNextButton"
+            style="@style/AppTheme.AdCallToAction"
+            android:layout_width="0dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_btn_install_native"
+            android:text="@string/next"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/fr_ad_bottom"
+            android:layout_marginBottom="16dp"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
