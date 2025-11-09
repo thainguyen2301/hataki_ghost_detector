@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Handler
 import android.os.Looper
+import android.view.View
 import android.widget.LinearLayout
 import androidx.core.content.edit
 import androidx.preference.PreferenceManager
@@ -12,6 +13,8 @@ import com.hataki.ghostdetector.data.model.Quadruple
 import com.hataki.ghostdetector.databinding.ActivityLanguageHataki1Binding
 import com.hataki.ghostdetector.ui.base.BaseActivity
 import com.hataki.ghostdetector.ui.common.LanguageItemView
+import com.hataki.ghostdetector.ui.onboard.OnboardingHataki1Activity
+import com.hataki.ghostdetector.ui.rada.RadaHataki1Activity
 import com.hataki.ghostdetector.utils.DialogHelper
 import com.hataki.ghostdetector.utils.LocaleHelper
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,6 +22,13 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class LanguageHataki1Activity : BaseActivity<LanguageViewModel, ActivityLanguageHataki1Binding>() {
     private fun setOnClickListenerHataki1() {
+        val lang = PreferenceManager.getDefaultSharedPreferences(this)
+            .getString(APP_LANG, null)
+        if (lang == null) {
+            binding.btnBack.visibility = View.GONE
+        }else {
+            binding.btnBack.visibility = View.VISIBLE
+        }
         binding.btnBack.setOnClickListener {
             this.onBackPressedDispatcher.onBackPressed()
         }
@@ -28,9 +38,20 @@ class LanguageHataki1Activity : BaseActivity<LanguageViewModel, ActivityLanguage
                 PreferenceManager.getDefaultSharedPreferences(this)
                     .edit { putString(APP_LANG, lang) }
                 LocaleHelper.setLocale(this@LanguageHataki1Activity, lang)
-                Handler(Looper.getMainLooper()).postDelayed({
-                    restartAppHataki1()
-                }, 3000)
+                val isFromSetting = intent.getBooleanExtra("isFromSetting", false)
+                if (isFromSetting) {
+                    val intent = Intent(this, RadaHataki1Activity::class.java).apply {
+                        flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    }
+                    startActivity(intent)
+                    finish()
+                } else {
+                    OnboardingHataki1Activity.Companion.open(this@LanguageHataki1Activity)
+                }
+
+//                Handler(Looper.getMainLooper()).postDelayed({
+//                    restartAppHataki1()
+//                }, 3000)
             }
         }
     }
@@ -96,8 +117,10 @@ class LanguageHataki1Activity : BaseActivity<LanguageViewModel, ActivityLanguage
 
     companion object {
         const val APP_LANG = "app_lang"
-        fun open(context: Context) {
-            context.startActivity(Intent(context, LanguageHataki1Activity::class.java))
+        fun open(context: Context, isFromSetting: Boolean = false) {
+            context.startActivity(Intent(context, LanguageHataki1Activity::class.java).apply {
+                putExtra("isFromSetting", isFromSetting)
+            })
         }
     }
 }

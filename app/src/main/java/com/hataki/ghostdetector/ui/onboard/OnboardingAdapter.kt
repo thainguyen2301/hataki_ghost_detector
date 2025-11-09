@@ -1,6 +1,7 @@
 package com.hataki.ghostdetector.ui.onboard
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.hataki.ghostdetector.data.model.OnboardingItem
@@ -12,6 +13,7 @@ class OnboardingAdapter(private val items: List<OnboardingItem>) :
     inner class OnboardingViewHolder(val binding: ItemOnboardingHataki1Binding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: OnboardingItem) {
+            binding.onboardImg.setImageResource(item.image)
             binding.titleText.text = item.title
             binding.descText.text = item.description
         }

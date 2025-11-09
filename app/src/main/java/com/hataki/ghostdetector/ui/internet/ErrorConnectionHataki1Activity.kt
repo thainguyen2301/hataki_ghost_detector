@@ -28,7 +28,6 @@ class ErrorConnectionHataki1Activity : AppCompatActivity() {
 
     companion object {
         fun open(context: Context) {
-            Log.d("cuongpq", "startActivity ErrorConnectionActivity")
             val intent = Intent(context, ErrorConnectionHataki1Activity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)

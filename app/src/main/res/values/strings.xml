@@ -13,17 +13,18 @@
     </string-array>
 
 
-    <string name="onboarding_title_1">Transform Your Age</string>
-    <string name="onboarding_desc_1">See yourself younger or older with AI-powered effects!</string>
+    <string name="onboarding_title_1">Ghost Detector Simulation</string>
+    <string name="onboarding_desc_1"></string>
 
-    <string name="onboarding_title_2">All-in-One AI Tools</string>
-    <string name="onboarding_desc_2">AI Art, Background Remove &amp; more in one app!</string>
+    <string name="onboarding_title_2">Prank Ghost Finder</string>
+    <string name="onboarding_desc_2"></string>
 
-    <string name="onboarding_title_3">Fun &amp; Shareable</string>
-    <string name="onboarding_desc_3">Create and share your age-altered selfies with\nfriends!</string>
+    <string name="onboarding_title_3">Dynamic Light Effect</string>
+    <string name="onboarding_desc_3"></string>
 
-    <string name="onboarding_title_4">Get Started</string>
-    <string name="onboarding_desc_4">Try it now and explore different versions of yourself!</string>
+    <string name="onboarding_title_4">Fun for Halloween</string>
+    <string name="onboarding_desc_4"></string>
+
     <string name="accept">ACCEPT</string>
     <string name="start_warning_message">Careful! \n\n If you are a very sensitive\n or scapy person \n considerate not using this \n app and close it.\n\n We care about your privacy \n and data security We keep \n this app free by showing \n ads. If you continue you \n accept to use youp data to \n tailor ads for you.</string>
     <string name="permission">Permission</string>

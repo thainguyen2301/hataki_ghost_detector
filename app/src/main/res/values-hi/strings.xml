@@ -14,17 +14,18 @@
         <item>निष्पादन योग्य फ़ाइल लोड हो रही है…</item>
     </string-array>
 
-    <string name="onboarding_title_1">अपनी उम्र बदलें</string>
-    <string name="onboarding_desc_1">एआई संचालित प्रभावों के साथ खुद को छोटा या बड़ा देखें!</string>
+    <string name="onboarding_title_1">भूत डिटेक्टर सिमुलेशन</string>
+    <string name="onboarding_desc_1"></string>
 
-    <string name="onboarding_title_2">ऑल-इन-वन एआई टूल्स</string>
-    <string name="onboarding_desc_2">एआई आर्ट, बैकग्राउंड हटाएँ और एक ही ऐप में बहुत कुछ!</string>
+    <string name="onboarding_title_2">मज़ाकिया भूत खोजक</string>
+    <string name="onboarding_desc_2"></string>
 
-    <string name="onboarding_title_3">मज़ेदार और साझा करने योग्य</string>
-    <string name="onboarding_desc_3">दोस्तों के साथ अपनी उम्र बदली हुई सेल्फ़ी बनाएं और साझा करें!</string>
+    <string name="onboarding_title_3">डायनेमिक लाइट इफेक्ट</string>
+    <string name="onboarding_desc_3"></string>
 
-    <string name="onboarding_title_4">शुरू करें</string>
-    <string name="onboarding_desc_4">अभी आज़माएँ और अपने विभिन्न संस्करण देखें!</string>
+    <string name="onboarding_title_4">हैलोवीन के लिए मज़ा</string>
+    <string name="onboarding_desc_4"></string>
+
 
     <string name="accept">स्वीकार करें</string>
     <string name="start_warning_message">सावधान! \n\n यदि आप बहुत संवेदनशील\n या डरपोक हैं \n तो इस ऐप का उपयोग न करें \n और इसे बंद करें।\n\n हम आपकी गोपनीयता \n और डेटा सुरक्षा का ध्यान रखते हैं। हम इस ऐप को मुफ़्त रखने के लिए \n विज्ञापन दिखाते हैं। यदि आप जारी रखते हैं, तो आप \n सहमत हैं कि आपके डेटा का उपयोग \n आपके लिए विज्ञापन को व्यक्तिगत बनाने के लिए किया जा सकता है।</string>

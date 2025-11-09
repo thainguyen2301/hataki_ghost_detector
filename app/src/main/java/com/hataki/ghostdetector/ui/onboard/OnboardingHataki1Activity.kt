@@ -76,15 +76,19 @@ class OnboardingHataki1Activity :
     private fun initViewPagerHataki1() {
         val items = listOf(
             OnboardingItem(
+                R.drawable.img_intro_1,
                 resources.getString(R.string.onboarding_title_1),
                 resources.getString(R.string.onboarding_desc_1)
             ), OnboardingItem(
+                R.drawable.img_intro_2,
                 resources.getString(R.string.onboarding_title_2),
                 resources.getString(R.string.onboarding_desc_2)
             ), OnboardingItem(
+                R.drawable.img_intro_3,
                 resources.getString(R.string.onboarding_title_3),
                 resources.getString(R.string.onboarding_desc_3)
             ), OnboardingItem(
+                R.drawable.img_intro_4,
                 resources.getString(R.string.onboarding_title_4),
                 resources.getString(R.string.onboarding_desc_4)
             )

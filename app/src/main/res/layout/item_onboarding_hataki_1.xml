@@ -10,11 +10,11 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/onboard_img"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="16dp"
-            android:src="@color/color_bg_app"
-            app:layout_constraintBottom_toTopOf="@+id/titleText"
+            android:src="@drawable/img_intro_1"
+            app:layout_constraintDimensionRatio="360:452"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -24,22 +24,24 @@
             style="@style/CustomText_20_white_semi_bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintBottom_toTopOf="@+id/descText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/onboard_img"
             tools:text="Title" />
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/descText"
             style="@style/CustomText_14_white_regular"
             android:layout_width="0dp"
             android:layout_height="34dp"
             android:gravity="center_horizontal"
             android:maxLines="2"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleText"
             tools:text="Description" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
