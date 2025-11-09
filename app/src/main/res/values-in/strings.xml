@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Ghost Detector</string>
     <string name="next">Berikutnya</string>
     <string name="get_started">Mulai</string>
     <string-array name="loading_messages">

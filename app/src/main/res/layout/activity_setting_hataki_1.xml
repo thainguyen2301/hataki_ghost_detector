@@ -47,7 +47,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbar">
 
-            <com.hataki.ghostdetector.ui.common.ItemSettingView
+            <com.ghost.finder.detector.radar.tracker.ui.common.ItemSettingView
                 android:id="@+id/item_language"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
@@ -59,7 +59,7 @@
                 app:titleText="@string/language" />
 
 
-            <com.hataki.ghostdetector.ui.common.ItemSettingView
+            <com.ghost.finder.detector.radar.tracker.ui.common.ItemSettingView
                 android:id="@+id/item_rate"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
@@ -70,7 +70,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/item_language"
                 app:titleText="@string/rate" />
 
-            <com.hataki.ghostdetector.ui.common.ItemSettingView
+            <com.ghost.finder.detector.radar.tracker.ui.common.ItemSettingView
                 android:id="@+id/item_share"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
@@ -82,7 +82,7 @@
                 app:titleText="@string/share" />
 
 
-            <com.hataki.ghostdetector.ui.common.ItemSettingView
+            <com.ghost.finder.detector.radar.tracker.ui.common.ItemSettingView
                 android:id="@+id/item_feedback"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
@@ -93,7 +93,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/item_share"
                 app:titleText="@string/feedback" />
 
-            <com.hataki.ghostdetector.ui.common.ItemSettingView
+            <com.ghost.finder.detector.radar.tracker.ui.common.ItemSettingView
                 android:id="@+id/item_privacy"
                 android:layout_width="0dp"
                 android:layout_height="48dp"

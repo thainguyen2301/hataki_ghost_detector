@@ -8,11 +8,11 @@ plugins {
 }
 
 android {
-    namespace = "com.hataki.ghostdetector"
+    namespace = "com.ghost.finder.detector.radar.tracker"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.hataki.ghostdetector"
+        applicationId = "com.ghost.finder.detector.radar.tracker"
         minSdk = 24
         targetSdk = 36
         versionCode = 100
@@ -30,7 +30,7 @@ android {
             applicationIdSuffix = ".debug"
         }
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -54,6 +54,17 @@ android {
     }
     hilt {
         enableAggregatingTask = true
+    }
+    bundle {
+        language {
+            enableSplit = false
+        }
+        density {
+            enableSplit = true
+        }
+        abi {
+            enableSplit = true
+        }
     }
 }
 

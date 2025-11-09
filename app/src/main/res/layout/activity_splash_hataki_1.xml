@@ -14,7 +14,7 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginBottom="16dp"
-            android:background="@drawable/bg_logo_placeholder"
+            android:src="@drawable/img_logo_app"
             android:contentDescription="@string/app_name"
             app:layout_constraintBottom_toTopOf="@+id/app_name"
             app:layout_constraintEnd_toEndOf="parent"
