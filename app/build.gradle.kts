@@ -88,8 +88,12 @@ dependencies {
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
 
-    implementation(libs.arsceneview)
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.review.ktx)
     implementation(libs.androidx.preference.ktx)
+
+    implementation(libs.androidx.camera.core)
+    implementation(libs.androidx.camera.camera2)
+    implementation(libs.androidx.camera.lifecycle)
+    implementation(libs.androidx.camera.view)
 }

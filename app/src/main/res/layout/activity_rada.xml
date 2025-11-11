@@ -15,11 +15,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <io.github.sceneview.ar.ARSceneView
+        <androidx.camera.view.PreviewView
             android:id="@+id/camera_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:visibility="gone"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.hataki.ghostdetector.ui.rada.OverlayView
+            android:id="@+id/overlayView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
             app:layout_constraintBottom_toTopOf="@+id/divider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -29,10 +39,10 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="#BF225922"
-            app:layout_constraintBottom_toBottomOf="@+id/camera_view"
-            app:layout_constraintEnd_toEndOf="@+id/camera_view"
-            app:layout_constraintStart_toStartOf="@+id/camera_view"
-            app:layout_constraintTop_toTopOf="@+id/camera_view" />
+            app:layout_constraintBottom_toBottomOf="@+id/overlayView"
+            app:layout_constraintEnd_toEndOf="@+id/overlayView"
+            app:layout_constraintStart_toStartOf="@+id/overlayView"
+            app:layout_constraintTop_toTopOf="@+id/overlayView" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/btn_setting"
@@ -68,19 +78,19 @@
             android:focusable="false"
             android:padding="16dp"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/camera_view"
-            app:layout_constraintEnd_toEndOf="@+id/camera_view"
-            app:layout_constraintStart_toStartOf="@+id/camera_view"
-            app:layout_constraintTop_toTopOf="@+id/camera_view" />
+            app:layout_constraintBottom_toBottomOf="@+id/overlayView"
+            app:layout_constraintEnd_toEndOf="@+id/overlayView"
+            app:layout_constraintStart_toStartOf="@+id/overlayView"
+            app:layout_constraintTop_toTopOf="@+id/overlayView" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/camera_accessories"
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/camera_view"
-            app:layout_constraintEnd_toEndOf="@+id/camera_view"
-            app:layout_constraintStart_toStartOf="@+id/camera_view">
+            app:layout_constraintBottom_toBottomOf="@+id/overlayView"
+            app:layout_constraintEnd_toEndOf="@+id/overlayView"
+            app:layout_constraintStart_toStartOf="@+id/overlayView">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/camera_rec_text"
