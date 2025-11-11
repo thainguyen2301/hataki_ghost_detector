@@ -6,5 +6,5 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PrivacyPolicyViewModel @Inject constructor() : BaseViewModel() {
-    val policyUrl = "https://policies.google.com/privacy?hl=en"
+    val policyUrl = "https://sites.google.com/view/funny-ghost-detector/home"
 }
