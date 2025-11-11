@@ -27,6 +27,7 @@ import io.github.sceneview.node.ImageNode
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.math.abs
+import kotlin.math.atan2
 import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.math.sqrt
@@ -86,11 +87,18 @@ class RadaHataki1Activity() : BaseActivity<RadaViewModel, ActivityRadaHataki1Bin
         }
         val cameraPose = frame.camera.pose
 
-        val rad = Math.toRadians(targetAzimuth.toDouble())
-        val dx = (distance * sin(rad)).toFloat()
-        val dz = (distance * cos(rad)).toFloat()
+        val rad = Math.toRadians(targetAzimuth.toDouble()).toFloat()
+        val camPos = cameraPose.translation
+        val dx = (distance * sin(rad))
+        val dz = (distance * cos(rad))
 
-        val ghostPose = cameraPose.compose(Pose.makeTranslation(dx, 0f, -dz))
+        val ghostPos = floatArrayOf(
+            camPos[0] + dx,
+            camPos[1],
+            camPos[2] + dz
+        )
+        val ghostPose = Pose(ghostPos, floatArrayOf(0f, 0f, 0f, 1f))
+
         val anchor = session.createAnchor(ghostPose)
 
         val anchorNode = AnchorNode(binding.cameraView.engine, anchor)
@@ -108,6 +116,17 @@ class RadaHataki1Activity() : BaseActivity<RadaViewModel, ActivityRadaHataki1Bin
         )
         anchorNode.addChildNode(ghostNode)
         binding.cameraView.addChildNode(anchorNode)
+        ghostNode.onFrame = { _ ->
+            val camPose = frame.camera.pose
+            val camT = camPose.translation
+
+            val dxLook = camT[0] - ghostNode.worldPosition.x
+            val dzLook = camT[2] - ghostNode.worldPosition.z
+            val yaw = Math.toDegrees(atan2(dxLook, dzLook).toDouble()).toFloat()
+
+            ghostNode.worldRotation = Rotation(0f, yaw, 0f)
+        }
+
         moveGhostHataki1(anchorNode)
         binding.radarView.startUpdate()
     }

@@ -30,7 +30,7 @@
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@color/primary"
+            android:background="#BFCA6D02"
             app:layout_constraintBottom_toBottomOf="@+id/camera_view"
             app:layout_constraintEnd_toEndOf="@+id/camera_view"
             app:layout_constraintStart_toStartOf="@+id/camera_view"
