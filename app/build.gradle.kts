@@ -93,5 +93,5 @@ dependencies {
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.review.ktx)
     implementation(libs.androidx.preference.ktx)
-    implementation("com.google.android.gms:play-services-ads:24.7.0")
+//    implementation("com.google.android.gms:play-services-ads:24.7.0")
 }
