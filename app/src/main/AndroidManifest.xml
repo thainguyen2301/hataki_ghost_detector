@@ -40,7 +40,8 @@
         <activity android:name=".ui.rada.RadaHataki1Activity" />
         <activity android:name=".ui.permission.RequestPermissionHataki1Activity" />
         <activity android:name=".ui.setting.SettingHataki1Activity" />
-        <activity android:name=".ui.language.LanguageHataki1Activity" />
+        <activity android:name=".ui.language.HatakiLanguageStartActivity" />
+        <activity android:name=".ads.native_full.HatakiNativeFullActivity"/>
         <activity android:name=".ui.privacy.PrivacyPolicyHataki1Activity" />
         <activity android:name=".ui.internet.ErrorConnectionHataki1Activity"
             android:launchMode="singleTop"/>

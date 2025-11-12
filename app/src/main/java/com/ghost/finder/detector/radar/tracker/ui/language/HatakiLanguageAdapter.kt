@@ -11,16 +11,19 @@ import androidx.recyclerview.widget.AsyncDifferConfig
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.voicechanger.effect.changevoice.ui.language.FlagHatakiAdapter
+import com.ghost.finder.detector.radar.tracker.R
+import com.ghost.finder.detector.radar.tracker.data.model.LanguageItem
+import com.ghost.finder.detector.radar.tracker.databinding.HatakiItemLanguageChildBinding
+import com.ghost.finder.detector.radar.tracker.databinding.HatakiItemLanguageParentWithChildBinding
+import com.ghost.finder.detector.radar.tracker.databinding.HatakiItemLanguageParentWithoutChildBinding
 import java.util.concurrent.Executors
-
-class LanguageHatakiAdapter : ListAdapter<LanguageHatakiItem, RecyclerView.ViewHolder>(
+class LanguageHatakiAdapter : ListAdapter<LanguageItem, RecyclerView.ViewHolder>(
     AsyncDifferConfig.Builder(diffCallback)
         .setBackgroundThreadExecutor(Executors.newSingleThreadExecutor())
         .build()
 ) {
 
-    private var clickListener: (LanguageHatakiItem) -> Unit = {}
+    private var clickListener: (LanguageItem) -> Unit = {}
 
     override fun onCreateViewHolder(
         parent: ViewGroup, viewType: Int,
@@ -48,11 +51,11 @@ class LanguageHatakiAdapter : ListAdapter<LanguageHatakiItem, RecyclerView.ViewH
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (position < currentList.size && position >= 0) {
             val item = getItem(position)
-            if (holder is LanguageWithChildHolder && item is LanguageHatakiItem.Parent)
+            if (holder is LanguageWithChildHolder && item is LanguageItem.Parent)
                 holder.bindData(item)
-            else if (holder is LanguageWithoutChildHolder && item is LanguageHatakiItem.ParentWithoutChild) {
+            else if (holder is LanguageWithoutChildHolder && item is LanguageItem.ParentWithoutChild) {
                 holder.bindData(item)
-            } else if (holder is ChildViewHolder && item is LanguageHatakiItem.Child) {
+            } else if (holder is ChildViewHolder && item is LanguageItem.Child) {
                 holder.bindData(item)
             }
         }
@@ -60,9 +63,9 @@ class LanguageHatakiAdapter : ListAdapter<LanguageHatakiItem, RecyclerView.ViewH
 
     override fun getItemViewType(position: Int): Int {
         return when(getItem(position)) {
-            is LanguageHatakiItem.Child -> TYPE_CHILD
-            is LanguageHatakiItem.Parent -> TYPE_WITH_CHILD
-            is LanguageHatakiItem.ParentWithoutChild -> TYPE_WITHOUT_CHILD
+            is LanguageItem.Child -> TYPE_CHILD
+            is LanguageItem.Parent -> TYPE_WITH_CHILD
+            is LanguageItem.ParentWithoutChild -> TYPE_WITHOUT_CHILD
         }
     }
 
@@ -74,7 +77,7 @@ class LanguageHatakiAdapter : ListAdapter<LanguageHatakiItem, RecyclerView.ViewH
         }
     }
 
-    fun setOnItemClick(itemClickListener: (LanguageHatakiItem) -> Unit) {
+    fun setOnItemClick(itemClickListener: (LanguageItem) -> Unit) {
         this.clickListener = itemClickListener
     }
 
@@ -82,7 +85,7 @@ class LanguageHatakiAdapter : ListAdapter<LanguageHatakiItem, RecyclerView.ViewH
     inner class LanguageWithChildHolder(val binding: HatakiItemLanguageParentWithChildBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        private var data: LanguageHatakiItem.Parent? = null
+        private var data: LanguageItem.Parent? = null
         private val adapter by lazy { FlagHatakiAdapter() }
 
         init {
@@ -92,11 +95,12 @@ class LanguageHatakiAdapter : ListAdapter<LanguageHatakiItem, RecyclerView.ViewH
             }
         }
 
-        fun bindData(data: LanguageHatakiItem.Parent) {
+        fun bindData(data: LanguageItem.Parent) {
             this.data = data
             binding.animationView.isVisible = data.isShowAnimation
             binding.ivLanguage.setImageResource(data.image)
             binding.tvLanguage.text = data.languageName
+            binding.regionName.text = data.regionName
             adapter.submitList(data.flags)
             binding.paddingTop.isVisible = adapterPosition != 0
         }
@@ -105,7 +109,7 @@ class LanguageHatakiAdapter : ListAdapter<LanguageHatakiItem, RecyclerView.ViewH
     inner class LanguageWithoutChildHolder(val binding: HatakiItemLanguageParentWithoutChildBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        private var data: LanguageHatakiItem? = null
+        private var data: LanguageItem? = null
 
         init {
             binding.containerView.setOnClickListener {
@@ -113,20 +117,29 @@ class LanguageHatakiAdapter : ListAdapter<LanguageHatakiItem, RecyclerView.ViewH
             }
         }
 
-        fun bindData(data: LanguageHatakiItem.ParentWithoutChild) {
+        fun bindData(data: LanguageItem.ParentWithoutChild) {
             this.data = data
             binding.animationView.isVisible = data.isShowAnimation
             binding.ivLanguage.setImageResource(data.image)
             binding.tvLanguage.text = data.languageName
+            binding.regionName.text = data.regionName
             binding.paddingTop.isVisible = adapterPosition != 0
             val context = binding.root.context
 
             if (data.isSelected) {
                 binding.containerView.setBackgroundResource(R.drawable.bg_item_language_on)
-                binding.tvLanguage.setTextColor(context.getColor(R.color.white))
+                binding.tvLanguage.setTextColor(context.getColor(R.color.lang_select_color))
+                binding.regionName.setTextColor(context.getColor(R.color.region_select_color))
+                binding.icSelect.setImageResource(R.drawable.ic_lang_select)
+                binding.tvLanguage.typeface = getFont(context, R.string.selected_parent_font)
+                binding.regionName.typeface = getFont(context, R.string.selected_main_region_font)
             } else {
                 binding.containerView.setBackgroundResource(R.drawable.bg_item_language_off)
-                binding.tvLanguage.setTextColor(context.getColor(R.color.white))
+                binding.tvLanguage.setTextColor(context.getColor(R.color.lang_unselect_color))
+                binding.regionName.setTextColor(context.getColor(R.color.region_unselect_color))
+                binding.icSelect.setImageResource(R.drawable.ic_lang_unselect)
+                binding.tvLanguage.typeface = getFont(context, R.string.unselect_parent_font)
+                binding.regionName.typeface = getFont(context, R.string.unselect_main_region_font)
             }
         }
     }
@@ -135,7 +148,7 @@ class LanguageHatakiAdapter : ListAdapter<LanguageHatakiItem, RecyclerView.ViewH
         private val binding: HatakiItemLanguageChildBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        private var data: LanguageHatakiItem? = null
+        private var data: LanguageItem? = null
 
         init {
             binding.regionContainer.setOnClickListener {
@@ -143,21 +156,25 @@ class LanguageHatakiAdapter : ListAdapter<LanguageHatakiItem, RecyclerView.ViewH
             }
         }
 
-        fun bindData(data: LanguageHatakiItem.Child) {
+        fun bindData(data: LanguageItem.Child) {
             this.data = data
-            binding.tvLanguage.text = data.regionName
+            binding.regionName.text = data.regionName
             binding.flag.setImageResource(data.image)
             val isLastItem = adapterPosition == currentList.size - 1
-            val hideLine = isLastItem || currentList[adapterPosition + 1] !is LanguageHatakiItem.Child
+            val hideLine = isLastItem || currentList[adapterPosition + 1] !is LanguageItem.Child
             binding.verticalLine.isVisible = !hideLine
             val context = binding.root.context
 
             if (data.isSelected) {
                 binding.regionContainer.setBackgroundResource(R.drawable.bg_item_language_on)
-                binding.tvLanguage.setTextColor(context.getColor(R.color.white))
+                binding.icSelect.setImageResource(R.drawable.ic_lang_select)
+                binding.regionName.setTextColor(context.getColor(R.color.extra_region_select_color))
+                binding.regionName.typeface = getFont(context, R.string.selected_region_font)
             } else {
                 binding.regionContainer.setBackgroundResource(R.drawable.bg_item_language_off)
-                binding.tvLanguage.setTextColor(context.getColor(R.color.white))
+                binding.icSelect.setImageResource(R.drawable.ic_lang_unselect)
+                binding.regionName.setTextColor(context.getColor(R.color.extra_region_unselect_color))
+                binding.regionName.typeface = getFont(context, R.string.unselect_region_font)
             }
         }
     }
@@ -167,14 +184,14 @@ class LanguageHatakiAdapter : ListAdapter<LanguageHatakiItem, RecyclerView.ViewH
         private const val TYPE_WITHOUT_CHILD = 1
         private const val TYPE_CHILD = 2
 
-        private val diffCallback = object : DiffUtil.ItemCallback<LanguageHatakiItem>() {
-            override fun areItemsTheSame(oldItem: LanguageHatakiItem, newItem: LanguageHatakiItem): Boolean {
+        private val diffCallback = object : DiffUtil.ItemCallback<LanguageItem>() {
+            override fun areItemsTheSame(oldItem: LanguageItem, newItem: LanguageItem): Boolean {
                 return oldItem.getItemId() == newItem.getItemId()
             }
 
             override fun areContentsTheSame(
-                oldItem: LanguageHatakiItem,
-                newItem: LanguageHatakiItem,
+                oldItem: LanguageItem,
+                newItem: LanguageItem,
             ): Boolean {
                 return oldItem == newItem
             }

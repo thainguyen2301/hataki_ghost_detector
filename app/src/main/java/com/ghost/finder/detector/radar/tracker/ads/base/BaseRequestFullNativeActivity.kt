@@ -32,7 +32,6 @@ abstract class BaseRequestFullNativeActivity<VM: BaseViewModel, VB : ViewBinding
         HKTAppAdvertiseManager.currentNativeFullScreen = ad
         secondActivityResultLauncher.launch(Intent(this, HatakiNativeFullActivity::class.java))
         callbackAfterNativeFullScreenShown = callback
-
     }
 
     open fun onNextFromNativeFullScreenAd() {}

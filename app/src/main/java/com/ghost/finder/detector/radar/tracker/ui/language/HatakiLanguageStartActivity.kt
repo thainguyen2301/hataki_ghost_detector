@@ -1,37 +1,62 @@
-package com.ghostfinder.ghostdetector.radar.ui.language
+package com.ghost.finder.detector.radar.tracker.ui.language
 
 import android.content.Intent
-
 import android.util.Log
-import androidx.activity.OnBackPressedCallback
-import androidx.core.content.edit
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
-import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ghostfinder.ghostdetector.radar.AdRemoteConfig
-import com.ghostfinder.ghostdetector.radar.R
-import com.ghostfinder.ghostdetector.radar.ads.AppAdvertiseManager
-import com.ghostfinder.ghostdetector.radar.ads.dialog.TranslatingHatakiDialog
-import com.ghostfinder.ghostdetector.radar.databinding.ActivityHatakiLanguageStartBinding
-import com.ghostfinder.ghostdetector.radar.model.DoneButtonPosition
-import com.ghostfinder.ghostdetector.radar.ui.base.BaseActivity
-import com.ghostfinder.ghostdetector.radar.ui.language.LanguageActivity.Companion.APP_LANG
-import com.ghostfinder.ghostdetector.radar.ui.onboard.OnboardingActivity
-import com.ghostfinder.ghostdetector.radar.utils.LocaleHelper
-import com.mobile.hataki_ad_lib.ad_native.NativeAdListener
-import com.voicechanger.effect.changevoice.ui.language.HatakiLanguageViewModel
-import com.ghost.finder.detector.radar.tracker.ui.language.LanguageHatakiAdapter
+import com.ghost.finder.detector.radar.tracker.R
+import com.ghost.finder.detector.radar.tracker.ads.HKTAdRemoteConfig
+import com.ghost.finder.detector.radar.tracker.ads.HKTAppAdvertiseManager
+import com.ghost.finder.detector.radar.tracker.ads.model.HKTDoneButtonPosition
+import com.ghost.finder.detector.radar.tracker.data.model.LanguageItem
+import com.ghost.finder.detector.radar.tracker.databinding.ActivityHatakiLanguageStartBinding
+import com.ghost.finder.detector.radar.tracker.ui.base.BaseActivity
+import com.ghost.finder.detector.radar.tracker.ui.dialog.TranslatingDialog
+import com.ghost.finder.detector.radar.tracker.ui.onboard.OnboardingHataki1Activity
+import com.ghost.finder.detector.radar.tracker.utils.tap
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import tap
 
 class HatakiLanguageStartActivity : BaseActivity<HatakiLanguageViewModel, ActivityHatakiLanguageStartBinding>() {
-    private val translatingDialog by lazy { TranslatingHatakiDialog(this) }
+    private val translatingDialog by lazy { TranslatingDialog(this) }
     private val adapter by lazy { LanguageHatakiAdapter() }
-    private val languageScreenConfig = AdRemoteConfig.getLanguageScreenConfig()
+    private val languageScreenConfig = HKTAdRemoteConfig.getLanguageScreenConfig()
+    
 
+    override fun onResume() {
+        super.onResume()
+        hatakiShowNativeMain()
+    }
+
+    override fun getLayoutResource(): Int = R.layout.activity_hataki_language_start
+
+    override fun viewModelClass(): Class<HatakiLanguageViewModel> = HatakiLanguageViewModel::class.java
+
+    override fun onCreateImpl() {
+
+        binding.rvLanguage.adapter = adapter
+        HKTAppAdvertiseManager.loadFirstIntroNativeAd(this)
+        setupRecyclerView()
+        setupObservers()
+        setupDoneButton()
+        
+        val doneClickListener = {
+//            SystemUtil.saveLocale(this, viewModel.getSelectedCode())
+//            SystemUtil.setLocale(this)
+            startActivity(Intent(this, OnboardingHataki1Activity::class.java))
+            finish()
+        }
+
+        binding.ivDoneLeft.tap { doneClickListener() }
+        binding.ivDoneRight.tap { doneClickListener() }
+        
+    }
+
+    override fun onResumeImpl() {
+    }
+    
 
     private fun setupDoneButton() {
         // Initially hide both buttons
@@ -43,8 +68,21 @@ class HatakiLanguageStartActivity : BaseActivity<HatakiLanguageViewModel, Activi
         binding.rvLanguage.layoutManager = LinearLayoutManager(this)
         binding.rvLanguage.adapter = adapter
 
-        adapter.setOnItemClick { LanguageHatakiItem ->
-            viewModel.selectLang(LanguageHatakiItem)
+        adapter.setOnItemClick { languageItem ->
+            viewModel.selectLang(languageItem)
+            when (languageItem) {
+                is LanguageItem.Parent -> {
+                    hatakiShowNativeAfter()
+                    setupDoneButton()
+                    HKTAppAdvertiseManager.loadDropLanguageNativeAds(this)
+                }
+
+                is LanguageItem.ParentWithoutChild -> {
+                    hatakiShowNativeAfter()
+                }
+
+                else ->  hatakiShowNativeDrop()
+            }
         }
     }
 
@@ -65,47 +103,6 @@ class HatakiLanguageStartActivity : BaseActivity<HatakiLanguageViewModel, Activi
         viewModel.getLanguageList(screenOpenCount = 1)
     }
 
-    override fun getLayoutResource(): Int = R.layout.activity_hataki_language_start
-
-    override fun viewModelClass(): Class<HatakiLanguageViewModel> = HatakiLanguageViewModel::class.java
-
-    override fun onCreateImpl() {
-        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {}
-        })
-
-        binding.rvLanguage.adapter = adapter
-
-        setupRecyclerView()
-        setupDoneButton()
-        lifecycleScope.launch {
-            delay(500L)
-            hatakiShowNativeMain()
-        }
-
-        val doneClickListener = {
-            val language = viewModel.getSelectedCode() ?: ""
-            PreferenceManager.getDefaultSharedPreferences(this)
-                .edit { putString(APP_LANG, language) }
-            LocaleHelper.setLocale(this@HatakiLanguageStartActivity, language)
-            startActivity(Intent(this, OnboardingActivity::class.java))
-            finish()
-        }
-
-        binding.ivDoneLeft.tap { doneClickListener() }
-        binding.ivDoneRight.tap { doneClickListener() }
-
-        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                finishAffinity()
-            }
-        })
-    }
-
-    override fun onResumeImpl() {
-        // No implementation needed for now
-    }
-
     private fun showTranslatingDialog() {
         // Show translating popup only if config allows
         if (languageScreenConfig.isShowTranslatingPopUp) {
@@ -119,7 +116,7 @@ class HatakiLanguageStartActivity : BaseActivity<HatakiLanguageViewModel, Activi
         val doneButtonDelayTime = languageScreenConfig.doneButtonShowAfterSecond * 1000L
 
 
-        lifecycleScope.launch(Dispatchers.Main) {
+        lifecycleScope.launch (Dispatchers.Main) {
             delay(popUpLoadingTime)
             if (translatingDialog.isShowing) {
                 translatingDialog.dismiss()
@@ -128,11 +125,11 @@ class HatakiLanguageStartActivity : BaseActivity<HatakiLanguageViewModel, Activi
             delay(doneButtonDelayTime)
             // Show the appropriate done button based on config position
             when (languageScreenConfig.doneButtonPosition) {
-                DoneButtonPosition.LEFT -> {
+                HKTDoneButtonPosition.LEFT -> {
                     binding.ivDoneLeft.isVisible = true
                     binding.ivDoneRight.isVisible = false
                 }
-                DoneButtonPosition.RIGHT -> {
+                HKTDoneButtonPosition.RIGHT -> {
                     binding.ivDoneLeft.isVisible = false
                     binding.ivDoneRight.isVisible = true
                 }
@@ -140,22 +137,21 @@ class HatakiLanguageStartActivity : BaseActivity<HatakiLanguageViewModel, Activi
         }
     }
 
-    private fun hatakiShowNativeMain() {
-        AppAdvertiseManager.mainLanguageNativeProducer?.let { nativeAdProducer ->
-            val show = {
-                nativeAdProducer.show(this,
-                    R.layout.layout_native_ad_medium_button_top, binding.frAdsLangBottom)
-            }
-
-            nativeAdProducer.setListener(object : NativeAdListener {
-                override fun onAdLoaded(isAutoLoad: Boolean) {
-                    super.onAdLoaded(isAutoLoad)
-                    show()
-                }
-            })
-
-            show()
-        }
-
+    private fun hatakiShowNativeAfter() {
+        HKTAppAdvertiseManager.selectedLanguageNativeProducer?.show(this,
+            R.layout.layout_native_ad_medium_button_top, binding.frAdsLangBottom)
     }
+
+    private fun hatakiShowNativeDrop() {
+        HKTAppAdvertiseManager.selectedChildLanguageNativeProducer?.show(this,R.layout.layout_native_ad_medium_button_top, binding.frAdsLangBottom)
+    }
+
+    private fun hatakiShowNativeMain() {
+        HKTAppAdvertiseManager.mainLanguageNativeProducer?.show(this,R.layout.layout_native_ad_medium_button_top, binding.frAdsLangBottom)
+    }
+
+    companion object {
+        const val APP_LANG = "app_lang"
+    }
+
 }

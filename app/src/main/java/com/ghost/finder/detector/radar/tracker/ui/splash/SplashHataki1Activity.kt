@@ -17,9 +17,7 @@ import com.ghost.finder.detector.radar.tracker.ads.HKTAdRemoteConfig
 import com.ghost.finder.detector.radar.tracker.ads.HKTAppAdvertiseManager
 import com.ghost.finder.detector.radar.tracker.ads.base.BaseRequestFullNativeActivity
 import com.ghost.finder.detector.radar.tracker.databinding.ActivitySplashHataki1Binding
-import com.ghost.finder.detector.radar.tracker.ui.base.BaseActivity
-import com.ghost.finder.detector.radar.tracker.ui.language.LanguageHataki1Activity
-import com.ghost.finder.detector.radar.tracker.ui.onboard.OnboardingHataki1Activity
+import com.ghost.finder.detector.radar.tracker.ui.language.HatakiLanguageStartActivity
 import com.mobile.hataki_ad_lib.ad_interstitial.InterstitialAdListener
 import com.mobile.hataki_ad_lib.ad_manager.AdManager
 import com.mobile.hataki_ad_lib.ad_native.NativeAdListener
@@ -37,17 +35,6 @@ import javax.inject.Inject
 class SplashHataki1Activity : BaseRequestFullNativeActivity<SplashViewModel, ActivitySplashHataki1Binding>() {
 
     private var isHandled: Boolean = false
-
-    private fun checkNextScreenHataki1() {
-        val lang = PreferenceManager.getDefaultSharedPreferences(this)
-            .getString(LanguageHataki1Activity.Companion.APP_LANG, null)
-        if (lang == null) {
-            LanguageHataki1Activity.Companion.open(this@SplashHataki1Activity)
-        } else {
-            OnboardingHataki1Activity.Companion.open(this@SplashHataki1Activity)
-        }
-        finish()
-    }
 
     override fun viewModelClass(): Class<SplashViewModel> = SplashViewModel::class.java
 
@@ -126,7 +113,7 @@ class SplashHataki1Activity : BaseRequestFullNativeActivity<SplashViewModel, Act
                 }
 
                 val getIsFirstOpenApp = PreferenceManager.getDefaultSharedPreferences(this@SplashHataki1Activity)
-                    .getBoolean(LanguageHataki1Activity.Companion.IS_FIRST_OPEN_APP, false)
+                    .getBoolean("", false)
 
                 AdManager.instance.initAdsWithConsent(this@SplashHataki1Activity, testDeviceIds = listOf("BCDBD2B7E45CEFEDE711AC3BACFAF33C"), onReady = {
                     HKTAdConfig.load(getIsFirstOpenApp)
@@ -209,8 +196,8 @@ class SplashHataki1Activity : BaseRequestFullNativeActivity<SplashViewModel, Act
     }
 
     private fun showLanguageScreen() {
-//        startActivity(Intent(this, ::class.java))
-//        finishAffinity()
+        startActivity(Intent(this, HatakiLanguageStartActivity::class.java))
+        finishAffinity()
     }
 
     private fun showInterAdIfNeeded(callback: () -> Unit) {

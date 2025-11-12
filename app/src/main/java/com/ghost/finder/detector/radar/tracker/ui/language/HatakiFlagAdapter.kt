@@ -1,13 +1,12 @@
-package com.voicechanger.effect.changevoice.ui.language
+package com.ghost.finder.detector.radar.tracker.ui.language
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
-import com.ghostfinder.ghostdetector.radar.ads.base.BaseListAdapter
-import com.ghostfinder.ghostdetector.radar.ads.base.BaseViewHolder
-import com.ghostfinder.ghostdetector.radar.databinding.HatakiItemFlagBinding
+import com.ghost.finder.detector.radar.tracker.databinding.HatakiItemFlagBinding
+import com.ghost.finder.detector.radar.tracker.ui.common.BaseListHatakiAdapter
+import com.ghost.finder.detector.radar.tracker.ui.common.BaseViewHolder
 
-
-class FlagHatakiAdapter: BaseListAdapter<Int, HatakiItemFlagBinding, FlagHatakiAdapter.FlagViewHolder>(diffCallback) {
+class FlagHatakiAdapter: BaseListHatakiAdapter<Int, HatakiItemFlagBinding, FlagHatakiAdapter.FlagViewHolder>(diffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FlagViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)

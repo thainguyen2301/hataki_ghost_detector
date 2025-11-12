@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="selected_parent_font" translatable="false">font/figtree_semi_bold.ttf</string>
+    <string name="unselect_parent_font" translatable="false">font/figtree_semi_bold.ttf</string>
+    <string name="selected_region_font" translatable="false">font/figtree_semi_bold.ttf</string>
+    <string name="unselect_region_font" translatable="false">font/figtree_semi_bold.ttf</string>
+    <string name="selected_main_region_font" translatable="false">font/figtree_semi_bold.ttf</string>
+    <string name="unselect_main_region_font" translatable="false">font/figtree_semi_bold.ttf</string>
+</resources>

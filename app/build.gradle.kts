@@ -111,6 +111,7 @@ dependencies {
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.review.ktx)
     implementation(libs.androidx.preference.ktx)
+    implementation(libs.lottie)
 
     // Firebase
     implementation(platform("com.google.firebase:firebase-bom:34.4.0"))
