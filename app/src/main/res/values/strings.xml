@@ -62,4 +62,8 @@
     <string name="evp">EVP</string>
     <string name="off">OFF</string>
     <string name="on">ON</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="continue_res">Continue</string>
+    <string name="we_re_glad_to_have_you_here_again_let_s_pick_up_where_you_left_off_and_continue_your_journey">We\'re glad to have you here again. Let\'s pick up where you left off and continue your journey!</string>
+
 </resources>

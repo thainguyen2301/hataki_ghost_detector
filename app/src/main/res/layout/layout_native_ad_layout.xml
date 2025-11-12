@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:background="#80000000"
+    android:clipToPadding="false"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:tag="adAppIcon" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#ffffff"
+        android:tag="adMediaView" />
+
+    <TextView
+        android:id="@+id/ad_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:tag="adHeadline"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <!-- Body Text -->
+    <TextView
+        android:id="@+id/ad_body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:tag="adBody"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+
+    <!-- CTA Button -->
+    <Button
+        android:id="@+id/ad_cta_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:padding="12dp"
+        android:tag="adCallToAction"
+        android:text="Install"
+        android:textColor="@android:color/white" />
+
+    <!-- Ad Attribution (Required) -->
+    <TextView
+        style="@style/AppTheme.AdAttribution"
+        android:tag="adAttribution" />
+
+
+    <!-- Ad Advertiser -->
+    <TextView
+        android:id="@+id/ad_advertiser"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:tag="adAdvertiser"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <!-- Ad Rating -->
+<!--    <RatingBar-->
+<!--        android:id="@+id/ad_stars"-->
+<!--        style="?android:attr/ratingBarStyleSmall"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:isIndicator="true"-->
+<!--        android:numStars="5"-->
+<!--        android:stepSize="0.5"-->
+<!--        android:tag="adStars" />-->
+
+<!--    &lt;!&ndash;Ad Price &ndash;&gt;-->
+<!--    <TextView-->
+<!--        android:id="@+id/ad_price"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:paddingStart="5dp"-->
+<!--        android:paddingLeft="5dp"-->
+<!--        android:paddingEnd="5dp"-->
+<!--        android:paddingRight="5dp"-->
+<!--        android:tag="adPrice"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="12sp" />-->
+
+<!--    &lt;!&ndash;Ad Store &ndash;&gt;-->
+<!--    <TextView-->
+<!--        android:id="@+id/ad_store"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:paddingStart="5dp"-->
+<!--        android:paddingLeft="5dp"-->
+<!--        android:paddingEnd="5dp"-->
+<!--        android:paddingRight="5dp"-->
+<!--        android:tag="adStore"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="12sp" />-->
+</LinearLayout>

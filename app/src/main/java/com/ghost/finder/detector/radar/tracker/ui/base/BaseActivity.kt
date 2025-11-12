@@ -102,4 +102,8 @@ abstract class BaseActivity<VM : BaseViewModel, VB : ViewBinding> : AppCompatAct
     protected abstract fun viewModelClass(): Class<VM>
     protected abstract fun onCreateImpl()
     protected abstract fun onResumeImpl()
+
+    companion object {
+        val TAG: String = this::class.java.simpleName
+    }
 }

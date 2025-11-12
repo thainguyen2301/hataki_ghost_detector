@@ -115,6 +115,7 @@ class LanguageHataki1Activity : BaseActivity<LanguageViewModel, ActivityLanguage
 
     companion object {
         const val APP_LANG = "app_lang"
+        const val IS_FIRST_OPEN_APP = "is_first_open_app"
         fun open(context: Context, isFromSetting: Boolean = false) {
             context.startActivity(Intent(context, LanguageHataki1Activity::class.java).apply {
                 putExtra("isFromSetting", isFromSetting)

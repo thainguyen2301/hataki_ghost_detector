@@ -6,6 +6,7 @@ import com.ghost.finder.detector.radar.tracker.data.framework.evp.EVPRecorderMan
 import com.ghost.finder.detector.radar.tracker.data.framework.sensor.SensorDetectManager
 import com.ghost.finder.detector.radar.tracker.data.local.DataStoreManager
 import com.ghost.finder.detector.radar.tracker.data.remote.ApiService
+import com.ghost.finder.detector.radar.tracker.utils.HKTPreferenceRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -32,6 +33,11 @@ object AppModule {
     fun provideApi(retrofit: Retrofit): ApiService =
         retrofit.create(ApiService::class.java)
 
+    @Provides
+    @Singleton
+    fun provideHKTPreferenceRepository(context: Context): HKTPreferenceRepository {
+        return HKTPreferenceRepository(context)
+    }
 
     @Provides
     @Singleton

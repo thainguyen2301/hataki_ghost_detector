@@ -6,4 +6,5 @@
     </style>
 
     <style name="Theme.BaseMVVM" parent="Base.Theme.BaseMVVM" />
+    <style name="AppTheme" parent="Theme.BaseMVVM"/>
 </resources>

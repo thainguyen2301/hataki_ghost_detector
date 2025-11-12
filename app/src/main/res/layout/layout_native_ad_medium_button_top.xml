@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_native_small"
+    android:padding="10dp">
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/ad_cta_button"
+        style="@style/AppTheme.AdCallToAction"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_btn_install_native"
+        android:tag="adCallToAction"
+        android:text="Install"
+        app:layout_constraintTop_toTopOf="parent" />
+    <FrameLayout
+        android:id="@+id/ad_media_container"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="#ffffff"
+        android:tag="adMediaView"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ad_cta_button" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:tag="adAppIcon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ad_media_container" />
+
+    <TextView
+        android:id="@+id/ad_title"
+        style="@style/AppTheme.AdHeadline"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:tag="adHeadline"
+        android:text="Be twice as productive | Duet Display"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/image"
+        app:layout_constraintTop_toTopOf="@id/image" />
+
+    <TextView
+        android:id="@+id/ad_body"
+        style="@style/AppTheme.AdBody"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="6dp"
+        android:tag="adBody"
+        android:text="Ex-Apple engineers turn your iPad, Mac, PC or Android into a blazing fasst monitor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/image"
+        app:layout_constraintTop_toBottomOf="@id/ad_title" />
+
+    <TextView
+        android:id="@+id/ad_attribution"
+        style="@style/AppTheme.AdAttribution"
+        android:layout_width="30dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="6dp"
+        android:gravity="center"
+        android:tag="adAttribution"
+        app:layout_constraintStart_toStartOf="@id/ad_body"
+        app:layout_constraintTop_toBottomOf="@id/ad_body" />
+
+    <TextView
+        android:id="@+id/ad_advertiser"
+        style="@style/AppTheme.Advertiser"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="10dp"
+        android:tag="adAdvertiser"
+        android:text="4.4"
+        app:layout_constraintStart_toEndOf="@id/ad_attribution"
+        app:layout_constraintTop_toTopOf="@id/ad_attribution" />
+
+    <RatingBar
+        android:id="@+id/ad_stars"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:stepSize="0.5"
+        android:tag="adStars"
+        app:layout_constraintStart_toEndOf="@id/ad_advertiser"
+        app:layout_constraintTop_toTopOf="@id/ad_attribution" />
+
+    <TextView
+        android:id="@+id/ad_price"
+        style="@style/AppTheme.AdPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:tag="adPrice"
+        android:text="300.000$"
+        app:layout_constraintStart_toEndOf="@id/ad_stars"
+        app:layout_constraintTop_toTopOf="@id/ad_attribution" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

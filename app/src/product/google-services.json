@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "280745298173",
+    "project_id": "h011-tnt-ghost",
+    "storage_bucket": "h011-tnt-ghost.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:280745298173:android:252734d8cbeceff0371694",
+        "android_client_info": {
+          "package_name": "com.ghost.finder.detector.radar.tracker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJCvVV3znHKjBIktAunX2ymMoInjePAeE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,6 @@
 package com.ghost.finder.detector.radar.tracker.di
 
+import android.content.Context
 import com.ghost.finder.detector.radar.tracker.data.framework.compass.CompassManager
 import com.ghost.finder.detector.radar.tracker.data.framework.evp.EVPRecorderManager
 import com.ghost.finder.detector.radar.tracker.data.framework.sensor.SensorDetectManager
