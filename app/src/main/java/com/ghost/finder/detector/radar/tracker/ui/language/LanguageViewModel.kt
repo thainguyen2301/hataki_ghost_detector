@@ -1,9 +1,9 @@
-package com.ghost.finder.detector.radar.tracker.ui.language
+package com.ghostfinder.ghostdetector.radar.ui.language
 
 import androidx.lifecycle.viewModelScope
-import com.ghost.finder.detector.radar.tracker.data.model.common.UIState
-import com.ghost.finder.detector.radar.tracker.data.repository.language.LanguageRepository
-import com.ghost.finder.detector.radar.tracker.ui.base.BaseViewModel
+import com.ghostfinder.ghostdetector.radar.data.model.common.UIState
+import com.ghostfinder.ghostdetector.radar.data.repository.language.LanguageRepository
+import com.ghostfinder.ghostdetector.radar.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
