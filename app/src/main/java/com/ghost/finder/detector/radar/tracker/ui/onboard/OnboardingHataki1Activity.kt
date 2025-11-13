@@ -1,37 +1,48 @@
 package com.ghost.finder.detector.radar.tracker.ui.onboard
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.view.isNotEmpty
+import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2
 import com.ghost.finder.detector.radar.tracker.R
+import com.ghost.finder.detector.radar.tracker.ads.HKTAdRemoteConfig
+import com.ghost.finder.detector.radar.tracker.ads.HKTAppAdvertiseManager
+import com.ghost.finder.detector.radar.tracker.ads.base.BaseRequestFullNativeActivity
+import com.ghost.finder.detector.radar.tracker.ads.native_full.HatakiNativeFullActivity
 import com.ghost.finder.detector.radar.tracker.data.model.OnboardingItem
 import com.ghost.finder.detector.radar.tracker.databinding.ActivityOnboardingHataki1Binding
-import com.ghost.finder.detector.radar.tracker.ui.base.BaseActivity
-import com.ghost.finder.detector.radar.tracker.ui.common.PermissionHelper
 import com.ghost.finder.detector.radar.tracker.ui.common.dp
 import com.ghost.finder.detector.radar.tracker.ui.permission.RequestPermissionHataki1Activity
-import com.ghost.finder.detector.radar.tracker.ui.start.StartHataki1Activity
+import com.mobile.hataki_ad_lib.ad_interstitial.InterstitialAdListener
+import com.mobile.hataki_ad_lib.ad_native.NativeBaseAdProducer
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class OnboardingHataki1Activity :
-    BaseActivity<OnboardingViewModel, ActivityOnboardingHataki1Binding>() {
+    BaseRequestFullNativeActivity<OnboardingViewModel, ActivityOnboardingHataki1Binding>() {
 
     override fun viewModelClass(): Class<OnboardingViewModel> = OnboardingViewModel::class.java
 
     override fun getLayoutResource(): Int = R.layout.activity_onboarding_hataki_1
+    private var isSecondActivityCompleted = false
 
-    private fun onCompleteOnboardingHataki1() {
-        if (PermissionHelper.isAllPermissionGranted(this@OnboardingHataki1Activity)) {
-            StartHataki1Activity.Companion.open(this@OnboardingHataki1Activity)
-        } else {
-            RequestPermissionHataki1Activity.Companion.open(this@OnboardingHataki1Activity)
+    private val secondActivityResultLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == RESULT_OK) {
+            isSecondActivityCompleted = true
+            // Move to slide 3 (index 2)
+            binding.viewPager.setCurrentItem(2, true)
         }
-        finish()
     }
 
     private fun setupIndicatorsHataki1(count: Int) {
@@ -68,9 +79,23 @@ class OnboardingHataki1Activity :
 
     override fun onCreateImpl() {
         initViewPagerHataki1()
+        lifecycleScope.launch(Dispatchers.Main) {
+            // Ad
+            HKTAppAdvertiseManager.loadLastIntroNativeAd(context = this@OnboardingHataki1Activity)
+            HKTAppAdvertiseManager.loadIntroFullScreenNativeAds(this@OnboardingHataki1Activity)
+            // Prepare for next permission screen
+            HKTAppAdvertiseManager.loadPermissionNativeAds(this@OnboardingHataki1Activity)
+            HKTAppAdvertiseManager.loadInterstitialIntroAd(this@OnboardingHataki1Activity)
+            initHatakiNativeAds()
+        }
     }
 
     override fun onResumeImpl() {
+    }
+
+    private fun isLastHatakiSlide(): Boolean {
+        val currentPosition = binding.viewPager.currentItem
+        return (currentPosition + 1 == 4)
     }
 
     private fun initViewPagerHataki1() {
@@ -124,11 +149,19 @@ class OnboardingHataki1Activity :
         })
         setupIndicatorsHataki1(items.size)
         binding.btnNext.setOnClickListener {
-            val currentItem = binding.viewPager.currentItem
-            if (currentItem < items.size - 1) {
-                binding.viewPager.currentItem = currentItem + 1
+            if (!isLastHatakiSlide()) {
+                val currentPosition = binding.viewPager.currentItem
+                if (currentPosition == 1 && !isSecondActivityCompleted && isValidToShowFullScreenAd() ) {
+                    // Launch SecondActivity from slide 2
+                    HKTAppAdvertiseManager.currentNativeFullScreen = HKTAppAdvertiseManager.fullScreenIntroNativeAdProducer
+                    val intent = Intent(this, HatakiNativeFullActivity::class.java)
+                    secondActivityResultLauncher.launch(intent)
+                } else {
+                    // Move to next slide
+                    binding.viewPager.setCurrentItem(currentPosition + 1, true)
+                }
             } else {
-                onCompleteOnboardingHataki1()
+                nextHatakiActivityProcess()
             }
         }
         binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
@@ -138,8 +171,82 @@ class OnboardingHataki1Activity :
                     if (position == items.size - 1) resources.getString(R.string.get_started) else resources.getString(
                         R.string.next
                     )
+
+                binding.viewPager.isUserInputEnabled = !(position == 1 && !isSecondActivityCompleted)
+                // On slide 2, prepare to launch SecondActivity on swipe or button
+                // Prevent swiping to slide 3
+
+                if (binding.viewPager.currentItem == 3) {
+                    HKTAppAdvertiseManager.lastIntroNativeAdProducer?.show(this@OnboardingHataki1Activity, R.layout.layout_native_ad_small_button_bottom, binding.frAdBottom)
+                    binding.frAdBottom.visibility = View.VISIBLE
+                } else if (binding.viewPager.currentItem != 0) {
+                    binding.frAdBottom.visibility = View.GONE
+                } else {
+                    binding.frAdBottom.visibility = View.VISIBLE
+                }
             }
         })
+    }
+
+    private fun isValidToShowFullScreenAd(): Boolean {
+        return HKTAdRemoteConfig.shouldShowNativeFullAd() && HKTAdRemoteConfig.shouldShowAllAds() && HKTAppAdvertiseManager.fullScreenIntroNativeAdProducer != null && HKTAppAdvertiseManager.fullScreenIntroNativeAdProducer?.isValidToShow == true
+    }
+
+    private fun initHatakiNativeAds() {
+        Log.d(TAG, "Event request load first intro native ad")
+        val firstNativeAdProducer = HKTAppAdvertiseManager.firstIntroNativeAdProducer ?: return
+        firstNativeAdProducer.show(this, R.layout.layout_native_ad_small_button_bottom, binding.frAdBottom)
+        binding.frAdBottom.visibility = View.VISIBLE
+    }
+
+    private fun nextHatakiActivityProcess() {
+        val interIntroAdProducer = HKTAppAdvertiseManager.interIntroAdProducer ?: run {
+            goToPermissionScreen()
+            return
+        }
+
+        interIntroAdProducer.setListener(object : InterstitialAdListener {
+            override fun onNextAction() {
+                super.onNextAction()
+                goToPermissionScreen()
+            }
+
+            override fun showNativeFullAd(ad: NativeBaseAdProducer) {
+                super.showNativeFullAd(ad)
+
+                showNativeFullScreenAd(ad)
+            }
+
+            override fun onAdFailedToShow() {
+                super.onAdFailedToShow()
+                goToPermissionScreen()
+            }
+
+            override fun onAdLoadFailed(isAutoPreload: Boolean) {
+                super.onAdLoadFailed(isAutoPreload)
+                if (isAutoPreload.not()) {
+                    goToPermissionScreen()
+                }
+            }
+
+            override fun requireActivityForLoadAndShowAd(): Activity? {
+                return this@OnboardingHataki1Activity
+            }
+        })
+
+        interIntroAdProducer.show(this, lifecycle)
+    }
+
+    override fun onNextFromNativeFullScreenAd() {
+        super.onNextFromNativeFullScreenAd()
+        goToPermissionScreen()
+    }
+
+    private fun goToPermissionScreen() {
+        val nextScreenLibIntent = Intent(this@OnboardingHataki1Activity,
+            RequestPermissionHataki1Activity::class.java)
+        startActivity(nextScreenLibIntent)
+        finishAffinity()
     }
 
     companion object {

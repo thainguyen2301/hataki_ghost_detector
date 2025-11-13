@@ -62,7 +62,7 @@ class HKTMyApplication : Application(), Application.ActivityLifecycleCallbacks, 
     override fun attachBaseContext(base: Context?) {
         val contextBase = base?.let {
             val lang = PreferenceManager.getDefaultSharedPreferences(base)
-                .getString("lang", "en") ?: "en"
+                .getString("APP_LANG", "en") ?: "en"
             LocaleManager(it).setLocale(lang)
         }
         super.attachBaseContext(contextBase)

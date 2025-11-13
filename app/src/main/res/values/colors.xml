@@ -22,11 +22,11 @@
     <color name="color_111111">#111111</color>
     <color name="color_e6e6eb">#E6E6EB</color>
 
-    <color name="lang_select_color">#1A1A1A</color>
-    <color name="lang_unselect_color">#1A1A1A</color>
-    <color name="region_select_color">#801A1A1A</color>
+    <color name="lang_select_color">#FFFFFF</color>
+    <color name="lang_unselect_color">#FFFFFF</color>
+    <color name="region_select_color">#80FFFFFF</color>
     <color name="region_unselect_color">#B2B2B2</color>
-    <color name="extra_region_select_color">#1A1A1A</color>
-    <color name="extra_region_unselect_color">#1A1A1A</color>
+    <color name="extra_region_select_color">#FFFFFF</color>
+    <color name="extra_region_unselect_color">#FFFFFF</color>
     <color name="native_background_color">#F4F4F4</color>
 </resources>

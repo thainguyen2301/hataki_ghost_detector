@@ -1,5 +1,6 @@
 package com.ghost.finder.detector.radar.tracker.ui.rada
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
@@ -13,8 +14,9 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.google.ar.core.Pose
 import com.google.ar.core.TrackingState
 import com.ghost.finder.detector.radar.tracker.R
+import com.ghost.finder.detector.radar.tracker.ads.HKTAppAdvertiseManager
+import com.ghost.finder.detector.radar.tracker.ads.base.BaseRequestFullNativeActivity
 import com.ghost.finder.detector.radar.tracker.databinding.ActivityRadaHataki1Binding
-import com.ghost.finder.detector.radar.tracker.ui.base.BaseActivity
 import com.ghost.finder.detector.radar.tracker.ui.rada.system.MediaPlayerManager
 import com.ghost.finder.detector.radar.tracker.ui.rada.system.SoundPoolManager
 import com.ghost.finder.detector.radar.tracker.ui.setting.SettingHataki1Activity
@@ -33,7 +35,7 @@ import kotlin.math.sin
 import kotlin.math.sqrt
 
 @AndroidEntryPoint
-class RadaHataki1Activity() : BaseActivity<RadaViewModel, ActivityRadaHataki1Binding>() {
+class RadaHataki1Activity() : BaseRequestFullNativeActivity<RadaViewModel, ActivityRadaHataki1Binding>() {
     private lateinit var mediaPlayerManagerHataki1: MediaPlayerManager
     private var handlerHataki1 = Handler(Looper.getMainLooper())
     private lateinit var soundPoolManagerHataki1: SoundPoolManager
@@ -47,6 +49,7 @@ class RadaHataki1Activity() : BaseActivity<RadaViewModel, ActivityRadaHataki1Bin
 
     override fun onResumeImpl() {
         viewModel.startDetectCompass()
+        HKTAppAdvertiseManager.showAdaptiveBanner(this, binding.frAdBottom)
     }
 
     override fun onStop() {

@@ -1,13 +1,13 @@
 <resources>
     <!-- app id admob-->
-    <string name="app_id_admob" translatable="false">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="app_id_admob" translatable="false">ca-app-pub-5457807375754173~7973254162</string>
 
     <!--fb-->
-    <string name="facebook_app_id" translatable="false">123456789012345</string>
-    <string name="facebook_client_token" translatable="false">56789</string>
+    <string name="facebook_app_id" translatable="false">601417253029724</string>
+    <string name="facebook_client_token" translatable="false">8fb6a9c3ca1ccad2b006d526a5767c81</string>
     <!--adjust-->
-    <string name="adjust_token" translatable="false">dpw0wzwjnu9s</string>
+    <string name="adjust_token" translatable="false">su8pm5bwrchs</string>
 
     <!--adjust_token_event-->
-    <string name="adjust_token_event" translatable="false">l4q1dz</string>
+    <string name="adjust_token_event" translatable="false">2ruxb2</string>
 </resources>

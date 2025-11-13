@@ -297,4 +297,16 @@ object HKTAdRemoteConfig {
 
         return HKTLanguageScreenConfig.default
     }
+
+    /**
+     * Get the order position for a language code.
+     * Returns the order from language screen config if available, otherwise returns default value.
+     * Lower numbers appear first in the list.
+     * @param languageCode The language code (e.g., "en", "pt", "es")
+     * @param defaultOrder The default order to use if not found in remote config (default is 999)
+     * @return The order position for the language
+     */
+    fun getLanguageOrder(languageCode: String, defaultOrder: Int = 999): Int {
+        return languageScreenConfig?.languageOrderMain?.get(languageCode) ?: defaultOrder
+    }
 }

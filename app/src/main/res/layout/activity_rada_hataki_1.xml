@@ -63,7 +63,7 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/img_bg_bottom"
             android:layout_width="0dp"
-            android:layout_height="166dp"
+            android:layout_height="170dp"
             android:scaleType="centerCrop"
             android:src="@drawable/bg_accept"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -178,5 +178,13 @@
             android:textColor="@color/color_0f9b0f"
             app:layout_constraintEnd_toStartOf="@id/evp_title"
             app:layout_constraintTop_toBottomOf="@+id/evp_1" />
+
+        <FrameLayout
+            android:id="@+id/fr_ad_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

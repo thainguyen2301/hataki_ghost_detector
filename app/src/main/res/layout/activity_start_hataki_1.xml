@@ -58,10 +58,17 @@
             android:layout_height="48dp"
             android:background="@drawable/accept_button_gradient"
             android:text="@string/accept"
-            app:layout_constraintBottom_toBottomOf="@+id/img_bg_bottom"
+            app:layout_constraintBottom_toTopOf="@id/fr_ad_bottom"
             app:layout_constraintEnd_toEndOf="@+id/img_bg_bottom"
             app:layout_constraintStart_toStartOf="@+id/img_bg_bottom"
             app:layout_constraintTop_toTopOf="@+id/img_bg_bottom" />
+        <FrameLayout
+            android:id="@+id/fr_ad_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

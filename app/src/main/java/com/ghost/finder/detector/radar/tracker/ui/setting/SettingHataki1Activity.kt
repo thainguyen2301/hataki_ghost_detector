@@ -7,6 +7,7 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.core.net.toUri
 import com.google.android.play.core.review.ReviewManagerFactory
 import com.ghost.finder.detector.radar.tracker.R
+import com.ghost.finder.detector.radar.tracker.ads.HKTAppAdvertiseManager
 import com.ghost.finder.detector.radar.tracker.databinding.ActivitySettingHataki1Binding
 import com.ghost.finder.detector.radar.tracker.ui.base.BaseActivity
 import com.ghost.finder.detector.radar.tracker.ui.common.FeedbackBottomSheet
@@ -27,6 +28,7 @@ class SettingHataki1Activity : BaseActivity<SettingViewModel, ActivitySettingHat
 
     override fun onCreateImpl() {
         setOnclickListenerHataki1()
+        HKTAppAdvertiseManager.showAdaptiveBanner(this, binding.frAdBottom)
     }
 
     override fun onResumeImpl() {

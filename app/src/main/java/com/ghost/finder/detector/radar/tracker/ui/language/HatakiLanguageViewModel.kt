@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.distinctUntilChanged
 import com.ghost.finder.detector.radar.tracker.R
+import com.ghost.finder.detector.radar.tracker.ads.HKTAdRemoteConfig
 import com.ghost.finder.detector.radar.tracker.ads.model.RegionHelper
 import com.ghost.finder.detector.radar.tracker.data.model.LanguageItem
 import com.ghost.finder.detector.radar.tracker.data.model.LanguageModel
@@ -11,6 +12,7 @@ import com.ghost.finder.detector.radar.tracker.data.model.RegionModel
 import com.ghost.finder.detector.radar.tracker.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import kotlin.collections.toMutableList
 
 
 @HiltViewModel
@@ -155,7 +157,11 @@ class HatakiLanguageViewModel @Inject constructor() : BaseViewModel() {
     private fun getAllLangWithExtraRegion(): MutableList<LanguageModel> {
         return getAllLang().map {
             it.copy(extraRegion = RegionHelper.getRegionsByLanguage(it.code))
-        }.toMutableList()
+        }.sortedBy { language ->
+            // Sort by remote config order, languages without order will appear last
+            HKTAdRemoteConfig.getLanguageOrder(language.code)
+        }
+            .toMutableList()
     }
 
     private fun getHandPosition(screenOpenCount: Int): Int {

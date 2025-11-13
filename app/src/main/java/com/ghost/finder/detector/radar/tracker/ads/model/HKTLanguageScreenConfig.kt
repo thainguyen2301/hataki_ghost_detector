@@ -21,7 +21,10 @@ data class HKTLanguageScreenConfig(
     private val _translatingLoadingSecond: Long? = null,
 
     @SerializedName("ignore_versions")
-    val ignoreVersions: List<String>? = null
+    val ignoreVersions: List<String>? = null,
+
+    @SerializedName("language_order")
+    private val _languageOrderMain: Map<String, Int>? = null
 ) {
     // Properties with default values when JSON is null
     val doneButtonPosition: HKTDoneButtonPosition
@@ -39,6 +42,9 @@ data class HKTLanguageScreenConfig(
 
     val translatingLoadingSecond: Long
         get() = _translatingLoadingSecond ?: 0L
+
+    val languageOrderMain: Map<String, Int>
+        get() = _languageOrderMain ?: emptyMap()
 
     companion object {
         var default = HKTLanguageScreenConfig()
