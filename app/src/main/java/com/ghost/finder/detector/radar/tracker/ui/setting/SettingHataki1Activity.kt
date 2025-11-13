@@ -41,7 +41,7 @@ class SettingHataki1Activity : BaseActivity<SettingViewModel, ActivitySettingHat
             }
 
             R.id.item_language -> {
-//                LanguageHataki1Activity.Companion.open(this@SettingHataki1Activity, true)
+                LanguageHataki1Activity.Companion.open(this@SettingHataki1Activity, true)
             }
 
             R.id.item_rate -> {
