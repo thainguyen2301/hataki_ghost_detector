@@ -20,6 +20,7 @@ import com.ghost.finder.detector.radar.tracker.ads.HKTAppAdvertiseManager.interO
 import com.ghost.finder.detector.radar.tracker.data.repository.language.LanguageRepository
 import com.ghost.finder.detector.radar.tracker.data.system.locale.LocaleManager
 import com.ghost.finder.detector.radar.tracker.data.system.network.NetworkManager
+import com.ghost.finder.detector.radar.tracker.ui.language.HatakiLanguageStartActivity
 import com.ghost.finder.detector.radar.tracker.ui.splash.SplashHataki1Activity
 import com.ghost.finder.detector.radar.tracker.ui.welcome_back.HatakiWelcomeBackActivity
 import com.google.firebase.Firebase
@@ -62,7 +63,7 @@ class HKTMyApplication : Application(), Application.ActivityLifecycleCallbacks, 
     override fun attachBaseContext(base: Context?) {
         val contextBase = base?.let {
             val lang = PreferenceManager.getDefaultSharedPreferences(base)
-                .getString("APP_LANG", "en") ?: "en"
+                .getString(HatakiLanguageStartActivity.APP_LANG, "en") ?: "en"
             LocaleManager(it).setLocale(lang)
         }
         super.attachBaseContext(contextBase)

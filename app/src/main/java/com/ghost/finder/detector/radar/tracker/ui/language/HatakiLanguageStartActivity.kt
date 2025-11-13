@@ -2,8 +2,10 @@ package com.ghost.finder.detector.radar.tracker.ui.language
 
 import android.content.Intent
 import android.util.Log
+import androidx.core.content.edit
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ghost.finder.detector.radar.tracker.R
 import com.ghost.finder.detector.radar.tracker.ads.HKTAdRemoteConfig
@@ -14,6 +16,8 @@ import com.ghost.finder.detector.radar.tracker.databinding.ActivityHatakiLanguag
 import com.ghost.finder.detector.radar.tracker.ui.base.BaseActivity
 import com.ghost.finder.detector.radar.tracker.ui.dialog.TranslatingDialog
 import com.ghost.finder.detector.radar.tracker.ui.onboard.OnboardingHataki1Activity
+import com.ghost.finder.detector.radar.tracker.ui.rada.RadaHataki1Activity
+import com.ghost.finder.detector.radar.tracker.utils.LocaleHelper
 import com.ghost.finder.detector.radar.tracker.utils.tap
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -43,10 +47,21 @@ class HatakiLanguageStartActivity : BaseActivity<HatakiLanguageViewModel, Activi
         setupDoneButton()
         
         val doneClickListener = {
-//            SystemUtil.saveLocale(this, viewModel.getSelectedCode())
-//            SystemUtil.setLocale(this)
-            startActivity(Intent(this, OnboardingHataki1Activity::class.java))
-            finish()
+            viewModel.getSelectedCode()?.let { lang ->
+                PreferenceManager.getDefaultSharedPreferences(this)
+                    .edit { putString(APP_LANG, lang) }
+                LocaleHelper.setLocale(this@HatakiLanguageStartActivity, lang)
+                val isFromSetting = intent.getBooleanExtra("isFromSetting", false)
+                if (isFromSetting) {
+                    val intent = Intent(this, RadaHataki1Activity::class.java).apply {
+                        flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    }
+                    startActivity(intent)
+                    finish()
+                } else {
+                    OnboardingHataki1Activity.Companion.open(this@HatakiLanguageStartActivity)
+                }
+            }
         }
 
         binding.ivDoneLeft.tap { doneClickListener() }
