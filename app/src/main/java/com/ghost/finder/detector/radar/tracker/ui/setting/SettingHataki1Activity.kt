@@ -11,6 +11,7 @@ import com.ghost.finder.detector.radar.tracker.ads.HKTAppAdvertiseManager
 import com.ghost.finder.detector.radar.tracker.databinding.ActivitySettingHataki1Binding
 import com.ghost.finder.detector.radar.tracker.ui.base.BaseActivity
 import com.ghost.finder.detector.radar.tracker.ui.common.FeedbackBottomSheet
+import com.ghost.finder.detector.radar.tracker.ui.language.LanguageActivity
 import com.ghost.finder.detector.radar.tracker.ui.privacy.PrivacyPolicyHataki1Activity
 import com.ghost.finder.detector.radar.tracker.utils.DialogHelper
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,7 +42,7 @@ class SettingHataki1Activity : BaseActivity<SettingViewModel, ActivitySettingHat
             }
 
             R.id.item_language -> {
-                LanguageHataki1Activity.Companion.open(this@SettingHataki1Activity, true)
+                LanguageActivity.Companion.open(this@SettingHataki1Activity, true)
             }
 
             R.id.item_rate -> {

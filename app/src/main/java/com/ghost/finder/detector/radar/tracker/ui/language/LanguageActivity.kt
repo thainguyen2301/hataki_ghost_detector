@@ -7,8 +7,10 @@ import android.view.View
 import android.widget.LinearLayout
 import androidx.core.content.edit
 import androidx.preference.PreferenceManager
+import com.ghost.finder.detector.radar.tracker.R
 import com.ghost.finder.detector.radar.tracker.ads.HKTAppAdvertiseManager
 import com.ghost.finder.detector.radar.tracker.data.model.Quadruple
+import com.ghost.finder.detector.radar.tracker.databinding.ActivityLanguageBinding
 import com.ghost.finder.detector.radar.tracker.ui.base.BaseActivity
 import com.ghost.finder.detector.radar.tracker.ui.common.LanguageItemView
 import com.ghost.finder.detector.radar.tracker.ui.rada.RadaHataki1Activity

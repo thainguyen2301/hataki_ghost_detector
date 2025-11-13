@@ -35,6 +35,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.language.LanguageActivity"/>
         <activity android:name=".ui.onboard.OnboardingHataki1Activity" />
         <activity android:name=".ui.start.StartHataki1Activity" />
         <activity android:name=".ui.rada.RadaHataki1Activity" />
