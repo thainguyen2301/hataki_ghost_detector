@@ -13,3 +13,7 @@
 .externalNativeBuild
 .cxx
 local.properties
+app-product-release.apk
+app/product/release/output-metadata.json
+app/product/release/baselineProfiles/0/app-product-release.dm
+app/product/release/baselineProfiles/1/app-product-release.dm
