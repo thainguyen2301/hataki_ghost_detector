@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="next">次へ</string>
+    <string name="get_started">始める</string>
+    <string-array name="loading_messages">
+        <item>この操作には広告が含まれる場合があります…</item>
+        <item>システムライブラリを読み込んでいます…</item>
+        <item>アプリケーション設定を読み込んでいます…</item>
+        <item>UIリソースを読み込んでいます…</item>
+        <item>サーバーに接続しています…</item>
+        <item>アップデートを確認しています…</item>
+        <item>実行ファイルを読み込んでいます…</item>
+    </string-array>
+
+    <string name="onboarding_title_1">リアルな幽霊レーダー</string>
+    <string name="onboarding_title_2">スマート幽霊探知機</string>
+    <string name="onboarding_title_3">楽しい幽霊いたずら</string>
+    <string name="onboarding_title_4">ダイナミックライト効果</string>
+    <string name="accept">承認</string>
+    <string name="start_warning_message">注意！ \\n\\n 非常に敏感な方や\\n 怖がりな方は、このアプリを \\n 使用せずに閉じることを\\n お勧めします。\\n\\n 私たちはあなたのプライバシーと \\n データセキュリティを大切にします。 \\n 広告を表示することで \\n このアプリを無料で提供しています。 \\n 続行すると、カスタマイズされた \\n 広告のためにあなたのデータを \\n 使用することに同意したことになります。</string>
+    <string name="permission">権限</string>
+    <string name="continue_without_permission">権限なしで続行</string>
+    <string name="permission_continue">続行</string>
+    <string name="rec">録画</string>
+    <string name="emf_sensors">EMF\\nセンサー</string>
+    <string name="evp_sensors">EVP\\nセンサー</string>
+    <string name="walk_around_slowly">ゆっくり\\n歩き回ってください…</string>
+    <string name="send">送信</string>
+    <string name="enter_your_feedback">フィードバックを入力してください</string>
+    <string name="your_subject">件名</string>
+    <string name="feedback">フィードバック</string>
+    <string name="setting">設定</string>
+    <string name="privacy_policy">プライバシーポリシー</string>
+    <string name="no_internet">インターネットなし</string>
+    <string name="no_internet_connection">インターネット接続なし</string>
+    <string name="no_internet_description">ネットワークまたはサービスの問題により\\nインターネット接続が利用できません</string>
+    <string name="try_again">再試行</string>
+    <string name="permissions_required_description">%1$sが正常に機能するには、\\nこれらの権限が必要です</string>
+    <string name="language">言語</string>
+    <string name="choose_your_subject">件名を選択してください</string>
+    <string name="translating">翻訳中…</string>
+    <string name="please_wait">お待ちください</string>
+    <string name="rate_description">あなたの体験を教えてください。星5つが\\nGoogle Playで最高です！</string>
+    <string name="cancel">キャンセル</string>
+    <string name="submit">送信</string>
+    <string name="rate">評価</string>
+    <string name="share">共有</string>
+    <string name="what_tip_you_like_to_give_us">どのようなアドバイスをいただけますか？</string>
+    <string name="we_re_glad_to_have_you_here_again_let_s_pick_up_where_you_left_off_and_continue_your_journey">またお会いできて嬉しいです。中断したところから再開して、旅を続けましょう！</string>
+    <string name="welcome_back">おかえりなさい</string>
+    <string name="continue_res">続行</string>
+</resources>

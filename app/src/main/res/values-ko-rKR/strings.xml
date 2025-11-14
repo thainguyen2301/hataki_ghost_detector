@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="next">다음</string>
+    <string name="get_started">시작하기</string>
+    <string-array name="loading_messages">
+        <item>이 작업에는 광고가 포함될 수 있습니다…</item>
+        <item>시스템 라이브러리 로딩 중…</item>
+        <item>애플리케이션 구성 로딩 중…</item>
+        <item>UI 리소스 로딩 중…</item>
+        <item>서버에 연결 중…</item>
+        <item>업데이트 확인 중…</item>
+        <item>실행 파일 로딩 중…</item>
+    </string-array>
+
+    <string name="onboarding_title_1">현실적인 유령 레이더</string>
+    <string name="onboarding_title_2">스마트 유령 탐지기</string>
+    <string name="onboarding_title_3">재미있는 유령 장난</string>
+    <string name="onboarding_title_4">동적 조명 효과</string>
+    <string name="accept">수락</string>
+    <string name="start_warning_message">주의하세요! \\n\\n 당신이 매우 민감하거나\\n 겁이 많은 사람이라면 \\n 이 앱을 사용하지 말고 \\n 닫으시기 바랍니다.\\n\\n 우리는 귀하의 개인정보 보호와 \\n 데이터 보안을 중요하게 생각합니다. \\n 광고를 표시하여 이 앱을 \\n 무료로 유지합니다. 계속하시면 \\n 맞춤형 광고를 위해 귀하의 \\n 데이터를 사용하는 것에 동의하게 됩니다.</string>
+    <string name="permission">권한</string>
+    <string name="continue_without_permission">권한 없이 계속</string>
+    <string name="permission_continue">계속</string>
+    <string name="rec">녹화</string>
+    <string name="emf_sensors">EMF\\n센서</string>
+    <string name="evp_sensors">EVP\\n센서</string>
+    <string name="walk_around_slowly">천천히\\n걸어다니세요…</string>
+    <string name="send">보내기</string>
+    <string name="enter_your_feedback">피드백을 입력하세요</string>
+    <string name="your_subject">제목</string>
+    <string name="feedback">피드백</string>
+    <string name="setting">설정</string>
+    <string name="privacy_policy">개인정보 처리방침</string>
+    <string name="no_internet">인터넷 없음</string>
+    <string name="no_internet_connection">인터넷 연결 없음</string>
+    <string name="no_internet_description">네트워크 또는 서비스 문제로 인해\\n인터넷 연결을 사용할 수 없습니다</string>
+    <string name="try_again">다시 시도</string>
+    <string name="permissions_required_description">%1$s가 제대로 작동하려면\\n이러한 권한이 필요합니다</string>
+    <string name="language">언어</string>
+    <string name="choose_your_subject">주제를 선택하세요</string>
+    <string name="translating">번역 중…</string>
+    <string name="please_wait">잠시만 기다려주세요</string>
+    <string name="rate_description">귀하의 경험을 알려주세요. 별 5개가\\nGoogle Play에서 최고입니다!</string>
+    <string name="cancel">취소</string>
+    <string name="submit">제출</string>
+    <string name="rate">평가</string>
+    <string name="share">공유</string>
+    <string name="what_tip_you_like_to_give_us">어떤 팁을 주고 싶으신가요?</string>
+    <string name="we_re_glad_to_have_you_here_again_let_s_pick_up_where_you_left_off_and_continue_your_journey">다시 오신 것을 환영합니다. 중단했던 부분부터 다시 시작하여 여정을 계속하세요!</string>
+    <string name="welcome_back">다시 오신 것을 환영합니다</string>
+    <string name="continue_res">계속</string>
+</resources>
