@@ -57,6 +57,17 @@ android {
         }
     }
 
+    sourceSets {
+        getByName("develop") {
+            res.srcDirs("src/develop/res")
+        }
+
+        // For product release uncomment out here
+        getByName("product") {
+            res.srcDirs("src/product/res")
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
